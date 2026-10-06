@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.venv/
+tmp/
+.DS_Store
+dist-ssr/
+
+# Raw originals (Figma renders, NAS copies, videos); kept on disk and the NAS, see design/sources.md
+source-assets/
+content-library/
+exports/
+.claude/worktrees/

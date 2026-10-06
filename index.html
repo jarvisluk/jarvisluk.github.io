@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <meta name="robots" content="index, follow, noimageindex, max-image-preview:none" />
+    <meta name="description" content="陆俊荣 Jarvis Luk 的设计作品集。探索交互设计、服务系统与实体产品之间的可能性。" />
+    <title>陆俊荣 — 交互、产品与服务设计</title>
+    <script>
+      // First visit to a Chinese (unprefixed) page: send non-Chinese browsers to /en before paint.
+      // A choice made with the language toggle (localStorage "lang") wins; explicit /en URLs and crawlers are left alone.
+      (function(){
+        var p=location.pathname;
+        if(p==='/en'||p.indexOf('/en/')===0||/bot|crawl|spider|slurp/i.test(navigator.userAgent))return;
+        var stored;try{stored=localStorage.getItem('lang');}catch(e){}
+        var lang=stored;
+        if(!lang){
+          var list=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||''];
+          lang='en';
+          for(var i=0;i<list.length;i++){var l=String(list[i]).toLowerCase();if(l.indexOf('zh')===0){lang='zh';break;}if(l.indexOf('en')===0)break;}
+        }
+        if(lang==='en')location.replace('/en'+p+location.search+location.hash);
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/assets/soundbricks.webp" />
+  </head>
+  <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
+</html>

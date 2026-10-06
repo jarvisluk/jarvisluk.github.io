@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-theme-preset="graphite" data-density="compact" data-graph-style="solid">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./assets/index-Czpee0yG.css">
+<style>
+ html,body{background:#121212;margin:0}
+ body{font-family:var(--user-font);color:var(--text);padding:28px 24px 40px;box-sizing:border-box}
+ .lib{max-width:1080px;margin:0 auto}
+ .lib-intro{color:var(--text-muted);font-size:13px;line-height:1.6;margin:0 0 26px;max-width:640px}
+ .lib-grid{columns:3 320px;column-gap:32px;column-rule:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+ .lib-card{break-inside:avoid;margin:0;border-top:1px solid var(--border-soft);padding:16px 0 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+ .lib-card.wide{column-span:all}
+ .dims{display:flex;flex-wrap:wrap;gap:14px 12px;align-items:flex-end}
+ .dims figure{margin:0;display:grid;justify-items:start;gap:4px;min-width:64px}
+ .dims i{display:block;border:1px solid var(--border);background:var(--surface-strong);box-sizing:border-box}
+ .dims code{font-family:var(--mono-font);font-size:10px;color:var(--text-muted)}
+ .dims .v{font-size:10px}
+ .lib-card h3{margin:0;font-size:13px;font-weight:700;color:var(--text)}
+ .lib-card p{margin:0;font-size:12px;line-height:1.55;color:var(--text-muted)}
+ .lib-spec{background:var(--panel-solid);border-radius:12px;padding:10px;width:342px;max-width:100%;box-sizing:border-box;position:relative;overflow:hidden}
+ .lib-spec.flush{padding:0}
+ :is(.lib-spec,.cv) [data-lib-wrap]{height:auto!important;min-height:0!important;max-height:none!important;position:static!important;overflow:visible!important;transform:none!important;inset:auto!important;width:auto!important;padding:0!important;margin:0!important;border:0!important;background:none!important;box-shadow:none!important;display:block!important;animation:none!important}
+ :is(.lib-spec,.cv) :is([role=menu],.ui-dialog,#branch-ref-menu){position:static!important;inset:auto!important;transform:none!important;opacity:1!important;visibility:visible!important;max-height:none!important}
+ #branch-ref-menu,#branch-ref-menu *{height:auto;max-height:none!important}
+ .lib-spec .peek-header .branch-pill{display:none}
+ .lib-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+ .tok{display:grid;grid-template-columns:minmax(0,150px) 48px minmax(0,1fr);gap:12px;align-items:center;padding:5px 0;font-size:12px}
+ .tok code{font-family:var(--mono-font);color:var(--text-muted);font-size:11px}
+ .tok .v{color:var(--text-faint);font-family:var(--mono-font);font-size:11px}
+ .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px 10px}
+ .sw div{font-size:10px;min-width:0}
+ .sw i{display:block;height:26px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--border-soft)}
+ .sw span{display:block;padding:5px 0 0;color:var(--text-muted);font-family:var(--mono-font);line-height:1.35;overflow-wrap:anywhere}
+ .sw b{color:var(--text);font-family:var(--user-font)}
+ .sw em{font-style:normal}
+ .tok.t{grid-template-columns:minmax(0,120px) 40px minmax(0,1fr);padding:5px 0;border-top:0}
+ .tok.t>span:last-child{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
+ .bar{height:10px;background:var(--main);border-radius:3px}
+ .rules{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+ .rules li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:12.5px;line-height:1.6;color:var(--text)}
+ .rules b{color:var(--main);font-family:var(--mono-font);font-weight:600}
+ .rules span{color:var(--text-muted)}
+ /* Component board */
+ .board{columns:3 320px;column-gap:32px;column-rule:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+ .tile{break-inside:avoid;margin:0;border-top:1px solid var(--border-soft);padding:16px 0 20px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+ .tile>header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+ .tile>header h3{margin:0;font-size:12px;font-weight:700}
+ .tile>header code{font-family:var(--mono-font);font-size:10px;color:var(--text-faint)}
+ .s{margin:0;display:flex;flex-direction:column;gap:5px;min-width:0}
+ .s figcaption{font-family:var(--mono-font);font-size:9.5px;color:var(--text-faint);letter-spacing:.02em}
+ .row{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:flex-start}
+ .col{display:grid;gap:10px}
+ .sep{width:1px;align-self:stretch;background:var(--border-soft)}
+ .bgrid{display:grid;grid-template-columns:auto repeat(3,auto);gap:8px 10px;align-items:center;justify-content:start}
+ .bgrid em{font-style:normal;font-family:var(--mono-font);font-size:9.5px;color:var(--text-faint)}
+ .s.is-menu{align-items:flex-start}
+ .s [data-lib-wrap]{height:auto!important;min-height:0!important;max-height:none!important;position:static!important;overflow:visible!important;transform:none!important;inset:auto!important;width:auto!important;padding:0!important;margin:0!important;border:0!important;background:none!important;box-shadow:none!important;display:block!important;animation:none!important}
+ .s :is([role=menu],.ui-dialog,#branch-ref-menu){position:static!important;inset:auto!important;transform:none!important;opacity:1!important;visibility:visible!important;max-height:none!important}
+ .s .ui-toggle,.s .settings-row{width:100%}
+ .tile .ui-dialog{width:100%!important;max-width:100%!important;box-sizing:border-box}
+ @media(max-width:520px){.board{columns:1}}
+ @media(max-width:520px){body{padding:18px 12px 28px}.tok{grid-template-columns:120px 54px 1fr}}
+</style></head><body><div class="lib">
+<p class="lib-intro" data-zh="Gocus 是一个紧凑的工具面板，应该读起来像一条窄的桌面工具，而不是一张大的内容页。下面的数值都从界面实际使用的 CSS token 读取。">Gocus is a compact utility surface: it should read like a narrow desktop tool, not a large content page. Every value below is read from the CSS tokens the interface uses.</p>
+<div class="lib-grid">
+<section class="lib-card wide"><h3 data-zh="字号层级">Type scale</h3><p data-zh="在 10–20px 的紧凑字号上分出语义角色；界面样式里不允许直接写 px 字号">Semantic roles over a compact 10–20px scale. Raw px sizes are not allowed in UI rules.</p><div><div class="tok t"><span style="font-size:var(--type-display-size);font-weight:720" data-zh="展示">Display</span><span class="v" data-var="--type-display-size"></span><span><code>--type-display-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="只用于空状态标题">Empty-state headings only</span></span></div><div class="tok t"><span style="font-size:var(--type-page-title-size);font-weight:720" data-zh="页面标题">Page title</span><span class="v" data-var="--type-page-title-size"></span><span><code>--type-page-title-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="应用头部或顶层页面">App header or top-level page</span></span></div><div class="tok t"><span style="font-size:var(--type-heading-1-size);font-weight:720" data-zh="一级标题">Heading 1</span><span class="v" data-var="--type-heading-1-size"></span><span><code>--type-heading-1-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="主要面板标题">Primary panel headings</span></span></div><div class="tok t"><span style="font-size:var(--type-heading-2-size);font-weight:720" data-zh="二级标题">Heading 2</span><span class="v" data-var="--type-heading-2-size"></span><span><code>--type-heading-2-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="卡片、对话框、条目标题">Cards, dialogs, item titles</span></span></div><div class="tok t"><span style="font-size:var(--type-body-strong-size);font-weight:720" data-zh="强调正文">Body strong</span><span class="v" data-var="--type-body-strong-size"></span><span><code>--type-body-strong-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="统计数字、选中项信息">Stats and selected metadata</span></span></div><div class="tok t"><span style="font-size:var(--type-body-size);font-weight:560" data-zh="正文">Body</span><span class="v" data-var="--type-body-size"></span><span><code>--type-body-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="常规文字、哈希、小控件">Normal copy, hashes, small controls</span></span></div><div class="tok t"><span style="font-size:var(--type-caption-size);font-weight:560" data-zh="说明">Caption</span><span class="v" data-var="--type-caption-size"></span><span><code>--type-caption-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="辅助说明、时间">Helper text, timestamps</span></span></div><div class="tok t"><span style="font-size:var(--type-micro-size);font-weight:560" data-zh="微型">Micro</span><span class="v" data-var="--type-micro-size"></span><span><code>--type-micro-size</code><span style="color:var(--text-faint);font-size:11px" data-zh="提交图标注、小徽标">Graph labels, tiny badges</span></span></div></div></section>
+<section class="lib-card wide"><h3 data-zh="颜色">Colour</h3><p data-zh="石墨色的深色主题，只有一个琥珀色强调色；绿色和红色只用于增删行数">A graphite dark theme with one amber accent; green and red only for additions and deletions.</p><div class="sw"><div><i style="background:var(--stage-bg)"></i><span><b data-zh="舞台">Stage</b> <em class="v" data-var="--stage-bg"></em><br>--stage-bg</span></div><div><i style="background:var(--panel-solid)"></i><span><b data-zh="面板">Panel</b> <em class="v" data-var="--panel-solid"></em><br>--panel-solid</span></div><div><i style="background:var(--surface-strong)"></i><span><b data-zh="表面">Surface</b> <em class="v" data-var="--surface-strong"></em><br>--surface-strong</span></div><div><i style="background:var(--surface-hover)"></i><span><b data-zh="悬停">Hover</b> <em class="v" data-var="--surface-hover"></em><br>--surface-hover</span></div><div><i style="background:var(--text)"></i><span><b data-zh="文字">Text</b> <em class="v" data-var="--text"></em><br>--text</span></div><div><i style="background:var(--text-muted)"></i><span><b data-zh="次要">Muted</b> <em class="v" data-var="--text-muted"></em><br>--text-muted</span></div><div><i style="background:var(--text-faint)"></i><span><b data-zh="弱化">Faint</b> <em class="v" data-var="--text-faint"></em><br>--text-faint</span></div><div><i style="background:var(--main)"></i><span><b data-zh="主色">Main</b> <em class="v" data-var="--main"></em><br>--main</span></div><div><i style="background:var(--success)"></i><span><b data-zh="新增">Additions</b> <em class="v" data-var="--success"></em><br>--success</span></div><div><i style="background:var(--danger)"></i><span><b data-zh="删除">Deletions</b> <em class="v" data-var="--danger"></em><br>--danger</span></div></div></section>
+<section class="lib-card "><h3 data-zh="分支轨道">Branch lanes</h3><p data-zh="录制仓库提交图里的轨道颜色，引用标签沿用同一种颜色">Lane colours from the recorded repository graph; ref pills reuse them.</p><div class="sw"><div><i style="background:#25b7ba"></i><span>#25b7ba</span></div><div><i style="background:#48ad62"></i><span>#48ad62</span></div><div><i style="background:#2f86d8"></i><span>#2f86d8</span></div><div><i style="background:#9b66e8"></i><span>#9b66e8</span></div><div><i style="background:#d96a9f"></i><span>#d96a9f</span></div><div><i style="background:#f06d35"></i><span>#f06d35</span></div><div><i style="background:#6f9bff"></i><span>#6f9bff</span></div><div><i style="background:#47c782"></i><span>#47c782</span></div></div></section>
+<section class="lib-card "><h3 data-zh="间距">Spacing</h3><p data-zh="从 2px 到 16px，共八级">Eight steps from 2 to 16px.</p><div class="tok"><code>--space-xxs</code><span class="v" data-var="--space-xxs"></span><div class="bar" style="width:calc(var(--space-xxs) * 5);max-width:100%"></div></div><div class="tok"><code>--space-xs</code><span class="v" data-var="--space-xs"></span><div class="bar" style="width:calc(var(--space-xs) * 5);max-width:100%"></div></div><div class="tok"><code>--space-sm</code><span class="v" data-var="--space-sm"></span><div class="bar" style="width:calc(var(--space-sm) * 5);max-width:100%"></div></div><div class="tok"><code>--space-md</code><span class="v" data-var="--space-md"></span><div class="bar" style="width:calc(var(--space-md) * 5);max-width:100%"></div></div><div class="tok"><code>--space-lg</code><span class="v" data-var="--space-lg"></span><div class="bar" style="width:calc(var(--space-lg) * 5);max-width:100%"></div></div><div class="tok"><code>--space-xl</code><span class="v" data-var="--space-xl"></span><div class="bar" style="width:calc(var(--space-xl) * 5);max-width:100%"></div></div><div class="tok"><code>--space-2xl</code><span class="v" data-var="--space-2xl"></span><div class="bar" style="width:calc(var(--space-2xl) * 5);max-width:100%"></div></div><div class="tok"><code>--space-3xl</code><span class="v" data-var="--space-3xl"></span><div class="bar" style="width:calc(var(--space-3xl) * 5);max-width:100%"></div></div></section>
+<section class="lib-card "><h3 data-zh="圆角与尺寸">Radius & size</h3><p data-zh="圆角跟随 macOS 原生窗口；控件高度保持在 26–34px 之间">Corners follow the native macOS window; controls stay between 26 and 34px.</p><div class="dims"><figure><i style="width:40px;height:40px;border-radius:var(--radius-sm)"></i><code>radius-sm</code><span class="v" data-var="--radius-sm"></span></figure><figure><i style="width:40px;height:40px;border-radius:var(--radius-md)"></i><code>radius-md</code><span class="v" data-var="--radius-md"></span></figure><figure><i style="width:40px;height:40px;border-radius:var(--radius-lg)"></i><code>radius-lg</code><span class="v" data-var="--radius-lg"></span></figure><figure><i style="width:40px;height:40px;border-radius:var(--window-radius)"></i><code>window-radius</code><span class="v" data-var="--window-radius"></span></figure></div><div class="dims"><figure><i style="width:40px;height:var(--control-sm);border-radius:var(--radius-md)"></i><code>control-sm</code><span class="v" data-var="--control-sm"></span></figure><figure><i style="width:40px;height:var(--control-md);border-radius:var(--radius-md)"></i><code>control-md</code><span class="v" data-var="--control-md"></span></figure><figure><i style="width:40px;height:var(--control-lg);border-radius:var(--radius-md)"></i><code>control-lg</code><span class="v" data-var="--control-lg"></span></figure><figure><i style="width:40px;height:var(--control-xl);border-radius:var(--radius-md)"></i><code>control-xl</code><span class="v" data-var="--control-xl"></span></figure><figure><i style="width:40px;height:var(--menu-row-height);border-radius:var(--radius-md)"></i><code>menu-row</code><span class="v" data-var="--menu-row-height"></span></figure><figure><i style="width:40px;height:var(--footer-height);border-radius:var(--radius-md)"></i><code>footer</code><span class="v" data-var="--footer-height"></span></figure><figure><i style="width:40px;height:var(--panel-header-height);border-radius:var(--radius-md)"></i><code>panel-header</code><span class="v" data-var="--panel-header-height"></span></figure></div></section>
+</div></div><script>
+const zh=new URLSearchParams(location.search).get('lang')==='zh';
+document.querySelectorAll('[data-zh]').forEach(e=>{if(zh)e.textContent=e.dataset.zh});
+document.documentElement.lang=zh?'zh-CN':'en';
+// Inside the portfolio the section text already introduces the sheet.
+if(window.parent!==window)document.querySelector('.lib-intro')?.remove();
+
+const cs=getComputedStyle(document.documentElement);
+const resolve=v=>{const p=document.createElement('div');p.style.cssText='position:absolute;visibility:hidden;width:var('+v+');color:var('+v+')';document.body.appendChild(p);const s=getComputedStyle(p);const isColor=/^#|rgb|hsl|color-mix/.test(cs.getPropertyValue(v).trim());const out=isColor?s.color:s.width;p.remove();if(isColor){const m=out.match(/[\d.]+/g).map(Number);return '#'+m.slice(0,3).map(x=>Math.round(x).toString(16).padStart(2,'0')).join('')+(m.length>3&&m[3]<1?' · '+Math.round(m[3]*100)+'%':'')}return out.replace(/\.\d+px/,'px')};
+document.querySelectorAll('[data-var]').forEach(e=>{e.textContent=resolve(e.dataset.var)});
+
+// Report height so the portfolio can size the iframe.
+const post=()=>parent.postMessage({type:'gocus-embed-height',page:location.pathname.split('/').pop(),height:document.documentElement.scrollHeight},'*');
+new ResizeObserver(post).observe(document.body);addEventListener('load',post);
+</script></body></html>

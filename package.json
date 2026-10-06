@@ -1,0 +1,22 @@
+{
+  "name": "jarvis-luk-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "prebuild": "node scripts/fetch-contributions.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "check:assets": "node scripts/check-assets.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/noto-sans-sc": "^5.3.0",
+    "@fontsource-variable/noto-serif-sc": "^5.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}

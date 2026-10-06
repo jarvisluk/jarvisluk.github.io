@@ -1,0 +1,233 @@
+<!doctype html>
+<!-- Gocus icon breakdown. Geometry and colours are copied from the repository's original
+     assets/app-icon.svg and assets/tray-iconTemplate.svg (jarvisluk/Gocus); nothing is redrawn. -->
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gocus icon breakdown</title>
+<style>
+ :root{--bg:#121212;--card:#181818;--line:rgba(255,255,255,.09);--text:#eceae6;--muted:#9b9893;--faint:#6d6a66;--amber:#f0a400;--blue:#2f86d8;--tile:#1f1f1f;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace}
+ html,body{background:var(--bg);margin:0}
+ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",sans-serif;color:var(--text);padding:8px 24px 40px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+ .wrap{max-width:1080px;margin:0 auto;display:grid;gap:18px}
+ h3{margin:0 0 4px;font-size:13px;font-weight:700}
+ p{margin:0;font-size:12px;line-height:1.55;color:var(--muted)}
+ code,.mono{font-family:var(--mono);font-size:11px}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+
+ /* Stage: the icon, assembled or exploded into its layers */
+ .stage{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:center}
+ .view{position:relative;aspect-ratio:1;perspective:1600px;display:grid;place-items:center;overflow:hidden;border-radius:10px;background:radial-gradient(circle at 50% 45%,#1b1b1b,#121212 70%)}
+ .stack{position:relative;width:62%;aspect-ratio:1;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+ .stack svg.layer{position:absolute;inset:0;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .25s,filter .25s;overflow:visible}
+ .exploded .stack{transform:translateY(9%) rotateX(56deg) rotateZ(-38deg) scale(.8)}
+ .exploded .layer{transform:translateZ(calc(var(--i)*52px))}
+ .exploded .layer.l-tile{filter:drop-shadow(0 0 0 rgba(255,255,255,.12))}
+ .exploded .layer.l-tile rect.edge{stroke:rgba(255,255,255,.16)}
+ .exploded .layer:not(.l-tile) .ghost{opacity:1}
+ .ghost{opacity:0;transition:opacity .4s}
+ .focusing .layer{opacity:.18}
+ .focusing .layer.on{opacity:1}
+ .guides{position:absolute;inset:0;margin:auto;width:62%;aspect-ratio:1;opacity:0;transition:opacity .3s;pointer-events:none}
+ .construct .guides{opacity:1}
+ .exploded .guides{opacity:0}
+ .controls{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+ .controls button{font:inherit;font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 11px;cursor:pointer}
+ .controls button[aria-pressed=true]{color:#151515;background:var(--text);border-color:var(--text)}
+ .layers{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+ .layers li{display:grid;grid-template-columns:22px 34px 1fr;gap:12px;align-items:center;padding:9px 8px;border-radius:9px;cursor:default;border:1px solid transparent}
+ .layers li:hover,.layers li.on{background:rgba(255,255,255,.04);border-color:var(--line)}
+ .layers .n{font-family:var(--mono);font-size:11px;color:var(--faint)}
+ .layers .th{width:34px;height:34px;border-radius:8px;background:#0e0e0e;display:block}
+ .layers b{display:block;font-size:12.5px;font-weight:600}
+ .layers span{display:block;font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:1px}
+
+ /* Element cards */
+ .els{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+ .el{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+ .el svg{display:block;width:100%;aspect-ratio:1;background:#0e0e0e}
+ .el div{padding:12px 13px 14px;display:grid;gap:6px}
+ .el dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-family:var(--mono);font-size:10.5px}
+ .el dt{color:var(--faint)} .el dd{margin:0;color:var(--muted)}
+ .op{display:none}
+
+ .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+ .sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+ .sw div{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+ .sw i{display:block;height:58px}
+ .sw span{display:block;padding:7px 9px;font-size:11px;line-height:1.45;color:var(--muted)}
+ .sw code{display:block;color:var(--text)}
+ .sizes{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-top:16px}
+ .sizes figure{margin:0;display:grid;justify-items:center;gap:8px}
+ .sizes figcaption{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+ .bars{display:grid;gap:10px;margin-top:14px}
+ .bar{display:flex;align-items:center;gap:14px;height:30px;padding:0 12px;border-radius:7px;font-size:12px}
+ .bar.light{background:#ecebe8;color:#1d1d1d}
+ .bar.dark{background:#2a2a2a;color:#e8e8e8;border:1px solid var(--line)}
+ .bar svg{width:16px;height:16px}
+ .bar.light .t{color:#000}.bar.dark .t{color:#fff}
+ .bar .sp{flex:1}
+ .bar .mono{opacity:.55}
+ .tray{display:flex;gap:16px;align-items:center;margin-top:14px}
+ .tray svg{background:#0e0e0e;border-radius:10px;border:1px solid var(--line)}
+
+ @media(max-width:860px){.stage,.two{grid-template-columns:1fr}.els{grid-template-columns:repeat(3,minmax(0,1fr))}}
+ @media(max-width:520px){body{padding:4px 12px 28px}.els{grid-template-columns:repeat(2,minmax(0,1fr))}.sw{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:14px}}
+</style></head>
+<body><div class="wrap">
+
+<!-- Shared original artwork, referenced by every view below -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <clipPath id="tileClip"><rect width="840" height="840" rx="206"/></clipPath>
+  <radialGradient id="dotFade" cx="420" cy="420" r="430" gradientUnits="userSpaceOnUse">
+   <stop offset=".62" stop-color="#fff"/><stop offset=".82" stop-color="#fff" stop-opacity=".58"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <mask id="dotFadeMask" x="0" y="0" width="840" height="840" maskUnits="userSpaceOnUse"><rect width="840" height="840" rx="206" fill="url(#dotFade)"/></mask>
+  <pattern id="dotGrid" x="10" y="10" width="104" height="104" patternUnits="userSpaceOnUse"><circle cx="52" cy="52" r="13" fill="#fff" opacity=".18"/></pattern>
+  <g id="tile"><rect width="840" height="840" rx="206" fill="#1f1f1f"/></g>
+  <g id="dots"><g clip-path="url(#tileClip)" mask="url(#dotFadeMask)"><rect width="840" height="840" fill="url(#dotGrid)"/></g></g>
+  <g id="depth">
+   <g opacity=".07" transform="translate(20 24)"><g fill="none" stroke="#05070a" stroke-linecap="round" stroke-linejoin="round" stroke-width="78"><path d="M356,233v361"/><path d="M356,413h64c61,0,100,43,100,100v7"/></g><g fill="#05070a"><circle cx="356" cy="233" r="72"/><circle cx="356" cy="413" r="72"/><circle cx="356" cy="594" r="72"/><circle cx="520" cy="520" r="72"/></g></g>
+   <g opacity=".1" transform="translate(11 15)"><g fill="none" stroke="#05070a" stroke-linecap="round" stroke-linejoin="round" stroke-width="62"><path d="M356,233v361"/><path d="M356,413h64c61,0,100,43,100,100v7"/></g><g fill="#05070a"><circle cx="356" cy="233" r="64"/><circle cx="356" cy="413" r="64"/><circle cx="356" cy="594" r="64"/><circle cx="520" cy="520" r="64"/></g></g>
+   <g opacity=".13" transform="translate(5 7)"><g fill="none" stroke="#05070a" stroke-linecap="round" stroke-linejoin="round" stroke-width="50"><path d="M356,233v361"/><path d="M356,413h64c61,0,100,43,100,100v7"/></g><g fill="#05070a"><circle cx="356" cy="233" r="58"/><circle cx="356" cy="413" r="58"/><circle cx="356" cy="594" r="58"/><circle cx="520" cy="520" r="58"/></g></g>
+  </g>
+  <g id="main"><path d="M356,233v361" fill="none" stroke="#f0a400" stroke-width="46" stroke-linecap="round"/><g fill="#f0a400"><circle cx="356" cy="233" r="55"/><circle cx="356" cy="413" r="55"/><circle cx="356" cy="594" r="55"/></g></g>
+  <g id="branch"><path d="M356,413h64c61,0,100,43,100,100v7" fill="none" stroke="#2f86d8" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/><circle cx="520" cy="520" r="55" fill="#2f86d8"/></g>
+  <g id="icon"><use href="#tile"/><use href="#dots"/><use href="#depth"/><use href="#branch"/><use href="#main"/></g>
+  <!-- The original draws the branch first, so the amber node sits over the fork. -->
+  <g id="tray"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.1v9.8"/><path d="M6.2 8h2.3c2.2 0 3.3 1.1 3.3 3.2v.5"/></g><g fill="currentColor"><circle cx="6.2" cy="3.1" r="1.6"/><circle cx="6.2" cy="8" r="1.6"/><circle cx="6.2" cy="12.9" r="1.6"/><circle cx="11.8" cy="11.7" r="1.6"/></g></g>
+ </defs>
+</svg>
+
+<section class="card stage" id="stage">
+ <div class="view" id="view">
+  <div class="stack">
+   <svg class="layer l-tile" style="--i:0" viewBox="0 0 1024 1024" data-l="tile"><g transform="translate(92 92)"><use href="#tile"/><rect class="edge" width="840" height="840" rx="206" fill="none" stroke="transparent" stroke-width="3"/></g></svg>
+   <svg class="layer" style="--i:1" viewBox="0 0 1024 1024" data-l="dots"><g transform="translate(92 92)"><rect class="ghost" width="840" height="840" rx="206" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3" stroke-dasharray="10 12"/><use href="#dots"/></g></svg>
+   <svg class="layer" style="--i:2" viewBox="0 0 1024 1024" data-l="depth"><g transform="translate(92 92)"><rect class="ghost" width="840" height="840" rx="206" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3" stroke-dasharray="10 12"/><use href="#depth"/><g class="ghost"><use href="#depth" style="filter:invert(1)" opacity=".9"/></g></g></svg>
+   <svg class="layer" style="--i:3" viewBox="0 0 1024 1024" data-l="branch"><g transform="translate(92 92)"><rect class="ghost" width="840" height="840" rx="206" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3" stroke-dasharray="10 12"/><use href="#branch"/></g></svg>
+   <svg class="layer" style="--i:4" viewBox="0 0 1024 1024" data-l="main"><g transform="translate(92 92)"><rect class="ghost" width="840" height="840" rx="206" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3" stroke-dasharray="10 12"/><use href="#main"/></g></svg>
+  </div>
+  <!-- Construction keylines, in the icon's own 1024 coordinate space -->
+  <svg class="guides" viewBox="0 0 1024 1024"></svg>
+ </div>
+ <div>
+  <div class="controls" role="group">
+   <button type="button" data-mode="assembled" aria-pressed="true" data-zh="组合">Assembled</button>
+   <button type="button" data-mode="exploded" aria-pressed="false" data-zh="拆开图层">Exploded</button>
+   <button type="button" data-mode="construct" aria-pressed="false" data-zh="结构线">Construction</button>
+  </div>
+  <ol class="layers" id="layers">
+   <li data-l="main"><em class="n">05</em><svg class="th" viewBox="0 0 840 840"><use href="#main"/></svg><div><b data-zh="主线">Main line</b><span data-zh="琥珀色竖轨和三个提交节点，就是面板里的当前分支">An amber rail with three commits: the current branch in the panel.</span></div></li>
+   <li data-l="branch"><em class="n">04</em><svg class="th" viewBox="0 0 840 840"><use href="#branch"/></svg><div><b data-zh="分支">Branch</b><span data-zh="从中间节点分出的蓝色曲线，用的是提交图里的连线形状">A blue curve leaving the middle commit, drawn like the graph’s own connectors.</span></div></li>
+   <li data-l="depth"><em class="n">03</em><svg class="th" viewBox="0 0 840 840" style="background:#d8d6d2"><use href="#depth"/></svg><div><b data-zh="投影">Depth</b><span data-zh="三层逐渐放大、逐渐变淡的轨道副本，叠成柔和的下投影">Three offset copies of the rails, larger and fainter, stacked into a soft shadow.</span></div></li>
+   <li data-l="dots"><em class="n">02</em><svg class="th" viewBox="0 0 840 840"><use href="#dots"/></svg><div><b data-zh="点阵">Dot grid</b><span data-zh="104 像素点阵，向边缘径向淡出，暗示提交图的网格">A 104 px dot grid fading out radially, hinting at the graph’s grid.</span></div></li>
+   <li data-l="tile"><em class="n">01</em><svg class="th" viewBox="0 0 840 840"><use href="#tile"/></svg><div><b data-zh="底板">Tile</b><span data-zh="石墨色圆角方块，与面板的深色主题同色">A graphite rounded square, the same colour as the panel’s dark theme.</span></div></li>
+  </ol>
+ </div>
+</section>
+
+<section class="els" id="els"></section>
+
+<section class="two">
+ <div class="card">
+  <h3 data-zh="颜色">Colour</h3>
+  <p data-zh="四个颜色都来自界面：底板是深色面板，琥珀是主线和强调色，蓝色是第一条分支">All four come from the interface: the dark panel, the amber main line and accent, and the first branch blue.</p>
+  <div class="sw">
+   <div><i style="background:#1f1f1f;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)"></i><span><code>#1F1F1F</code><em data-zh="底板">Tile</em></span></div>
+   <div><i style="background:#f0a400"></i><span><code>#F0A400</code><em data-zh="主线">Main line</em></span></div>
+   <div><i style="background:#2f86d8"></i><span><code>#2F86D8</code><em data-zh="分支">Branch</em></span></div>
+   <div><i style="background:#1f1f1f url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%222%22 fill=%22%23fff%22 opacity=%22.18%22/%3E%3C/svg%3E')"></i><span><code>#FFF · 18%</code><em data-zh="点阵">Dots</em></span></div>
+  </div>
+ </div>
+ <div class="card">
+  <h3 data-zh="尺寸">Sizes</h3>
+  <p data-zh="同一张矢量图从 1024 一直缩到 16；轨道和节点够粗，小尺寸也认得出">One vector from 1024 down to 16; the rails and nodes are heavy enough to survive small sizes.</p>
+  <div class="sizes" id="sizes"></div>
+ </div>
+</section>
+
+<section class="card">
+ <h3 data-zh="菜单栏图标">Menu bar icon</h3>
+ <p data-zh="菜单栏用的是同一个图形的 16 像素单色模板：去掉底板、点阵和颜色，只留轨道和四个节点，macOS 会按菜单栏明暗自动反色。">The menu bar uses a 16 px monochrome template of the same mark: no tile, dots or colour, only the rails and four nodes. macOS inverts it for light and dark menu bars.</p>
+ <div class="two" style="margin-top:4px">
+  <div class="tray">
+   <svg width="128" height="128" viewBox="0 0 16 16" style="color:#eceae6"><g opacity=".12" stroke="#fff" stroke-width=".04"><path d="M0 .5h16M0 1.5h16M0 2.5h16M0 3.5h16M0 4.5h16M0 5.5h16M0 6.5h16M0 7.5h16M0 8.5h16M0 9.5h16M0 10.5h16M0 11.5h16M0 12.5h16M0 13.5h16M0 14.5h16M0 15.5h16M.5 0v16M1.5 0v16M2.5 0v16M3.5 0v16M4.5 0v16M5.5 0v16M6.5 0v16M7.5 0v16M8.5 0v16M9.5 0v16M10.5 0v16M11.5 0v16M12.5 0v16M13.5 0v16M14.5 0v16M15.5 0v16"/></g><use href="#tray"/></svg>
+   <dl class="mono" style="margin:0;display:grid;grid-template-columns:auto auto;gap:4px 12px;color:var(--muted)"><dt style="color:var(--faint)">canvas</dt><dd style="margin:0">16 × 16 pt</dd><dt style="color:var(--faint)">stroke</dt><dd style="margin:0">1.8</dd><dt style="color:var(--faint)">node</dt><dd style="margin:0">r 1.6</dd><dt style="color:var(--faint)">file</dt><dd style="margin:0">trayTemplate</dd></dl>
+  </div>
+  <div class="bars">
+   <div class="bar light"><span class="mono">Gocus</span><span class="sp"></span><svg viewBox="0 0 16 16" class="t"><use href="#tray"/></svg><span class="mono">Wi-Fi</span><span class="mono">10:24</span></div>
+   <div class="bar dark"><span class="mono">Gocus</span><span class="sp"></span><svg viewBox="0 0 16 16" class="t"><use href="#tray"/></svg><span class="mono">Wi-Fi</span><span class="mono">10:24</span></div>
+  </div>
+ </div>
+</section>
+
+</div>
+<script>
+const zh=new URLSearchParams(location.search).get('lang')==='zh';
+const T=(en,z)=>zh?z:en;
+const ns='http://www.w3.org/2000/svg';
+
+// Element cards: each layer alone, with its numbers from the original SVG.
+const els=[
+ ['tile',T('Tile','底板'),[['size','840 / 1024'],['radius','206'],['fill','#1F1F1F']]],
+ ['dots',T('Dot grid','点阵'),[['pitch','104'],['dot','r 13 · 18%'],['fade','62% → 100%']]],
+ ['depth',T('Depth','投影'),[['copies','3'],['offset','5,7 → 20,24'],['opacity','13 → 7%']]],
+ ['main',T('Main line','主线'),[['x','356'],['y','233 · 413 · 594'],['stroke','46 · r 55']]],
+ ['branch',T('Branch','分支'),[['from','356, 413'],['to','520, 520'],['fill','#2F86D8']]],
+];
+document.getElementById('els').innerHTML=els.map(([id,name,rows],i)=>
+ `<article class="el"><svg viewBox="0 0 1024 1024"${id==='depth'?' style="background:#d8d6d2"':''}><g transform="translate(92 92)">${id==='tile'?'':'<rect width="840" height="840" rx="206" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="4" stroke-dasharray="12 14"/>'}<use href="#${id}"/></g></svg>
+  <div><h3><span class="mono" style="color:var(--faint);margin-right:8px">0${i+1}</span>${name}</h3><dl>${rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div></article>`).join('');
+
+// Size ramp.
+document.getElementById('sizes').innerHTML=[128,64,32,16].map(s=>`<figure><svg width="${s}" height="${s}" viewBox="0 0 1024 1024"><g transform="translate(92 92)"><use href="#icon"/></g></svg><figcaption>${s}</figcaption></figure>`).join('');
+
+// Construction keylines: canvas, tile, node centres and the fork, in icon units.
+const g=document.querySelector('.guides');
+const amber='rgba(240,164,0,.75)',line='rgba(255,255,255,.28)';
+g.innerHTML=`<g fill="none" stroke-width="2.5">
+ <rect x="1" y="1" width="1022" height="1022" stroke="${line}" stroke-dasharray="8 10"/>
+ <g transform="translate(92 92)">
+  <rect width="840" height="840" rx="206" stroke="${line}"/>
+  <path d="M206 0v840M634 0v840M0 206h840M0 634h840" stroke="rgba(255,255,255,.1)"/>
+  <path d="M206 206L60 60" stroke="${line}"/><circle cx="206" cy="206" r="5" fill="${line}" stroke="none"/>
+  <path d="M356 0v840M520 0v840M0 233h840M0 413h840M0 520h840M0 594h840" stroke="rgba(240,164,0,.26)" stroke-dasharray="6 8"/>
+  <circle cx="520" cy="520" r="55" stroke="${amber}"/>
+  <path d="M356,413h64c61,0,100,43,100,100v7" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-dasharray="5 6"/>
+  <g fill="#fff" stroke="none"><circle cx="356" cy="233" r="5"/><circle cx="356" cy="413" r="5"/><circle cx="356" cy="594" r="5"/><circle cx="520" cy="520" r="5"/><circle cx="420" cy="413" r="5"/><circle cx="520" cy="513" r="5"/></g>
+  <path d="M333 323h46M333 311v24M379 311v24" stroke="#fff" stroke-width="2"/>
+  <path d="M356 594l39 39" stroke="#fff" stroke-width="2"/>
+ </g></g>
+ <g font-family="ui-monospace,Menlo,monospace" font-size="24" fill="rgba(255,255,255,.62)">
+  <text x="14" y="38">1024</text><text x="92" y="78">840 · r 206</text>
+  <g transform="translate(92 92)">
+   <g fill="${amber}" text-anchor="end"><text x="277" y="241">356, 233</text><text x="277" y="421">356, 413</text><text x="277" y="602">356, 594</text></g>
+   <text x="599" y="528" fill="${amber}">520, 520</text>
+   <text x="395" y="331">46</text>
+   <text x="405" y="668">r 55</text>
+   <text x="548" y="430">h 64 · c 100</text>
+  </g>
+ </g>`;
+
+// Modes and layer focus.
+const view=document.getElementById('view'),btns=[...document.querySelectorAll('.controls button')];
+const setMode=b=>{btns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+ view.classList.toggle('exploded',b.dataset.mode==='exploded');view.classList.toggle('construct',b.dataset.mode==='construct');};
+// The three views play on a loop; a click jumps to one and the loop carries on from there.
+// Hovering a layer, or the stage being off screen, pauses it.
+let cur=0,timer=null,paused=false,visible=true;
+const play=()=>{clearInterval(timer);timer=null;if(paused||!visible)return;
+ timer=setInterval(()=>{cur=(cur+1)%btns.length;setMode(btns[cur]);},3200);};
+btns.forEach((b,i)=>b.onclick=()=>{cur=i;setMode(b);play();});
+new IntersectionObserver(([e])=>{visible=e.isIntersecting;play();}).observe(view);play();
+const items=[...document.querySelectorAll('#layers li')],layers=[...document.querySelectorAll('.stack .layer')];
+const focus=l=>{paused=!!l;play();view.classList.toggle('focusing',!!l);layers.forEach(x=>x.classList.toggle('on',x.dataset.l===l));items.forEach(x=>x.classList.toggle('on',x.dataset.l===l));};
+items.forEach(li=>{li.onmouseenter=()=>focus(li.dataset.l);li.onmouseleave=()=>focus(null);li.onclick=()=>focus(li.classList.contains('on')?null:li.dataset.l);});
+
+document.querySelectorAll('[data-zh]').forEach(e=>{if(zh)e.textContent=e.dataset.zh});
+document.documentElement.lang=zh?'zh-CN':'en';
+const post=()=>parent.postMessage({type:'gocus-embed-height',page:'icon',height:document.documentElement.scrollHeight},'*');
+new ResizeObserver(post).observe(document.body);addEventListener('load',post);
+</script>
+</body></html>

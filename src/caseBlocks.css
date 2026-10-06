@@ -1,0 +1,265 @@
+/* Native content blocks for rebuilt case studies (see components/CaseBlocks.jsx). */
+.fb-subheading{font-size:20px;font-weight:400;letter-spacing:-.4px;margin:70px 0 4px;padding-top:22px;border-top:1px solid var(--rule-soft)}
+.case-section .media-group+.fb-subheading,.case-section .fb-tools+.fb-subheading{margin-top:64px}
+
+/* Problems */
+.fb-problems{list-style:none;padding:0;margin:56px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.fb-problems .case-media img{aspect-ratio:1.45;object-fit:cover}
+.fb-problems .case-media figcaption{display:none}
+.fb-problems h3{font-size:20px;font-weight:400;margin:22px 0 10px;letter-spacing:-.4px}
+.fb-problems h3 span,.fb-stage-index,.fb-module-text>span,.fb-story-head span{font-size:11px;color:var(--muted);margin-right:12px;letter-spacing:0}
+.fb-problems p{font-size:15px;line-height:1.85;color:var(--text)}
+
+/* Interview quotes */
+.fb-quotes{columns:3 280px;column-gap:28px}
+.fb-quotes blockquote{break-inside:avoid;margin:0 0 28px;padding:26px 26px 22px;background:#fff9;border-top:2px solid var(--ink)}
+.fb-quotes blockquote.is-tutor{background:var(--ink);color:var(--bg)}
+.fb-quotes p{font-size:18px;line-height:1.7;letter-spacing:-.2px}
+.fb-quotes footer{display:flex;justify-content:space-between;gap:12px;margin-top:20px;font-size:12px;color:var(--muted)}
+.fb-quotes .is-tutor footer{color:#bfcac2}
+.fb-quotes em{font-style:normal;padding:2px 9px;background:var(--accent);color:var(--ink);font-family:inherit}
+
+/* Persona */
+.fb-persona{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:0;margin-top:30px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.fb-persona>div{padding:28px 30px 30px 0}
+.fb-persona>div+div{padding-left:30px;border-left:1px solid var(--line)}
+.fb-persona-id>span,.fb-persona h4{font-size:11px;letter-spacing:.6px;color:var(--muted);font-weight:400;text-transform:uppercase}
+.fb-persona h3{font-size:24px;font-weight:400;margin:12px 0 22px;letter-spacing:-.5px}
+.fb-persona dl{margin:0;display:grid;gap:10px}
+.fb-persona dl div{display:grid;grid-template-columns:90px 1fr;font-size:14px}
+.fb-persona dt{color:var(--muted)}
+.fb-persona dd{margin:0}
+.fb-persona ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px;font-size:15px;line-height:1.5}
+.fb-persona li{padding-left:18px;position:relative}
+.fb-persona li:before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#c46a4a}
+.fb-persona .is-needs li:before{background:var(--accent-ink)}
+
+/* Workflow stages */
+.fb-stages{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 28px}
+.fb-stages li{display:flex;flex-direction:column}
+.fb-stages .case-media img{aspect-ratio:1.4;object-fit:cover}
+.fb-stages .case-media figcaption{display:none}
+.fb-stage-text{padding-top:18px}
+.fb-stages h3{font-size:19px;font-weight:400;letter-spacing:-.3px;margin:0}
+.fb-stage-text>p{font-size:14px;color:var(--muted);margin-top:6px}
+.fb-stages dl{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:13px}
+.fb-stages dt{font-size:11px;color:var(--muted)}
+.fb-stages dd{margin:2px 0 0}
+.fb-stages li.needs-workshop dl{border-top:2px solid var(--ink)}
+.fb-stages li.needs-workshop h3:after{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-left:10px;vertical-align:middle;box-shadow:0 0 0 1px var(--accent-ink)}
+.fb-note,.fb-conclusion{margin-top:48px;max-width:860px;font-size:17px;line-height:1.85;padding-left:22px;border-left:3px solid var(--accent)}
+
+/* Spaces */
+.fb-spaces-diagram{max-width:880px;margin:10px auto 40px}
+.fb-spaces-diagram .case-media figcaption{text-align:center}
+.fb-space-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}
+.fb-space-list>li{display:flex;flex-direction:column;gap:16px;padding-top:18px;border-top:2px solid var(--ink)}
+.fb-space-list>li.is-unsuitable{border-top-color:#c9a597}
+.fb-space-list .case-media img{aspect-ratio:1.5;object-fit:cover}
+.fb-space-list .case-media figcaption{display:none}
+.fb-space-list h3{font-size:21px;font-weight:400;letter-spacing:-.4px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fb-space-list h3 span{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent);letter-spacing:.2px}
+.fb-space-list .is-unsuitable h3 span{background:#ece2dc;color:#8a4b37}
+.fb-space-list .is-unsuitable .case-media img{filter:grayscale(.7);opacity:.85}
+.fb-space-list dl{display:flex;gap:30px;margin:12px 0 10px;font-size:14px}
+.fb-space-list dt{font-size:11px;color:var(--muted)}
+.fb-space-list dd{margin:2px 0 0}
+.fb-space-list p{font-size:14px;line-height:1.75;color:var(--text)}
+.fb-space-list>li:first-child{grid-row:span 1}
+.fb-tags{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.fb-tags li{font-size:12px;padding:4px 10px;border:1px solid var(--rule-soft)}
+
+/* Media layout variants used by rebuilt studies */
+.layout-banner img{width:100%;aspect-ratio:2.6;object-fit:cover}
+.layout-pair.renders{align-items:center}
+.layout-pair.renders img{max-height:520px;object-fit:contain}
+
+/* Actors */
+.fb-actors{list-style:none;padding:0;margin:0 0 50px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.fb-actors li{padding-top:18px;border-top:2px solid var(--ink)}
+.fb-actors h3{font-size:20px;font-weight:400}
+.fb-actors p{font-size:14px;line-height:1.7;color:var(--text);margin-top:10px}
+.fb-actors .fb-actor-app{font-size:12px;color:var(--ink);background:var(--tint);padding:8px 10px}
+
+/* Blueprint */
+.fb-blueprint{margin:0}
+.fb-blueprint-scroll{overflow-x:auto;padding-bottom:10px;scrollbar-width:thin}
+.fb-blueprint-scroll:focus-visible{outline:2px solid var(--accent-ink);outline-offset:4px}
+.fb-blueprint-grid{display:grid;grid-template-columns:130px repeat(var(--cols),minmax(118px,1fr));gap:8px;min-width:1180px;font-size:12px;line-height:1.45}
+.fb-bp-label{font-size:11px;letter-spacing:.3px;color:var(--muted);text-align:right;padding:9px 12px 9px 0;align-self:center}
+.fb-bp-phase{font-size:12px;text-align:center;padding:4px 0 8px;border-bottom:2px solid var(--ink);font-weight:500}
+.fb-bp-line{position:relative;height:16px;margin:2px 0}
+.fb-bp-line:before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1px dashed var(--rule)}
+.fb-bp-line span{position:absolute;left:142px;top:50%;transform:translateY(-50%);background:var(--bg);padding:0 8px;font-size:10px;color:var(--muted);letter-spacing:.3px}
+.case-tone .fb-bp-line span{background:var(--case-accent)}
+.fb-bp-cell{padding:9px 10px;min-height:52px}
+.fb-bp-cell.is-empty{background:none}
+.fb-bp-cell.is-evidence:not(.is-empty){background:none;border:1px solid #c7b9a0;color:#6d5a3c}
+.fb-bp-cell.is-journey:not(.is-empty),.fb-bp-cell.is-front:not(.is-empty){background:#e6c99f}
+.fb-bp-cell.is-back:not(.is-empty),.fb-bp-cell.is-support:not(.is-empty){background:var(--tint)}
+.fb-blueprint figcaption{font-size:12px;color:var(--muted);margin-top:12px}
+
+/* Tools */
+.fb-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.fb-tool-group{background:#fff8;padding:24px}
+.fb-tool-group header h3{font-size:18px;font-weight:400}
+.fb-tool-group header p{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.6}
+.fb-tool-group ul{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}
+.fb-tool-group .asset-button{height:120px;display:flex;align-items:center;justify-content:center}
+.fb-tool-group img{max-height:120px;width:auto;object-fit:contain}
+.fb-tool-group figcaption{font-size:11px;text-align:center}
+
+/* Modules */
+.fb-modules{display:grid;gap:64px;margin-top:64px}
+.fb-module{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:44px;padding-top:28px;border-top:1px solid var(--line)}
+.fb-module h3{font-size:26px;font-weight:400;letter-spacing:-.6px;margin-top:10px}
+.fb-module-text p{font-size:15px;line-height:1.85;color:var(--text);margin-top:14px}
+.fb-specs{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.fb-specs li{display:flex;flex-direction:column;font-size:12px;color:var(--muted)}
+.fb-specs strong{font-size:26px;font-weight:300;color:var(--ink);letter-spacing:-.8px}
+.fb-module-media{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.fb-module.layout-3 .fb-module-media{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fb-module.layout-4 .fb-module-media{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fb-module-media img{aspect-ratio:1.5;object-fit:cover}
+
+/* Storyboard */
+.fb-story{list-style:none;padding:0;margin:0;display:grid;gap:56px}
+.fb-story-head{display:flex;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:12px;margin-bottom:24px}
+.fb-story-head h3{font-size:24px;font-weight:400;letter-spacing:-.5px}
+.fb-story-body{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start}
+.fb-story-body>.case-media img{aspect-ratio:1.5;object-fit:cover}
+.fb-story-side dl{margin:0;display:grid;gap:14px}
+.fb-story-side dl div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:14px;line-height:1.6}
+.fb-story-side dt{color:var(--muted);font-size:12px;padding-top:2px}
+.fb-story-side dd{margin:0}
+.fb-screens{display:flex;gap:18px;margin-top:28px;align-items:flex-start}
+.fb-screens .case-media{width:104px;flex:none}
+.fb-screens .case-media figcaption{font-size:11px}
+
+/* Video */
+.fb-video{margin:0}
+.fb-video-frame{aspect-ratio:16/9;background:#10181a;position:relative;overflow:hidden}
+.fb-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fb-video-poster{position:absolute;inset:0;width:100%;padding:0;display:block}
+.fb-video-poster img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .3s}
+.fb-video-poster:hover img{opacity:1}
+.fb-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;background:var(--bg);color:var(--ink);padding:14px 24px 14px 18px;border-radius:40px;font-size:14px}
+.fb-video figcaption{display:flex;align-items:center;gap:20px;margin-top:14px;font-size:13px;flex-wrap:wrap}
+.fb-video figcaption>span:first-child{margin-right:auto}
+.fb-video-sources{display:flex;border:1px solid var(--line)}
+.fb-video-sources button{font-size:12px;padding:6px 14px;color:var(--muted)}
+.fb-video-sources button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.fb-video figcaption a{font-size:12px;text-decoration:underline;text-underline-offset:3px}
+
+@media(max-width:1000px){
+ .fb-problems,.fb-stages{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fb-tools{grid-template-columns:1fr}
+ .fb-space-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fb-actors{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fb-module{grid-template-columns:1fr;gap:24px}
+ .fb-persona{grid-template-columns:1fr}
+ .fb-persona>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+}
+@media(max-width:700px){
+ .fb-subheading{font-size:17px;margin-top:44px}
+ .fb-problems{grid-template-columns:1fr;gap:30px;margin-top:30px}
+ .fb-problems h3{font-size:18px;margin-top:14px}
+ .fb-problems p,.fb-space-list p,.fb-module-text p{font-size:14px}
+ .fb-quotes{columns:1}
+ .fb-quotes blockquote{padding:20px}
+ .fb-quotes p{font-size:16px}
+ .fb-stages{grid-template-columns:1fr;gap:34px}
+ .fb-note,.fb-conclusion{font-size:15px;margin-top:30px}
+ .fb-space-list{grid-template-columns:1fr;gap:34px}
+ .layout-banner img{aspect-ratio:1.5}
+ .fb-space-list h3{font-size:20px}
+ .fb-actors{grid-template-columns:1fr;gap:18px;margin-bottom:34px}
+ .fb-blueprint-grid{grid-template-columns:96px repeat(var(--cols),minmax(108px,1fr));min-width:1000px;font-size:11px}
+ .fb-bp-line span{left:104px}
+ .fb-tool-group{padding:18px}
+ .fb-modules{gap:44px;margin-top:40px}
+ .fb-module h3{font-size:22px}
+ .fb-module-media,.fb-module.layout-3 .fb-module-media{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .fb-module.layout-3 .fb-module-media .case-media:first-child{grid-column:1/-1}
+ .fb-story{gap:44px}
+ .fb-story-head h3{font-size:20px}
+ .fb-story-body{grid-template-columns:1fr;gap:20px}
+ .fb-story-side dl div{grid-template-columns:90px 1fr;font-size:13px}
+ .fb-screens{gap:12px;margin-top:20px}
+ .fb-screens .case-media{width:96px}
+ .fb-play{font-size:12px;padding:10px 18px 10px 14px}
+}
+.fb-tool-group li:last-child:nth-child(odd){grid-column:1 / -1}
+.fb-tool-group li:last-child:nth-child(odd) img{max-height:150px;width:auto;margin:0 auto}
+
+/* Showcase: finished results right after the hero, captions live in the lightbox */
+.case-showcase{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-top:14px;padding-bottom:80px}
+.case-showcase .case-media{margin:0;height:100%}
+.case-showcase .case-media figcaption{display:none}
+.case-showcase img{width:100%;height:100%;object-fit:cover;aspect-ratio:1.5}
+.case-showcase>:nth-child(1){grid-column:span 4;grid-row:span 2}
+.case-showcase>:nth-child(1) img{aspect-ratio:auto}
+.case-showcase>:nth-child(n+2):nth-child(-n+6){grid-column:span 2}
+.case-showcase>:nth-child(n+7){grid-column:span 3}
+@media(max-width:700px){
+ .case-showcase{grid-template-columns:1fr 1fr;gap:8px;padding-bottom:48px}
+ .case-showcase>*{grid-column:span 1!important;grid-row:auto!important}
+ .case-showcase>:nth-child(1){grid-column:1 / -1!important}
+ .case-showcase>:nth-child(1) img{aspect-ratio:1.5}
+ .case-showcase>:nth-child(8){display:none}
+}
+.case-showcase .asset-button{height:100%}
+.case-showcase .asset-button img{max-height:none}
+
+/* Laid-out boards exported from the Figma portfolio (keyed to transparent, shown on dark sections) */
+.layout-board{grid-template-columns:1fr}
+.layout-board .asset-button img{max-height:none;width:100%}
+.layout-board .case-media figcaption{max-width:760px}
+.case-dark .fb-subheading{color:#f0f3ed;border-color:#3a4648}
+
+/* Stacked spatial analysis: axonometric column beside the space list, map and conclusion below */
+.fb-spaces.is-stack .fb-spaces-main{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.fb-spaces.is-stack .fb-spaces-diagram{margin:0;position:sticky;top:90px}
+.fb-spaces.is-stack .fb-space-list{grid-template-columns:1fr;gap:0}
+.fb-spaces.is-stack .fb-space-list>li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px;padding:22px 0;border-top:1px solid #3a4648}
+.fb-spaces.is-stack .fb-space-list>li:first-child{border-top:0;padding-top:0}
+.fb-spaces.is-stack .fb-space-list h3{font-size:19px}
+.fb-spaces.is-stack .fb-spaces-foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:center;margin-top:56px}
+.fb-spaces.is-stack .fb-conclusion{margin-top:0}
+.fb-dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:2px}
+.case-dark .fb-space-list>li{border-top-color:#3a4648}
+.case-dark .fb-space-list dt{color:#93a39a}
+.case-dark .fb-space-list p{color:#c0ccc5}
+.case-dark .fb-space-list h3 span{color:var(--ink)}
+.case-dark .fb-tags li{border-color:#56635f;color:#dfe6df}
+.case-dark .fb-conclusion{color:#e4ebe4}
+@media(max-width:1000px){
+ .fb-spaces.is-stack .fb-spaces-main,.fb-spaces.is-stack .fb-spaces-foot{grid-template-columns:1fr;gap:32px}
+ .fb-spaces.is-stack .fb-spaces-diagram{position:static;max-width:520px;margin:0 auto}
+}
+@media(max-width:700px){
+ .fb-spaces.is-stack .fb-space-list>li{grid-template-columns:1fr;gap:14px}
+}
+.layout-board.narrow .case-media{width:100%;max-width:980px;margin:0 auto}
+
+/* Credit under the one-liner */
+.detail-lead .detail-credit{margin-top:14px;font-size:14px!important;line-height:1.7;color:var(--muted)}
+/* Deck boards sit on the light page: multiply removes the slide's off-white ground */
+.case-section:not(.case-dark):not(.case-tone) .layout-board img{mix-blend-mode:multiply}
+.layout-board+.layout-board{margin-top:56px}
+/* Web screen beside the phone set */
+.layout-ui-pair{grid-template-columns:minmax(0,2.6fr) minmax(0,1fr);align-items:center;gap:40px}
+.fb-video+.fb-video{margin-top:40px}
+.fb-video video{width:100%;height:100%;display:block;background:#000}
+@media(max-width:700px){.layout-ui-pair{grid-template-columns:1fr}.layout-ui-pair .case-media:last-child{max-width:260px;margin:0 auto}}
+/* When the page already uses the portfolio's own background, boards sit flush; multiply would only darken them. */
+.has-surface .case-section:not(.case-dark):not(.case-tone) .layout-board img{mix-blend-mode:normal}
+/* Live embeds: a fixed-size app window, or a sheet page that reports its own height. */
+.case-embed{margin:0}
+.case-embed-frame{margin-inline:auto;max-width:100%}
+.case-embed iframe{display:block;width:100%;height:100%;border:0;background:transparent}
+.case-embed.is-app .case-embed-frame{border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.09)}
+.case-embed.is-sheet .case-embed-frame{width:100%}
+.case-embed.is-sheet iframe{min-height:400px}
+.case-embed figcaption{display:flex;justify-content:center;gap:16px;margin-top:14px;font-size:12px;color:var(--muted);text-align:center}
+.case-embed figcaption a{color:inherit;text-decoration:underline;text-underline-offset:3px}

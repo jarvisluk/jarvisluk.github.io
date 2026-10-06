@@ -1,0 +1,148 @@
+<!doctype html>
+<!-- OpenSwim Pro 2: Wi-Fi setup for importing music, before and after, compared stage by stage.
+     Screens are rendered from the interaction specs with their annotation lines removed
+     (scripts/build_shokz.py); connectors and notes are drawn here. -->
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenSwim Pro 2 Wi-Fi setup flow</title>
+<style>
+ :root{--bg:#fff;--canvas:#edf3f8;--ink:#1d2329;--muted:#79818a;--accent:#2f6ebf;--soft:#dde9f6;--grey:#a9afb6}
+ html,body{margin:0;background:var(--bg)}
+ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Helvetica Neue",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;padding:4px 0 8px}
+ .scroller{overflow-x:auto;overflow-y:hidden;border-radius:14px;background:var(--canvas)}
+ .sizer{position:relative}
+ .canvas{position:absolute;left:0;top:0;transform-origin:0 0}
+ .canvas svg{position:absolute;inset:0;overflow:visible;pointer-events:none;z-index:2}
+ .scr,.card{position:absolute;overflow:hidden;cursor:zoom-in;background:#fff}
+ .scr{border-radius:16px;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 12px 28px rgba(20,30,40,.10)}
+ .card{border-radius:12px;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 8px 20px rgba(20,30,40,.10)}
+ .scr img,.card img{display:block;width:100%}
+ .stage{position:absolute;transform:translateX(-50%);font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+ .row{position:absolute;left:28px;font-size:13px;font-weight:600;padding:5px 10px;border-radius:99px;white-space:nowrap}
+ .row.before{background:#dfe4ea;color:#59616a}.row.after{background:var(--soft);color:var(--accent)}
+ .compare{margin:22px 0 0;display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1fr);border-top:1px solid #e3e5e8}
+ .compare>div{padding:14px 16px 14px 0;border-bottom:1px solid #e3e5e8;font-size:14px;line-height:1.6}
+ .compare .th{font-size:12px;font-weight:600;letter-spacing:.3px;padding-top:12px;padding-bottom:10px}
+ .compare .th.pain{color:#59616a}.compare .th.fix{color:var(--accent)}
+ .compare .stage-name{display:flex;gap:10px;align-items:flex-start;font-weight:600}
+ .compare ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+ .compare li{position:relative;padding-left:14px}
+ .compare li:before{content:'';position:absolute;left:1px;top:.7em;width:5px;height:5px;border-radius:50%;background:#b4b9bf}
+ .compare .pain li{color:#5a636c}
+ .compare .fix li{color:var(--ink)}
+ .compare .fix li:before{background:var(--accent)}
+ @media(max-width:640px){.compare{grid-template-columns:1fr}.compare>div{padding-right:0}.compare .th{display:none}.compare .stage-name{padding-bottom:4px;border-bottom:0}.compare .pain{border-bottom:0;padding-top:0}.compare .pain:before,.compare .fix:before{content:attr(data-label);display:block;font-size:12px;font-weight:600;margin-bottom:4px}.compare .pain:before{color:#59616a}.compare .fix:before{color:var(--accent)}}
+ .num{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11.5px;font-weight:600;line-height:1}
+ .badge{position:absolute;z-index:4;transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(255,255,255,.9)}
+ .zoom{position:absolute;z-index:10;left:50%;transform:translateX(-50%);background:rgba(20,24,28,.88);padding:18px;border-radius:16px;cursor:zoom-out;display:none}
+ .zoom img{display:block;max-width:min(380px,80vw);border-radius:12px}
+ .zoom.on{display:block}
+ .hint{font-size:11.5px;color:var(--muted);margin:8px 2px 0}
+</style>
+</head>
+<body>
+<div class="scroller"><div class="sizer"><div class="canvas" id="canvas"></div></div></div>
+<div class="compare" id="compare"></div>
+<p class="hint" data-zh="点击任意界面可放大查看" data-en="Select any screen to enlarge it."></p>
+<div class="zoom" id="zoom"><img alt=""></div>
+
+<script>
+const lang=new URLSearchParams(location.search).get('lang')==='en'?'en':'zh';
+document.documentElement.lang=lang==='en'?'en':'zh-CN';
+const T=(zh,en)=>({zh,en});
+const CW=1180,CH=1030,SW=200,SH=434;          // canvas; screen size (393 x 852 frames)
+const ROWS={before:70,after:560};              // top of each row
+const img=n=>`img/${n}.webp`;
+
+// One column per stage; `table` stages appear only in the comparison table.
+// before/after: [image, kind, width]; badge: offset of the numbered marker from the after image's top-left.
+const stages=[
+ {x:330,title:T('准备','Before you start'),
+  before:['v1-entry'],after:['v2-check'],badge:[176,234],
+  nb:[T('5GHz、企业 Wi-Fi 等限制只写在页面底部的小字里','Limits such as 5GHz and enterprise Wi-Fi sit in small print at the bottom')],
+  na:[T('开始前先列出 2.4GHz、不连公共 Wi-Fi、电量高于 30%','Requirements first: 2.4GHz, no public Wi-Fi, battery above 30%'),T('电量不足直接拦下，不让用户白等','Low battery stops the flow here instead of failing later')]},
+ {x:650,title:T('选择网络','Pick a network'),
+  before:['v1-empty'],after:['v2-list'],badge:[176,96],
+  nb:[T('名称和密码全靠手动输入，输错只能等连接失败','Name and password typed by hand; a typo only shows up as a failure'),T('热点是另一套页面，来回切换会清空已输入的内容','The hotspot is a separate set of screens; switching clears what was typed')],
+  na:[T('从耳机连得上的网络里选，已保存的自动填密码','Pick from networks the headphones can join; saved ones fill their password'),T('热点收进同一页，作为备选','The hotspot moves onto the same page as a fallback')]},
+ {x:970,title:T('连接中','Connecting'),
+  before:['v1-connecting'],after:['v2-connecting'],badge:[176,172],
+  nb:[T('只有加载动画；耳机的音频和多点连接被暂停，却没有说明','Only a spinner; the headphones’ audio and multipoint pause without explanation')],
+  na:[T('说明暂停音频和多点连接的原因','Explains why audio and multipoint pause'),T('提示至少停留 2 秒，保证读得完','Stays at least 2 s so it can be read')]},
+ {title:T('失败时','When it fails'),
+  table:true,
+  nb:[T('不同原因都显示同一句“连接失败”','Every cause shows the same “Connection failed”'),T('只有“知道了”，没有下一步','Only an OK button, no next step')],
+  na:[T('按原因归类，说明哪里出了问题、怎么解决','Grouped by cause: what went wrong and how to fix it'),T('热点问题可以直接跳到系统设置','Hotspot issues link straight to Settings')]},
+];
+
+const c=document.getElementById('canvas');
+c.style.height=CH+'px';c.style.width=CW+'px';
+const el=(tag,cls,style={})=>{const e=document.createElement(tag);if(cls)e.className=cls;Object.assign(e.style,style);c.appendChild(e);return e;};
+const px=v=>v+'px';
+const NS='http://www.w3.org/2000/svg';
+const colour=k=>k==='after'?'#2f6ebf':'#a9afb6';
+const svg=document.createElementNS(NS,'svg');svg.setAttribute('width',CW);svg.setAttribute('height',CH);
+svg.innerHTML=`<defs>${['before','after'].map(k=>`<marker id="a-${k}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="${colour(k)}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>`).join('')}</defs>`;
+const shape=(tag,attrs)=>{const e=document.createElementNS(NS,tag);for(const a in attrs)e.setAttribute(a,attrs[a]);svg.appendChild(e);};
+const arrow=(x1,x2,y,k)=>{
+ shape('line',{x1,y1:y,x2,y2:y,stroke:colour(k),'stroke-width':1.6,'marker-end':`url(#a-${k})`});
+ shape('circle',{cx:x1,cy:y,r:3.5,fill:colour(k)});
+};
+
+function picture(name,kind,x,y,w,row){
+ const box=el('div',`${kind} ${row}`,{left:px(x),top:px(y),width:px(w)});
+ const i=document.createElement('img');i.src=img(name);i.alt='';i.loading='lazy';box.appendChild(i);
+ box.addEventListener('click',()=>zoom(name,box));
+}
+
+el('div','row before',{top:px(ROWS.before)}).textContent=lang==='zh'?'优化前':'Before';
+el('div','row after',{top:px(ROWS.after)}).textContent=lang==='zh'?'优化后':'After';
+
+stages.forEach((s,i)=>{
+ if(s.table)return;   // listed in the table only
+ el('div','stage',{left:px(s.x),top:px(30)}).textContent=s.title[lang];
+ for(const row of ['before','after']){
+  const [name,kind='scr',w=SW]=s[row],top=ROWS[row];
+  const h=kind==='card'?Math.round(w*431/600):SH;
+  const x=s.x-w/2,y=top+(SH-h)/2;
+  picture(name,kind,x,y,w,row);
+  if(row==='after')el('span','num badge',{left:px(x+s.badge[0]),top:px(y+s.badge[1])}).textContent=i+1;
+ }
+ if(i<2)for(const row of ['before','after'])arrow(s.x+SW/2+8,stages[i+1].x-SW/2-10,ROWS[row]+SH/2,row);
+});
+c.appendChild(svg);
+
+// Pain points and improvements, listed apart from the screens.
+const cmp=document.getElementById('compare');
+const cell=cls=>{const d=document.createElement('div');d.className=cls;cmp.appendChild(d);return d;};
+const heads={pain:T('卡点','Pain points'),fix:T('改进','Improvements')};
+const list=(cls,items)=>{const ul=document.createElement('ul'),d=cell(cls);d.dataset.label=heads[cls][lang];d.appendChild(ul);items.forEach(t=>{const li=document.createElement('li');li.textContent=t[lang];ul.appendChild(li);});};
+[['th',T('阶段','Stage')],['th pain',T('卡点','Pain points')],['th fix',T('改进','Improvements')]].forEach(([k,t])=>cell(k).textContent=t[lang]);
+stages.forEach((s,i)=>{
+ const n=cell('stage-name'),b=document.createElement('span');b.className='num';b.textContent=i+1;n.append(b,s.title[lang]);
+ list('pain',s.nb);list('fix',s.na);
+});
+
+const zoomBox=document.getElementById('zoom'),zoomImg=zoomBox.querySelector('img');
+function zoom(name,box){
+ zoomImg.src=img(name);
+ const r=box.getBoundingClientRect();
+ zoomBox.style.top=px(Math.max(8,window.scrollY+r.top-60));
+ zoomBox.classList.add('on');
+}
+zoomBox.addEventListener('click',()=>zoomBox.classList.remove('on'));
+addEventListener('keydown',e=>{if(e.key==='Escape')zoomBox.classList.remove('on');});
+document.querySelectorAll('[data-zh]').forEach(e=>e.textContent=e.dataset[lang]);
+
+// Fit the canvas to the frame; below 0.62 keep that scale and scroll sideways.
+function fit(){
+ const sc=document.querySelector('.scroller'),sz=document.querySelector('.sizer');
+ const k=Math.max(.62,Math.min(1,sc.clientWidth/CW));
+ c.style.transform=`scale(${k})`;sz.style.width=px(CW*k);sz.style.height=px(CH*k);
+ parent.postMessage({type:'gocus-embed-height',page:'shokz-wifi',height:Math.ceil(document.body.getBoundingClientRect().height)+12},'*');
+}
+addEventListener('resize',fit);fit();
+new ResizeObserver(fit).observe(document.body);
+</script>
+</body>
+</html>

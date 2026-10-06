@@ -1,0 +1,21 @@
+const b=(zh,en)=>({zh,en});
+export const libraryProjects=[
+ {id:'mirs-bay',name:'GeoArchive',cover:'mirs-bay',categories:['service','digital'],color:'#d9ddba',
+ subtitle:b('把一次自然体验，留成共同的记忆。','Nature, carried with you.'),type:b('生态旅游 · 服务系统 · 团队项目','Ecotourism · Service system · Team project'),
+ intro:b('以大鹏湾与深港地质公园为情境，探索非侵入式的多感官体验。通过影像、声音与数字创作，把游客的个人记录汇入持续生长的公共档案。','A non-invasive, multisensory service concept for Mirs Bay and the Shenzhen–Hong Kong geoparks. Images, sounds and digital creations turn personal encounters into a growing shared archive.'),
+ brief:b('如何让短暂的游览，转化为对自然持续的关注与参与？','How can a short visit become an ongoing relationship with nature?'),
+ approach:b('连接行前触达、在地采集、数字创作、社区分享与激励机制，绘制跨触点的服务蓝图。','Connect discovery, on-site recording, digital creation, community sharing and incentives through a service blueprint.'),
+ output:b('体验故事板、移动端概念、利益相关者模型与服务蓝图。','Experience storyboards, mobile concepts, stakeholder flows and a service blueprint.')},
+ {id:'va-feedback',name:'VA Feedback',cover:'va-feedback',categories:['service','digital'],color:'#ecdfe7',
+ subtitle:b('让每一次反馈，都有清晰的去向。','Feedback that finds its way.'),type:b('校园服务 · 信息流设计 · 团队项目','Campus service · Information flows · Team project'),
+ intro:b('从校园餐饮中的问题反馈出发，同时观察学生与运营团队的处境。项目探索更易找到的反馈入口、更清晰的处理进度，以及辅助分类与跟进的后台流程。','A campus catering feedback concept that considers both students and service operators. It explores accessible reporting, visible progress and assisted triage and follow-up.'),
+ brief:b('学生不知道向谁反馈，工作人员也难以高效转交与跟进，信息在两端同时受阻。','Students struggle to find the right channel, while staff struggle to route and follow up issues.'),
+ approach:b('结合用户与餐饮经理访谈，对照前后台旅程，设计分类、跟进与人工升级机制。','User and catering manager interviews inform parallel journeys, assisted triage, follow-up and human escalation.'),
+ output:b('研究洞察、反馈服务旅程与 Agent 协作流程概念。','Research insights, a feedback service journey and an agent workflow concept.')},
+ {id:'ebike-parking',name:'Everyday Parking',cover:'ebike-parking',categories:['service','physical'],color:'#dae2d1',
+ subtitle:b('从停车的那一刻，理解空间的秩序。','Better choices, in the moment.'),type:b('城市出行 · 设计研究 · 团队项目','Urban mobility · Design research · Team project'),
+ intro:b('围绕广州地铁站周边的电单车停放与取车体验开展研究。通过现场观察、访谈与旅程分析，将关注点从高频通勤者转向对场地陌生的偶发停车者。','Research into e-bike parking and retrieval around Guangzhou metro stations. Observations, interviews and journey analysis shift the focus from regular commuters to occasional parkers unfamiliar with the site.'),
+ brief:b('临时停放会占用通道，并影响其他人的取车。如何在停车决策发生时提供更有效的引导？','Temporary parking can block access and make retrieval difficult. How can guidance support better decisions at the moment of parking?'),
+ approach:b('记录不同站点的空间情境，对比三类停车行为，分析一天内的冲突与连锁影响。','Document different station contexts, compare three parking behaviours and trace conflicts and knock-on effects through the day.'),
+ output:b('实地研究、行为与旅程映射、问题重定义，以及待共创和验证的设计方向。','Field research, behaviour and journey maps, a reframed problem and directions for co-design and validation.')},
+];
