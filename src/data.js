@@ -1,4 +1,10 @@
 const bi = (zh, en) => ({ zh, en });
+// Home timeline, oldest first, with the (approximate) year each project was made.
+export const timeline = [
+ { id: 'matrix', year: 2023 }, { id: 'flexbench', year: 2024 }, { id: 'soundbricks', year: 2024 },
+ { id: 'pawpals', year: 2025 }, { id: 'sf-eats', year: 2025 }, { id: 'just-a-2nd', year: 2025 },
+ { id: 'gocus', year: 2025 }, { id: 'bambu-lab', year: 2025 }, { id: 'shokz', year: 2026 },
+];
 export const categories = [
  { id: 'all', label: bi('全部', 'All') },
  { id: 'service', label: bi('服务与系统', 'Service & systems') },
@@ -89,7 +95,7 @@ export const projects = [
  {
   id:'shokz',name:'OpenSwim Pro 2',cover:'shokz-cover',categories:['digital'],color:'#e9f0f5',pages:[],
   subtitle:bi('让耳机里的音乐，陪你游完每一程','Music and training, in the water.'),
-  type:bi('移动应用 · 运动耳机','Mobile app · Sports headphones'),
+  type:bi('App 体验设计 · 运动耳机','App experience design · Sports headphones'),
   intro:bi('为韶音 OpenSwim Pro 2 游泳耳机设计的配套 App，连接本地音乐管理、游泳训练和运动数据。','The companion app for the Shokz OpenSwim Pro 2 swimming headphones, bringing together on-board music, swim training and workout data.'),
   brief:bi('耳机能脱离手机播放音乐、记录游泳数据，App 怎样让导入音乐、设置训练和回看数据都足够简单？','When headphones play music and track swims without a phone, how can the app keep importing music, setting up training and reviewing data simple?'),
   approach:bi('把需要手机的事都放在下水前完成，水里只靠耳机；最容易失败的配网流程按条件前置、选择代替输入、按原因处理错误重新设计。','Everything that needs a phone happens before the swim, and the water belongs to the headphones. The failure-prone Wi-Fi setup was redesigned: requirements first, choosing instead of typing, errors handled by cause.'),
@@ -100,7 +106,7 @@ export const projects = [
 export const copy = {
  name:bi('陆俊荣','Jarvis Luk'),work:bi('项目','Work'),
  intro:bi('从真实情境出发，连接人与物、数字与实体。让设计成为可以被体验、使用与持续生长的解决方案。','Start with real contexts. Connect people, objects and systems. Turn possibilities into experiences that can be lived, used and built upon.'),
- explore:bi('探索我的作品','Explore my work'),selected:bi('精选','Selected'),works:bi('作品','work'),
+ explore:bi('探索我的作品','Explore my work'),now:bi('现在','Now'),drag:bi('拖动画布浏览','Drag to explore'),selected:bi('精选','Selected'),works:bi('作品','work'),
  closer:bi('让项目，继续讲述','Let the work speak.'),top:bi('回到顶部','Back to top'),
  back:bi('返回全部项目','All projects'),challenge:bi('设计问题','The question'),approach:bi('设计路径','The approach'),outcome:bi('项目产出','The output'),
  documentation:bi('过程与细节','Process & details'),sourceNote:bi('原始项目图 · 点击放大查看','Original project documentation · Select an image to enlarge'),

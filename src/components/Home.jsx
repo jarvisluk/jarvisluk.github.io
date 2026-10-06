@@ -4,6 +4,7 @@ import { projects, categories, copy, githubUrl, labProjects } from '../data';
 import Arrow from './Arrow';
 import { localize } from '../localize';
 import Contributions from './Contributions';
+import Timeline from './Timeline';
 function ProjectCard({project,index,lang}) {
  return <article className={`project-card project-${project.id}`}>
   <a href={localize(lang,`/project/${project.id}/`)} className="project-link" aria-label={`${project.name} — ${project.subtitle[lang]}`}>
@@ -29,16 +30,11 @@ export default function Home({lang}) {
  const filtered=projects.filter(p=>filter==='all'||p.categories.includes(filter));
  return <>
   <main id="main">
-   <section className={`hero wrap ${lang==='zh'?'hero-zh':''}`} aria-label={lang==='zh'?'介绍':'Introduction'}>
+   <section className={`hero timeline-hero wrap ${lang==='zh'?'hero-zh':''}`} aria-label={lang==='zh'?'介绍':'Introduction'}>
     <div className="hero-copy">
-     <h1>{lang==='en'?<><span>Design for</span><em>a little more</em><span>possibility.</span></>:<><span>以设计，</span><em>探索多一点</em><span>可能。</span></>}</h1>
-     <div className="hero-intro"><p>{copy.intro[lang]}</p></div>
+     <h1>{(lang==='en'?['Design for','a little more','possibility.']:['以设计，','探索多一点','可能。']).map((t,i)=>{const Line=i===1?'em':'span';return <Line key={i}><span className="line-in">{t}</span></Line>;})}</h1>
     </div>
-    <div className="hero-media">
-     <a className="hero-photo" href={localize(lang,'/project/soundbricks/')} aria-label={lang==='zh'?'查看 SoundBricks 项目':'View SoundBricks project'}><img src="/assets/soundbricks.webp" alt={lang==='zh'?'双手操作 SoundBricks 声音交互积木原型':'Hands interacting with the SoundBricks prototype'} fetchPriority="high" width="1600" height="1412"/><span className="hero-photo-arrow"><Arrow diagonal/></span></a>
-     <span className="vertical-caption">SOUNDBRICKS — INTERACTION IN PLAY</span>
-     <a href={localize(lang,'/#work')} className="explore">{copy.explore[lang]}<span className="circle-arrow"><Arrow/></span></a>
-    </div>
+    <Timeline lang={lang}/>
    </section>
    <section id="work" className="work wrap">
     <div className="section-top"><h2>{copy.selected[lang]} <em>{copy.works[lang]}</em><sup>{String(projects.length).padStart(2,'0')}</sup></h2><div className="filters" aria-label={lang==='zh'?'筛选项目':'Filter projects'}>{categories.map(c=><button key={c.id} onClick={()=>setFilter(c.id)} className={filter===c.id?'selected':''} aria-pressed={filter===c.id}>{c.label[lang]}</button>)}</div></div>

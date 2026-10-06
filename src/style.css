@@ -20,3 +20,58 @@
 .lab-codex-pets .lab-media figure{aspect-ratio:1.25}.lab-codex-pets .lab-media img{padding:16% 22%}.lab-death-stranding .lab-media figure,.lab-death-stranding .lab-media figure:first-child{aspect-ratio:2032/1512;background:#e8e8e8}.lab-death-stranding .lab-media .is-cover img,.lab-dsh .lab-media img{object-position:50% 50%}.lab-card.is-wide.lab-dsh .lab-media figure{aspect-ratio:1.6}
 @media(max-width:700px){.lab-card.is-wide.lab-dsh .lab-media figure{aspect-ratio:1.6}.lab-icon{width:14px;height:14px}}
 .lab-card.is-wide .lab-media{align-self:start}
+/* Home timeline hero (Timeline.jsx): headline on top, every project on one line below. Vertical under 900px. */
+.timeline-hero{display:flex;flex-direction:column;min-height:calc(100svh - 100px);padding-top:10px;padding-bottom:24px}
+.timeline-hero .hero-copy{padding:0}
+/* One-line headline: the canvas below carries the page. */
+.timeline-hero h1,.timeline-hero.hero-zh h1{font-size:clamp(34px,4.2vw,68px);line-height:1.2;letter-spacing:-.05em}
+.timeline-hero h1>span,.timeline-hero h1>em{display:inline-block;margin:0 .22em 0 0;font-size:1em;line-height:inherit;letter-spacing:inherit}
+.timeline-hero.hero-zh h1>span,.timeline-hero.hero-zh h1>em{margin:0}
+.hero h1 .line-in{display:inline-block}
+.timeline{position:relative;flex:1;display:flex;flex-direction:column;margin:20px calc(var(--gutter)*-1) 0;min-height:calc(530*var(--u));
+ /* Canvas unit: frames grow with the screen height so the canvas fills the first screen. */
+ --u:clamp(.85px,calc((100svh - 330px)/520),1.3px)}
+.tl-canvas{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;mask-image:linear-gradient(90deg,transparent,#000 var(--gutter),#000 calc(100% - var(--gutter)),transparent);overscroll-behavior-x:contain}
+.tl-canvas::-webkit-scrollbar{display:none}
+.tl-canvas.is-dragging{cursor:grabbing;user-select:none}
+.tl-canvas.is-dragging .tl-card{pointer-events:none}
+.tl-track{position:relative;flex:none;min-height:calc(500*var(--u));width:calc(var(--w)*var(--u));margin-left:var(--gutter);background-image:radial-gradient(circle,var(--rule-soft) 1px,transparent 1.3px);background-size:24px 24px;background-position:0 50%}
+.tl-line{position:absolute;left:0;right:calc(100*var(--u));top:50%;height:1px;background:var(--ink);transform-origin:0 50%}
+/* Year marker on the first project of each year, on the side of the line away from its frame. */
+.tl-year{position:absolute;left:10px;font-size:12px;font-weight:600;letter-spacing:.5px;line-height:1}
+.tl-year.is-up{bottom:calc(50% + 10px)}
+.tl-year.is-down{top:calc(50% + 10px)}
+.tl-end{position:absolute;right:calc(100*var(--u));top:calc(50% - 4.5px);width:9px;height:9px}
+.tl-end i{position:absolute;inset:0;background:var(--accent)}
+.tl-end:after{content:attr(data-label);position:absolute;right:0;bottom:21px;white-space:nowrap;font-size:11px;letter-spacing:.5px;color:var(--muted)}
+.timeline ol{list-style:none;margin:0;padding:0;position:absolute;inset:0}
+.tl-step{position:absolute;top:0;bottom:0;left:calc(var(--x)*var(--u))}
+.tl-dot{position:absolute;left:-3.5px;top:calc(50% - 3.5px);width:7px;height:7px;background:var(--ink);transition:background .25s,scale .25s}
+.tl-step:has(.tl-card:hover) .tl-dot,.tl-step:has(.tl-card:focus-visible) .tl-dot{background:var(--accent);scale:1.6}
+.tl-card{position:absolute;left:0;width:calc(var(--cw)*var(--u));display:flex;flex-direction:column;gap:8px;transition:translate .35s cubic-bezier(.16,1,.3,1)}
+.tl-card.is-up{bottom:calc(50% + var(--stem)*var(--u))}
+.tl-card.is-down{top:calc(50% + var(--stem)*var(--u))}
+.tl-card:before{content:'';position:absolute;left:0;width:1px;height:calc(var(--stem)*var(--u) - 4px);background:var(--rule)}
+.tl-card.is-up:before{top:100%;margin-top:4px}
+.tl-card.is-down:before{bottom:100%;margin-bottom:4px}
+.tl-card:hover{translate:0 -4px}
+.tl-name{display:flex;align-items:baseline;gap:8px;font-size:13px;font-weight:500;letter-spacing:-.2px;white-space:nowrap}
+.tl-index{font-size:10px;font-weight:400;letter-spacing:1px;color:var(--index)}
+.tl-frame{position:relative;display:block}
+.tl-thumb{display:block;overflow:hidden;aspect-ratio:1.6}
+.tl-thumb img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.tl-card small{font-size:11px;line-height:1.45;color:var(--muted)}
+/* Selection box with corner handles, as on a design canvas. */
+.tl-select{position:absolute;inset:-5px;border:1px solid var(--ink);opacity:0;transition:opacity .2s;pointer-events:none}
+.tl-select i{position:absolute;width:7px;height:7px;background:var(--bg);border:1px solid var(--ink)}
+.tl-select i:nth-child(1){left:-4px;top:-4px}.tl-select i:nth-child(2){right:-4px;top:-4px}.tl-select i:nth-child(3){left:-4px;bottom:-4px}.tl-select i:nth-child(4){right:-4px;bottom:-4px}
+.tl-card:hover .tl-select,.tl-card:focus-visible .tl-select{opacity:1}
+.tl-card:focus-visible{outline:none}
+.tl-hud{display:flex;align-items:center;gap:20px;padding:14px var(--gutter) 0;font-size:11px;letter-spacing:.5px;color:var(--muted)}
+@media(max-width:1100px){.timeline-hero{min-height:0}}
+@media(max-width:700px){.timeline{--u:clamp(.75px,calc((100svh - 330px)/520),.9px);margin-top:28px}.tl-name{font-size:12px}}
+/* Load intro (src/intro.js): starting states before the timeline runs. */
+html.intro .header,html.intro:not(.intro-hero) #main,html.intro-hero .tl-card,html.intro-hero .tl-year,html.intro-hero .tl-end,html.intro-hero .tl-hud{opacity:0}
+html.intro-hero .tl-line,html.intro-hero .tl-dot{transform:scale(0)}
+html.intro-hero .hero h1>*{clip-path:inset(-.15em -.5em -.25em -.5em)}
+html.intro-hero .hero h1 .line-in{transform:translateY(120%)}

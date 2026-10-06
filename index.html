@@ -25,6 +25,29 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" as="image" href="/assets/soundbricks.webp" />
+    <style>
+      /* Load intro curtain (timeline in src/intro.js). Only active once the inline script below adds html.intro: no JS / reduced motion = no intro. */
+      #intro{display:none}
+      html.intro #intro{display:block;position:fixed;inset:0;z-index:300;pointer-events:none}
+      #intro>div{position:absolute;inset:0;will-change:transform}
+      .intro-band{background:#182f28}
+      .intro-cover{background:#d7ef69;display:grid;place-items:center}
+      .intro-sq{width:14px;height:14px;background:#182f28;animation:intro-flip 1s cubic-bezier(.7,0,.2,1) infinite}
+      .intro-bar{position:absolute;left:4.15vw;right:4.15vw;bottom:48px;height:1px;background:rgba(24,47,40,.18);overflow:hidden}
+      .intro-bar i{position:absolute;inset:0;background:#182f28;transform-origin:0 50%;transform:scaleX(0);animation:intro-load 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+      @keyframes intro-flip{0%{transform:scale(0) rotate(-90deg)}35%,100%{transform:none}}
+      @keyframes intro-load{to{transform:scaleX(.85)}}
+      @media(max-width:700px){.intro-bar{left:24px;right:24px;bottom:32px}}
+    </style>
   </head>
-  <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
+  <body><div id="intro" aria-hidden="true"><div class="intro-band"></div><div class="intro-cover"><i class="intro-sq"></i><span class="intro-bar"><i></i></span></div></div><script>
+      // Hide the page before first paint; src/intro.js plays the timeline. If that script never starts, show the page anyway.
+      (function(){
+        if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+        var d=document.documentElement,p=location.pathname.replace(/\/+$/,'');d.classList.add('intro');
+        // Home opened at the top: after the curtain lifts, the project timeline plays. Anywhere else the page just fades in.
+        if((p===''||p==='/en')&&!location.hash)d.classList.add('intro-hero');window.__introT0=Date.now();
+        setTimeout(function(){if(!window.__introStarted){d.classList.remove('intro','intro-hero');var s=document.getElementById('intro');s&&s.remove();}},5000);
+      })();
+    </script><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
 </html>

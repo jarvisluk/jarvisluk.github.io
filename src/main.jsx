@@ -6,6 +6,7 @@ import App,{normalizePath} from './App';
 import './style.css';
 import './caseStudy.css';
 import './caseBlocks.css';
+import {playIntro} from './intro';
 // Deter casual saving of media: block the context menu / drag on images and videos, Cmd/Ctrl+S,
 // and (in production only) the DevTools / view-source shortcuts.
 const isMedia=el=>el instanceof Element&&!!el.closest('img,video,picture,svg image');
@@ -24,3 +25,4 @@ const root=document.getElementById('root');
 const app=<App initialPath={location.pathname} initialHash={location.hash}/>;
 // Hydrate only when the served HTML was prerendered for this route (hosts may fall back to another page).
 if(root.dataset.route&&normalizePath(root.dataset.route)===normalizePath(location.pathname))hydrateRoot(root,app);else createRoot(root).render(app);
+playIntro();
