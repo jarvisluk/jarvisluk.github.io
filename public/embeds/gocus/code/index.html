@@ -1,0 +1,158 @@
+<!doctype html>
+<!-- Gocus core code (named, with a live demo): the commit-graph drawing and the repository detection, from jarvisluk/Gocus (v0.1.12).
+     The graph demo runs the constants and formulas of src/git-tree/graphCanvas.ts and renderGraph.ts. -->
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gocus core code</title>
+<style>
+ :root{--bg:#121212;--line:rgba(255,255,255,.09);--text:#eceae6;--muted:#9b9893;--faint:#6d6a66;--amber:#f0a400;--blue:#2f86d8;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace}
+ html,body{background:var(--bg);margin:0}
+ /* The frame is sized to the page, so it never needs its own scrollbar. */
+ html{overflow:hidden}
+ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",sans-serif;color:var(--text);padding:8px 24px 40px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+ .wrap{max-width:1080px;margin:0 auto;border-bottom:1px solid var(--line)}
+ h3{margin:0;font-size:13px;font-weight:700}
+ h4{margin:0 0 6px;font-size:12.5px;font-weight:600}
+ p{margin:0;font-size:12px;line-height:1.6;color:var(--muted)}
+ .part:first-child{border-top:0;padding-top:0}
+ /* One part on its own (?part=…): the case section above already titles it. */
+ .solo .part{grid-template-columns:1fr}
+ .solo .part>header{display:none}
+ .part{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:40px;border-top:1px solid var(--line);padding:28px 0}
+ .part>header p{margin-top:6px}
+ .row{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;padding:18px 0;border-top:1px solid var(--line)}
+ .row:first-child{border-top:0;padding-top:0}
+ /* Code is named, not quoted: the functions behind each point and the file they live in. */
+ .fns{display:flex;flex-wrap:wrap;align-content:start;gap:6px 14px}
+ .fns code{font:11.5px var(--mono);color:#cfccc6}
+ .src{flex-basis:100%;font:10.5px var(--mono);color:var(--faint)}
+
+ /* Graph demo: a four-commit history drawn with the app's own geometry, scaled 2x. */
+ .demo{display:grid;grid-template-columns:auto minmax(0,1fr);gap:48px;align-items:start}
+ .demo svg{display:block;width:165px;height:auto}
+ .knobs{display:grid;gap:16px;font-size:12px;color:var(--muted)}
+ .knobs label.range{display:grid;gap:6px}
+ .knobs input[type=range]{width:100%;accent-color:var(--amber)}
+ .toggles{display:grid;border-top:1px solid var(--line)}
+ .toggles label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+ .toggles input{appearance:none;margin:0;width:26px;height:14px;border-radius:7px;background:#333;position:relative;flex:none;cursor:pointer;transition:background .15s}
+ .toggles input::after{content:"";position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:#bbb;transition:transform .15s}
+ .toggles input:checked{background:var(--amber)}
+ .toggles input:checked::after{transform:translateX(12px);background:#121212}
+ .readout{font:11px/1.8 var(--mono);color:var(--faint)}
+ .readout b{color:var(--text);font-weight:400}
+ .note{font-size:12px;line-height:1.6;color:var(--muted)}
+ @media(max-width:700px){.part,.row,.demo{grid-template-columns:1fr;gap:18px}}
+</style></head>
+<body><div class="wrap">
+
+<section class="part" data-part="graph">
+ <header><h3 data-zh="提交图怎么画">Drawing the graph</h3>
+ <p data-zh="每一行的线和节点逐行算出来，再画到 canvas 上。下面这张图用的是 Gocus 自己的几何参数和公式，可以直接调。">Lines and nodes are computed row by row, then painted to a canvas. The graph below runs Gocus’s own geometry and formulas; adjust it directly.</p></header>
+ <div>
+  <div class="demo">
+   <svg id="graph" aria-label="Commit graph demo"></svg>
+   <div class="knobs">
+    <p class="note" data-zh="三个提交：最上面的合并提交把第二个父提交放到新轨道上（蓝线向右分出），分支提交再并回已有的主线（蓝线向左汇入）。两段弯用的是同一个函数，只是高度范围不同。线宽、节点尺寸与 app 里一致。">Three commits: the merge at the top puts its second parent on a new lane (the blue line forks right), and the branch commit joins the existing main lane (the blue line curves back). Both bends come from one function with different drop ranges; line widths and node sizes match the app.</p>
+    <label class="range"><span data-zh="轨道距离">Lanes apart</span><input id="lanes" type="range" min="1" max="4" step="1" value="2"></label>
+    <div class="toggles">
+     <label><span data-zh="显示控制点">Show control points</span><input type="checkbox" id="ctrl" checked></label>
+     <label><span data-zh="节点周围留 2 px 空隙">2 px gap around nodes</span><input type="checkbox" id="gap" checked></label>
+     <label><span data-zh="分支来自其他工作树（虚线）">Branch lives in another worktree (dashed)</span><input type="checkbox" id="dash"></label>
+     <label><span data-zh="对比：直接用直线连">Compare: a straight connector</span><input type="checkbox" id="naive"></label>
+    </div>
+    <div class="readout" id="readout"></div>
+   </div>
+  </div>
+  <div class="row" style="margin-top:24px;border-top:1px solid var(--line);padding-top:18px"><div><h4 data-zh="弯的高度">How far the bend drops</h4>
+   <p data-zh="开新轨道时落 32–46 px，并入已有轨道时落 28–38 px，轨道离得越远落得越深，但不超出这一行；控制点取落差的 34%–48%，两端都和竖线相切。">32–46 px when opening a lane, 28–38 px when joining one, deeper the further apart the lanes are but never past the row; the control points sit 34–48% of the drop away, so both ends meet the rails tangentially.</p></div>
+   <div class="fns"><code>bridgeJoinY()</code><code>bridgeControlDrop()</code><span class="src">src/git-tree/graphCanvas.ts</span></div></div>
+  <div class="row"><div><h4 data-zh="轨道分配">Lane assignment</h4>
+   <p data-zh="从新到旧走一遍提交：每个提交落在已经在等它的轨道上，没有就占最左边的空轨道；只有其他工作树能走到的提交画成虚线。">Walking newest to oldest, each commit takes the lane already waiting for it, or else the leftmost free one; commits reachable only from other worktrees are drawn dashed.</p></div>
+   <div class="fns"><code>buildCommitGraph()</code><code>findPreferredLaneByHash()</code><code>findOpenColumn()</code><code>lineVariantForCommit()</code><span class="src">packages/git-core/gitGraph.cjs</span></div></div>
+ </div>
+</section>
+
+<section class="part" data-part="repo">
+ <header><h3 data-zh="仓库检测">Detecting the repository</h3>
+ <p data-zh="打开一个文件夹后，Gocus 要判断它属于哪个仓库、是不是某个工作树、正处在什么操作里，并在 Git 状态变化时刷新。">After a folder is opened, Gocus works out which repository it belongs to, whether it is a linked worktree, what is in progress, and when Git’s state changes.</p></header>
+ <div>
+  <div class="row"><div><h4 data-zh="同一个仓库，多个工作树">One repository, many worktrees</h4>
+   <p data-zh="Agent 开的工作树路径各不相同，用 git-common-dir 的真实路径作为仓库身份，它们在“最近打开”里就是同一个仓库。">Agent worktrees all live at different paths; the real path of git-common-dir is the repository’s identity, so in Recent they are one repository.</p></div>
+   <div class="fns"><code>gitCommonDirKey()</code><code>realPathForCompare()</code><span class="src">packages/git-core/gitCore.cjs</span></div></div>
+  <div class="row"><div><h4 data-zh="找到真正的 .git">Finding the real .git</h4>
+   <p data-zh="链接工作树里的 .git 是一个文件，按其中的 gitdir: 和 commondir 找到真正的目录，监听 HEAD、index、MERGE_HEAD 等状态文件，变化 650 ms 后刷新。">In a linked worktree .git is a file; its gitdir: line and commondir lead to the real directories, whose HEAD, index, MERGE_HEAD and other state files are watched, refreshing 650 ms after they settle.</p></div>
+   <div class="fns"><code>readGitDir()</code><code>readCommonDir()</code><code>resolveRepositoryWatchPaths()</code><span class="src">electron/lib/gitWatcher.cjs</span></div></div>
+  <div class="row"><div><h4 data-zh="仓库正在做什么">What is in progress</h4>
+   <p data-zh="合并、变基、拣选、回退、二分查找都会留下标记文件；通过 rev-parse --git-path 查找，在工作树里也能找对位置，面板顶部随之提示，并列出冲突文件。">Merges, rebases, cherry-picks, reverts and bisects each leave a marker file, looked up through rev-parse --git-path so it resolves inside worktrees too; the panel flags the operation and lists conflicted files.</p></div>
+   <div class="fns"><code>repositoryStateForGit()</code><code>gitPathExists()</code><span class="src">packages/git-core/git.cjs</span></div></div>
+  <div class="row"><div><h4 data-zh="不是仓库，或者没装 Git">Not a repository, or no Git</h4>
+   <p data-zh="所有 Git 调用走同一个入口，带 10 秒超时和输出上限；找不到 git 时换成安装提示，“not a git repository”单独归类，面板显示空状态而不是报错。">Every Git call goes through one entry point with a 10 s timeout and an output cap; a missing git becomes an install hint, and “not a git repository” is classified on its own so the panel shows an empty state, not an error.</p></div>
+   <div class="fns"><code>runGit()</code><code>isNotGitRepositoryError()</code><code>gitUnavailableNotice()</code><span class="src">packages/git-core/gitCore.cjs</span></div></div>
+ </div>
+</section>
+
+</div>
+<script>
+const zh=new URLSearchParams(location.search).get('lang')==='zh';
+document.querySelectorAll('[data-zh]').forEach(e=>{if(zh)e.textContent=e.dataset.zh});
+document.documentElement.lang=zh?'zh-CN':'en';
+const part=new URLSearchParams(location.search).get('part');
+if(part){document.body.classList.add('solo');document.querySelectorAll('[data-part]').forEach(e=>{if(e.dataset.part!==part)e.remove()});}
+
+// ---- Graph demo. Constants and formulas as in src/git-tree/graphCanvas.ts / renderGraph.ts / commitListGeometry.ts.
+const ROW=68,NODE_Y=22,R=7.5,LANE_GAP=12,LANE_X=9;
+const laneX=c=>LANE_X+c*LANE_GAP;
+const snap=v=>Math.round(v*2)/2;
+function bridgeJoinY(fromY,rowBottomY,fromX,toX,existing){
+ const d=Math.abs(toX-fromX),avail=Math.max(0,rowBottomY-fromY);
+ const pref=existing?Math.max(28,Math.min(38,30+d*.32)):Math.max(32,Math.min(46,32+d*.28));
+ return fromY+Math.min(avail,pref);
+}
+const controlDrop=drop=>Math.min(drop*.48,Math.max(6,drop*.34));
+const $=id=>document.getElementById(id);
+const svg=$('graph'),out=$('readout');
+// Three commits: a merge, the branch commit it brought in, and the main-line commit both continue from.
+const ROWS=3;
+function draw(){
+ const k=+$('lanes').value,showCtrl=$('ctrl').checked,gap=$('gap').checked?2:0,dash=$('dash').checked,naive=$('naive').checked;
+ const off=R+gap,amber='#f0b43a',blue='#4098dc',W=laneX(4)+LANE_X,height=ROW*ROWS;
+ svg.setAttribute('viewBox',`0 0 ${W} ${height}`);
+ const bx=laneX(k),mx=laneX(0),y=(r,v)=>r*ROW+v;
+ const lines=[],dots=[],guides=[],info=[];
+ // Strokes as painted by CommitGraphLayer.tsx: rails 2.5 (butt), bridges 2.4 (round), dashed [4,5] at 78%.
+ const attrs=(c,d,bridge)=>`stroke="${c}" stroke-width="${bridge?2.4:2.5}" stroke-linecap="${bridge||d?'round':'butt'}"${d?' stroke-dasharray="4 5" opacity=".78"':''}`;
+ const v=(x,a,b,c,d)=>{if(b-a>=.5)lines.push(`<path d="M${snap(x)} ${snap(a)}V${snap(b)}" ${attrs(c,d,false)}/>`);};
+ const bridge=(fx,fy,tx,bottom,existing,c,d,label)=>{
+  const jy=bridgeJoinY(fy,bottom,fx,tx,existing),drop=jy-fy,cd=controlDrop(drop),tail=existing?'':`V${snap(bottom)}`;
+  lines.push(naive?`<path d="M${fx} ${fy}L${tx} ${jy}${tail}" ${attrs(c,d,true)}/>`
+   :`<path d="M${snap(fx)} ${snap(fy)}C${snap(fx)} ${snap(fy+cd)} ${snap(tx)} ${snap(jy-cd)} ${snap(tx)} ${snap(jy)}${tail}" ${attrs(c,d,true)}/>`);
+  if(showCtrl&&!naive){
+   guides.push(`<path d="M${fx} ${fy}V${fy+cd}M${tx} ${jy}V${jy-cd}"/><path d="M${Math.min(fx,tx)-4} ${jy}H${Math.max(fx,tx)+4}" stroke-dasharray="1 1.2"/>`);
+   dots.push(`<circle cx="${fx}" cy="${fy+cd}" r="1.1"/><circle cx="${tx}" cy="${jy-cd}" r="1.1"/>`);
+  }
+  info.push(`${label} <b>drop ${drop.toFixed(1)}</b> · control ${cd.toFixed(1)} · ${existing?'28–38':'32–46'}`);
+ };
+ v(mx,y(0,NODE_Y)+off,y(2,NODE_Y)-off,amber);
+ v(mx,y(2,NODE_Y)+off,height,amber);
+ bridge(mx,y(0,NODE_Y)+off,bx,y(1,0),false,blue,dash,zh?'分出':'fork ');
+ v(bx,y(1,0),y(1,NODE_Y)-off,blue,dash);
+ bridge(bx,y(1,NODE_Y)+off,mx,y(2,0),true,blue,dash,zh?'汇入':'join ');
+ // Nodes as .graph-node: 15 px outside, 2.5 px ring, panel fill; the current head gets the 5 px core.
+ const node=(x,yy,c,core,d)=>`<circle cx="${snap(x)}" cy="${snap(yy)}" r="6.25" fill="#121212" stroke="${c}" stroke-width="2.5"${d?' stroke-dasharray="3 2.4"':''}/>`+(core?`<circle cx="${snap(x)}" cy="${snap(yy)}" r="2.5" fill="${c}"/>`:'');
+ svg.innerHTML=
+  `<g stroke="rgba(255,255,255,.05)" stroke-width=".5">${[0,1,2,3,4].map(c=>`<path d="M${laneX(c)} 0V${height}"/>`).join('')}</g>`+
+  // The branch sits under the main line, as in the app: blue strokes first, amber on top.
+  `<g fill="none">${lines.filter(l=>!l.includes(amber)).join('')}${lines.filter(l=>l.includes(amber)).join('')}</g>`+
+  `<g fill="none" stroke="rgba(255,255,255,.45)" stroke-width=".5">${guides.join('')}</g>`+
+  `<g fill="#fff">${dots.join('')}</g>`+
+  node(mx,y(0,NODE_Y),amber,true)+node(bx,y(1,NODE_Y),blue,false,dash)+node(mx,y(2,NODE_Y),amber,false);
+ out.innerHTML=info.join('<br>')+`<br>laneDistance <b>${bx-mx}px</b> · node gap <b>${gap}px</b>`;
+}
+if(svg){['lanes','ctrl','gap','dash','naive'].forEach(id=>$(id).addEventListener('input',draw));draw();}
+
+const post=()=>parent.postMessage({type:'gocus-embed-height',page:'code',height:Math.ceil(document.body.getBoundingClientRect().height)},'*');
+new ResizeObserver(post).observe(document.body);addEventListener('load',post);
+</script>
+</body></html>

@@ -9,6 +9,7 @@ import matrix from './studies/matrix.js';
 import justa2nd from './studies/justa2nd.js';
 import gocus from './studies/gocus.js';
 import shokz from './studies/shokz.js';
+import webstyle from './studies/webstyle.js';
 // Reflowed case studies. Text is native HTML; media are independent visual elements.
 const b=(zh,en)=>({zh,en});
 const img=(id,zh,en,kind='photo')=>({id:typeof id==='number'?`x${id}`:id,caption:b(zh,en),kind});
@@ -22,6 +23,7 @@ export const caseStudies={
  'just-a-2nd':justa2nd,
  'gocus':gocus,
  'shokz':shokz,
+ 'web-style':webstyle,
  'sf-eats':sfeats,
  'bambu-lab':bambu,
  'pawpals':pawpals

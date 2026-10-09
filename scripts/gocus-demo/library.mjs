@@ -115,9 +115,9 @@ const shared = `<!doctype html>
  .tok{display:grid;grid-template-columns:minmax(0,150px) 48px minmax(0,1fr);gap:12px;align-items:center;padding:5px 0;font-size:12px}
  .tok code{font-family:var(--mono-font);color:var(--text-muted);font-size:11px}
  .tok .v{color:var(--text-faint);font-family:var(--mono-font);font-size:11px}
- .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px 10px}
+ .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:16px 10px}
  .sw div{font-size:10px;min-width:0}
- .sw i{display:block;height:26px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--border-soft)}
+ .sw i{display:block;width:44px;height:44px;box-shadow:inset 0 0 0 1px var(--border-soft)}
  .sw span{display:block;padding:5px 0 0;color:var(--text-muted);font-family:var(--mono-font);line-height:1.35;overflow-wrap:anywhere}
  .sw b{color:var(--text);font-family:var(--user-font)}
  .sw em{font-style:normal}
@@ -157,7 +157,7 @@ document.documentElement.lang=zh?'zh-CN':'en';
 if(window.parent!==window)document.querySelector('.lib-intro')?.remove();
 ${js}
 // Report height so the portfolio can size the iframe.
-const post=()=>parent.postMessage({type:'gocus-embed-height',page:location.pathname.split('/').pop(),height:document.documentElement.scrollHeight},'*');
+const post=()=>parent.postMessage({type:'gocus-embed-height',page:location.pathname.split('/').pop(),height:Math.ceil(document.body.getBoundingClientRect().height)},'*');
 new ResizeObserver(post).observe(document.body);addEventListener('load',post);
 </script></body></html>`;
 const card = (en, zh, pen, pzh, body, cls = '') => `<section class="lib-card ${cls}"><h3 data-zh="${zh}">${en}</h3><p data-zh="${pzh}">${pen}</p>${body}</section>`;
@@ -250,19 +250,19 @@ pills += s(['Branch pill', '分支标签'], branchPill) + '</div>';
 // Commit rows: one commit, three states.
 const row = parts.rowSelected && await v(parts.rowSelected, { sel: '.is-selected', rm: 'is-selected' }, { sel: '.commit-select', attr: { 'aria-pressed': 'false' } }, { sel: '.commit-actions', del: true });
 const rows = row ? `<div class="col">${s(S.def, row)}${s(S.hover, await hover(row, '.commit-row'))}${s(S.selected, parts.rowSelected)}</div>` : '';
-// Menus: states composed inside one real menu.
-const apps = parts.appsMenu && await hover(parts.appsMenu, '.ui-menu-item:nth-child(3)');
-const branches = parts.branchMenu && await v(parts.branchMenu, { sel: '.branch-ref-menu-row:nth-child(2) .ui-menu-item', add: 'is-hover' }, { sel: '.branch-ref-menu-row:nth-child(3) .branch-switch-button', add: 'is-hover' });
+// Menus: one highlight per menu, as in the app (the pointer is only ever on one row).
+const apps = parts.appsMenu;
+const branches = parts.branchMenu && await v(parts.branchMenu, { sel: '.branch-ref-menu-row:nth-child(3) .branch-switch-button', add: 'is-hover' });
 
 const library = shared + `<style>${stateCss}</style>
 <p class="lib-intro" data-zh="这些组件直接取自 Gocus 0.1.12 的界面，使用原版 CSS；状态由原版的 :hover / :focus 规则生成。">Components lifted from the Gocus 0.1.12 interface with its original CSS. States are generated from the interface’s own :hover and :focus rules.</p>
 <div class="board">
 ${tile(['Button', '按钮'], '.ui-button', buttons)}
 ${tile(['Commit row', '提交行'], '.commit-row', rows)}
-${tile(['Open-in menu', '打开方式菜单'], '.ui-menu-item', s([[...S.active, ], ['Hover · row 3', '悬停 · 第 3 项']], apps, 'is-menu'))}
+${tile(['Open-in menu', '打开方式菜单'], '.ui-menu-item', s([S.active, ['Current app', '当前应用']], apps, 'is-menu'))}
 ${tile(['Icon button', '图标按钮'], '.ui-icon-button · .icon-button', icons)}
 ${tile(['View chips', '视图切换'], '.view-chip', chips)}
-${tile(['Branch menu', '分支菜单'], '.branch-ref-menu', s([S.hover, ['Switch hover', '切换按钮悬停']], branches, 'is-menu'))}
+${tile(['Branch menu', '分支菜单'], '.branch-ref-menu', s([S.hover, ['Switch button', '切换按钮']], branches, 'is-menu'))}
 ${tile(['Segmented control', '分段控件'], '.ui-segmented', segs)}
 ${tile(['Search field', '搜索框'], '.commit-search', search)}
 ${tile(['Confirmation dialog', '确认对话框'], '.ui-dialog', s(null, parts.dialog))}

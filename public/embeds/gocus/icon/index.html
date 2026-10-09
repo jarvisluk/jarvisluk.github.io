@@ -8,16 +8,21 @@
  :root{--bg:#121212;--card:#181818;--line:rgba(255,255,255,.09);--text:#eceae6;--muted:#9b9893;--faint:#6d6a66;--amber:#f0a400;--blue:#2f86d8;--tile:#1f1f1f;
   --mono:ui-monospace,"SF Mono",Menlo,monospace}
  html,body{background:var(--bg);margin:0}
+ /* The frame is sized to the page, so it never needs its own scrollbar (the exploded 3D stack would otherwise overflow it). */
+ html{overflow:hidden}
  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",sans-serif;color:var(--text);padding:8px 24px 40px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
- .wrap{max-width:1080px;margin:0 auto;display:grid;gap:18px}
+ .wrap{max-width:1080px;margin:0 auto;display:grid;gap:0;border-bottom:1px solid var(--line)}
  h3{margin:0 0 4px;font-size:13px;font-weight:700}
  p{margin:0;font-size:12px;line-height:1.55;color:var(--muted)}
  code,.mono{font-family:var(--mono);font-size:11px}
- .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+ /* No panels behind the content: parts are separated by rules, description on the left, content on the right. */
+ .card{border-top:1px solid var(--line);padding:28px 0}
+ .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:40px;align-items:start}
+ .split>header p{margin-top:6px}
 
  /* Stage: the icon, assembled or exploded into its layers */
  .stage{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:center}
- .view{position:relative;aspect-ratio:1;perspective:1600px;display:grid;place-items:center;overflow:hidden;border-radius:10px;background:radial-gradient(circle at 50% 45%,#1b1b1b,#121212 70%)}
+ .view{position:relative;aspect-ratio:1;perspective:1600px;display:grid;place-items:center;overflow:hidden}
  .stack{position:relative;width:62%;aspect-ratio:1;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
  .stack svg.layer{position:absolute;inset:0;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .25s,filter .25s;overflow:visible}
  .exploded .stack{transform:translateY(9%) rotateX(56deg) rotateZ(-38deg) scale(.8)}
@@ -32,47 +37,54 @@
  .construct .guides{opacity:1}
  .exploded .guides{opacity:0}
  .controls{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
- .controls button{font:inherit;font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 11px;cursor:pointer}
- .controls button[aria-pressed=true]{color:#151515;background:var(--text);border-color:var(--text)}
- .layers{list-style:none;margin:0;padding:0;display:grid;gap:2px}
- .layers li{display:grid;grid-template-columns:22px 34px 1fr;gap:12px;align-items:center;padding:9px 8px;border-radius:9px;cursor:default;border:1px solid transparent}
- .layers li:hover,.layers li.on{background:rgba(255,255,255,.04);border-color:var(--line)}
+ .controls{gap:18px;border-bottom:1px solid var(--line)}
+ .controls button{font:inherit;font-size:12px;color:var(--muted);background:transparent;border:0;border-bottom:1px solid transparent;margin-bottom:-1px;padding:0 0 10px;cursor:pointer}
+ .controls button[aria-pressed=true]{color:var(--text);border-bottom-color:var(--amber)}
+ .layers{list-style:none;margin:0;padding:0;display:grid}
+ .layers li{display:grid;grid-template-columns:22px 34px 1fr;gap:12px;align-items:center;padding:11px 0;cursor:default;border-bottom:1px solid var(--line)}
+ .layers li:hover b,.layers li.on b{color:var(--amber)}
  .layers .n{font-family:var(--mono);font-size:11px;color:var(--faint)}
  .layers .th{width:34px;height:34px;border-radius:8px;background:#0e0e0e;display:block}
  .layers b{display:block;font-size:12.5px;font-weight:600}
  .layers span{display:block;font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:1px}
 
- /* Element cards */
- .els{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
- .el{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
- .el svg{display:block;width:100%;aspect-ratio:1;background:#0e0e0e}
- .el div{padding:12px 13px 14px;display:grid;gap:6px}
- .el dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-family:var(--mono);font-size:10.5px}
- .el dt{color:var(--faint)} .el dd{margin:0;color:var(--muted)}
  .op{display:none}
 
  .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
- .sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
- .sw div{border:1px solid var(--line);border-radius:10px;overflow:hidden}
- .sw i{display:block;height:58px}
- .sw span{display:block;padding:7px 9px;font-size:11px;line-height:1.45;color:var(--muted)}
+ .sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+ .sw i{display:block;width:56px;height:56px;box-shadow:inset 0 0 0 1px var(--line)}
+ .sw span{display:block;padding:8px 0 0;font-size:11px;line-height:1.45;color:var(--muted)}
  .sw code{display:block;color:var(--text)}
- .sizes{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-top:16px}
+ .sizes{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}
  .sizes figure{margin:0;display:grid;justify-items:center;gap:8px}
  .sizes figcaption{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
- .bars{display:grid;gap:10px;margin-top:14px}
- .bar{display:flex;align-items:center;gap:14px;height:30px;padding:0 12px;border-radius:7px;font-size:12px}
- .bar.light{background:#ecebe8;color:#1d1d1d}
- .bar.dark{background:#2a2a2a;color:#e8e8e8;border:1px solid var(--line)}
- .bar svg{width:16px;height:16px}
- .bar.light .t{color:#000}.bar.dark .t{color:#fff}
- .bar .sp{flex:1}
- .bar .mono{opacity:.55}
- .tray{display:flex;gap:16px;align-items:center;margin-top:14px}
- .tray svg{background:#0e0e0e;border-radius:10px;border:1px solid var(--line)}
+ /* The right end of a macOS menu bar (status items), drawn to the system's proportions: 24 pt bar, 13 pt menus, translucent over the wallpaper. */
+ .desk{position:relative;height:130px;overflow:hidden;border:1px solid var(--line)}
+ .desk.light{background:linear-gradient(135deg,#9ec5e8 0%,#c9b8e6 45%,#f1c9a8 100%)}
+ .desk.dark{background:linear-gradient(135deg,#0f2338 0%,#2a1f44 50%,#3d2a2a 100%);height:400px}
+ .mb{position:absolute;inset:0 0 auto;height:24px;display:flex;align-items:center;justify-content:flex-end;gap:18px;padding:0 12px;white-space:nowrap;font:13px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;-webkit-backdrop-filter:blur(30px) saturate(1.6);backdrop-filter:blur(30px) saturate(1.6)}
+ .light .mb{background:rgba(246,246,246,.62);color:#000}
+ .dark .mb{background:rgba(26,26,30,.55);color:#fff}
+ .mb svg{display:block;fill:currentColor}
+ .mb>*{flex-shrink:0}
+ .mb .st{position:relative;display:flex;align-items:center;justify-content:center;height:22px;padding:0 6px;margin:0 -6px;border-radius:5px}
+ .mb .st svg{width:16px;height:16px}
+ .mb .st.open{background:rgba(255,255,255,.22)}
+ .mb .sys{width:17px;height:13px}
+ .mb time{font-variant-numeric:tabular-nums}
+ .menu{position:absolute;top:27px;left:0;width:236px;padding:5px;border-radius:10px;background:rgba(40,40,44,.72);-webkit-backdrop-filter:blur(40px) saturate(1.8);backdrop-filter:blur(40px) saturate(1.8);box-shadow:0 0 0 .5px rgba(0,0,0,.6),inset 0 0 0 .5px rgba(255,255,255,.18),0 12px 36px rgba(0,0,0,.4);font:13px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;color:#fff}
+ .menu i{display:flex;align-items:center;height:22px;padding:0 10px 0 22px;border-radius:5px;font-style:normal;position:relative}
+ .menu i.hl{background:#0a64d8}
+ .menu i.off{color:rgba(255,255,255,.3)}
+ .menu i.on::before{content:"✓";position:absolute;left:7px;font-size:11px}
+ .menu i.sub::after{content:"";position:absolute;right:10px;width:5px;height:5px;border:solid currentColor;border-width:1.5px 1.5px 0 0;transform:rotate(45deg)}
+ .menu hr{border:0;height:1px;margin:5px 10px;background:rgba(255,255,255,.12)}
+ .tray{display:flex;gap:16px;align-items:center}
+ .tray svg{border:1px solid var(--line)}
 
- @media(max-width:860px){.stage,.two{grid-template-columns:1fr}.els{grid-template-columns:repeat(3,minmax(0,1fr))}}
- @media(max-width:520px){body{padding:4px 12px 28px}.els{grid-template-columns:repeat(2,minmax(0,1fr))}.sw{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:14px}}
+ /* Side by side down to tablet widths; stacked only on phones. */
+ @media(max-width:600px){.stage,.two,.split{grid-template-columns:1fr;gap:20px}.menu{left:auto;right:-120px}}
+ @media(max-width:520px){body{padding:4px 12px 28px}.sw{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style></head>
 <body><div class="wrap">
 
@@ -114,8 +126,8 @@
  <div>
   <div class="controls" role="group">
    <button type="button" data-mode="assembled" aria-pressed="true" data-zh="组合">Assembled</button>
-   <button type="button" data-mode="exploded" aria-pressed="false" data-zh="拆开图层">Exploded</button>
    <button type="button" data-mode="construct" aria-pressed="false" data-zh="结构线">Construction</button>
+   <button type="button" data-mode="exploded" aria-pressed="false" data-zh="拆开图层">Exploded</button>
   </div>
   <ol class="layers" id="layers">
    <li data-l="main"><em class="n">05</em><svg class="th" viewBox="0 0 840 840"><use href="#main"/></svg><div><b data-zh="主线">Main line</b><span data-zh="琥珀色竖轨和三个提交节点，就是面板里的当前分支">An amber rail with three commits: the current branch in the panel.</span></div></li>
@@ -127,58 +139,45 @@
  </div>
 </section>
 
-<section class="els" id="els"></section>
 
-<section class="two">
- <div class="card">
-  <h3 data-zh="颜色">Colour</h3>
-  <p data-zh="四个颜色都来自界面：底板是深色面板，琥珀是主线和强调色，蓝色是第一条分支">All four come from the interface: the dark panel, the amber main line and accent, and the first branch blue.</p>
-  <div class="sw">
+<section class="card split">
+ <header><h3 data-zh="颜色">Colour</h3>
+ <p data-zh="四个颜色都来自界面：底板是深色面板，琥珀是主线和强调色，蓝色是第一条分支">All four come from the interface: the dark panel, the amber main line and accent, and the first branch blue.</p></header>
+ <div class="sw">
    <div><i style="background:#1f1f1f;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)"></i><span><code>#1F1F1F</code><em data-zh="底板">Tile</em></span></div>
    <div><i style="background:#f0a400"></i><span><code>#F0A400</code><em data-zh="主线">Main line</em></span></div>
    <div><i style="background:#2f86d8"></i><span><code>#2F86D8</code><em data-zh="分支">Branch</em></span></div>
    <div><i style="background:#1f1f1f url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%222%22 fill=%22%23fff%22 opacity=%22.18%22/%3E%3C/svg%3E')"></i><span><code>#FFF · 18%</code><em data-zh="点阵">Dots</em></span></div>
   </div>
- </div>
- <div class="card">
-  <h3 data-zh="尺寸">Sizes</h3>
-  <p data-zh="同一张矢量图从 1024 一直缩到 16；轨道和节点够粗，小尺寸也认得出">One vector from 1024 down to 16; the rails and nodes are heavy enough to survive small sizes.</p>
-  <div class="sizes" id="sizes"></div>
- </div>
+</section>
+<section class="card split">
+ <header><h3 data-zh="尺寸">Sizes</h3>
+ <p data-zh="同一张矢量图从 1024 一直缩到 16；轨道和节点够粗，小尺寸也认得出">One vector from 1024 down to 16; the rails and nodes are heavy enough to survive small sizes.</p></header>
+ <div class="sizes" id="sizes"></div>
 </section>
 
-<section class="card">
- <h3 data-zh="菜单栏图标">Menu bar icon</h3>
- <p data-zh="菜单栏用的是同一个图形的 16 像素单色模板：去掉底板、点阵和颜色，只留轨道和四个节点，macOS 会按菜单栏明暗自动反色。">The menu bar uses a 16 px monochrome template of the same mark: no tile, dots or colour, only the rails and four nodes. macOS inverts it for light and dark menu bars.</p>
- <div class="two" style="margin-top:4px">
+<section class="card split">
+ <header><h3 data-zh="菜单栏图标">Menu bar icon</h3>
+ <p data-zh="菜单栏用的是同一个图形的 16 像素单色模板：去掉底板、点阵和颜色，只留轨道和四个节点，macOS 会按菜单栏明暗自动反色。">The menu bar uses a 16 px monochrome template of the same mark: no tile, dots or colour, only the rails and four nodes. macOS inverts it for light and dark menu bars.</p></header>
+ <div style="display:grid;gap:18px">
   <div class="tray">
    <svg width="128" height="128" viewBox="0 0 16 16" style="color:#eceae6"><g opacity=".12" stroke="#fff" stroke-width=".04"><path d="M0 .5h16M0 1.5h16M0 2.5h16M0 3.5h16M0 4.5h16M0 5.5h16M0 6.5h16M0 7.5h16M0 8.5h16M0 9.5h16M0 10.5h16M0 11.5h16M0 12.5h16M0 13.5h16M0 14.5h16M0 15.5h16M.5 0v16M1.5 0v16M2.5 0v16M3.5 0v16M4.5 0v16M5.5 0v16M6.5 0v16M7.5 0v16M8.5 0v16M9.5 0v16M10.5 0v16M11.5 0v16M12.5 0v16M13.5 0v16M14.5 0v16M15.5 0v16"/></g><use href="#tray"/></svg>
    <dl class="mono" style="margin:0;display:grid;grid-template-columns:auto auto;gap:4px 12px;color:var(--muted)"><dt style="color:var(--faint)">canvas</dt><dd style="margin:0">16 × 16 pt</dd><dt style="color:var(--faint)">stroke</dt><dd style="margin:0">1.8</dd><dt style="color:var(--faint)">node</dt><dd style="margin:0">r 1.6</dd><dt style="color:var(--faint)">file</dt><dd style="margin:0">trayTemplate</dd></dl>
   </div>
-  <div class="bars">
-   <div class="bar light"><span class="mono">Gocus</span><span class="sp"></span><svg viewBox="0 0 16 16" class="t"><use href="#tray"/></svg><span class="mono">Wi-Fi</span><span class="mono">10:24</span></div>
-   <div class="bar dark"><span class="mono">Gocus</span><span class="sp"></span><svg viewBox="0 0 16 16" class="t"><use href="#tray"/></svg><span class="mono">Wi-Fi</span><span class="mono">10:24</span></div>
+  <div class="bars" style="display:grid;gap:14px">
+   <figure class="desk light" style="margin:0"><div class="mb"><span class="st" title="Gocus"><svg viewBox="0 0 16 16"><use href="#tray"/></svg></span><svg class="sys" viewBox="0 0 17 13"><path d="M8.5 2.6c2.5 0 4.8 1 6.5 2.6l1.3-1.3C14.2 1.9 11.5.8 8.5.8S2.8 1.9.7 3.9L2 5.2c1.7-1.6 4-2.6 6.5-2.6zm0 3.6c1.5 0 2.9.6 3.9 1.6l1.3-1.3C12.4 5.2 10.5 4.4 8.5 4.4S4.6 5.2 3.3 6.5l1.3 1.3c1-1 2.4-1.6 3.9-1.6zm0 3.6c.6 0 1.1.2 1.4.6L8.5 11.8 7.1 10.4c.3-.4.8-.6 1.4-.6z"/></svg><svg class="sys" viewBox="0 0 25 12" style="width:25px"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="15" height="8" rx="1.6"/><path d="M23 4v4c.8-.3 1.3-1.1 1.3-2S23.8 4.3 23 4z" opacity=".5"/></svg><svg class="sys" viewBox="0 0 16 13" style="width:16px"><rect x=".7" y=".7" width="14.6" height="4.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12.9" cy="3.1" r="1.6"/><rect x=".7" y="7.5" width="14.6" height="4.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="3.1" cy="9.9" r="1.6"/></svg><time>Tue 7 Oct&nbsp;&nbsp;10:24</time></div></figure>
+   <figure class="desk dark" style="margin:0"><div class="mb"><span class="st open" title="Gocus"><svg viewBox="0 0 16 16"><use href="#tray"/></svg><div class="menu"><i class="hl">Show Gocus</i><i>Collapse to Edge Tab</i><i>Dock to Screen Edge</i><hr><i>Open Working Folder...</i><i class="sub">Open Recent</i><i>Refresh Git Data</i><i>Reveal Working Folder</i><hr><i class="on">Always on Top</i><hr><i>Check for Updates...</i><hr><i>Quit Gocus</i></div></span><svg class="sys" viewBox="0 0 17 13"><path d="M8.5 2.6c2.5 0 4.8 1 6.5 2.6l1.3-1.3C14.2 1.9 11.5.8 8.5.8S2.8 1.9.7 3.9L2 5.2c1.7-1.6 4-2.6 6.5-2.6zm0 3.6c1.5 0 2.9.6 3.9 1.6l1.3-1.3C12.4 5.2 10.5 4.4 8.5 4.4S4.6 5.2 3.3 6.5l1.3 1.3c1-1 2.4-1.6 3.9-1.6zm0 3.6c.6 0 1.1.2 1.4.6L8.5 11.8 7.1 10.4c.3-.4.8-.6 1.4-.6z"/></svg><svg class="sys" viewBox="0 0 25 12" style="width:25px"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="15" height="8" rx="1.6"/><path d="M23 4v4c.8-.3 1.3-1.1 1.3-2S23.8 4.3 23 4z" opacity=".5"/></svg><svg class="sys" viewBox="0 0 16 13" style="width:16px"><rect x=".7" y=".7" width="14.6" height="4.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12.9" cy="3.1" r="1.6"/><rect x=".7" y="7.5" width="14.6" height="4.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="3.1" cy="9.9" r="1.6"/></svg><time>Tue 7 Oct&nbsp;&nbsp;10:24</time></div></figure>
   </div>
  </div>
 </section>
+
+
 
 </div>
 <script>
 const zh=new URLSearchParams(location.search).get('lang')==='zh';
 const T=(en,z)=>zh?z:en;
 const ns='http://www.w3.org/2000/svg';
-
-// Element cards: each layer alone, with its numbers from the original SVG.
-const els=[
- ['tile',T('Tile','底板'),[['size','840 / 1024'],['radius','206'],['fill','#1F1F1F']]],
- ['dots',T('Dot grid','点阵'),[['pitch','104'],['dot','r 13 · 18%'],['fade','62% → 100%']]],
- ['depth',T('Depth','投影'),[['copies','3'],['offset','5,7 → 20,24'],['opacity','13 → 7%']]],
- ['main',T('Main line','主线'),[['x','356'],['y','233 · 413 · 594'],['stroke','46 · r 55']]],
- ['branch',T('Branch','分支'),[['from','356, 413'],['to','520, 520'],['fill','#2F86D8']]],
-];
-document.getElementById('els').innerHTML=els.map(([id,name,rows],i)=>
- `<article class="el"><svg viewBox="0 0 1024 1024"${id==='depth'?' style="background:#d8d6d2"':''}><g transform="translate(92 92)">${id==='tile'?'':'<rect width="840" height="840" rx="206" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="4" stroke-dasharray="12 14"/>'}<use href="#${id}"/></g></svg>
-  <div><h3><span class="mono" style="color:var(--faint);margin-right:8px">0${i+1}</span>${name}</h3><dl>${rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div></article>`).join('');
 
 // Size ramp.
 document.getElementById('sizes').innerHTML=[128,64,32,16].map(s=>`<figure><svg width="${s}" height="${s}" viewBox="0 0 1024 1024"><g transform="translate(92 92)"><use href="#icon"/></g></svg><figcaption>${s}</figcaption></figure>`).join('');
@@ -227,7 +226,7 @@ items.forEach(li=>{li.onmouseenter=()=>focus(li.dataset.l);li.onmouseleave=()=>f
 
 document.querySelectorAll('[data-zh]').forEach(e=>{if(zh)e.textContent=e.dataset.zh});
 document.documentElement.lang=zh?'zh-CN':'en';
-const post=()=>parent.postMessage({type:'gocus-embed-height',page:'icon',height:document.documentElement.scrollHeight},'*');
+const post=()=>parent.postMessage({type:'gocus-embed-height',page:'icon',height:Math.ceil(document.body.getBoundingClientRect().height)},'*');
 new ResizeObserver(post).observe(document.body);addEventListener('load',post);
 </script>
 </body></html>

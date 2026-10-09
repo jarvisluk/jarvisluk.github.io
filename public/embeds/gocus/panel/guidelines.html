@@ -29,7 +29,7 @@
  .tok .v{color:var(--text-faint);font-family:var(--mono-font);font-size:11px}
  .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px 10px}
  .sw div{font-size:10px;min-width:0}
- .sw i{display:block;height:26px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--border-soft)}
+ .sw i{display:block;width:44px;height:44px;box-shadow:inset 0 0 0 1px var(--border-soft)}
  .sw span{display:block;padding:5px 0 0;color:var(--text-muted);font-family:var(--mono-font);line-height:1.35;overflow-wrap:anywhere}
  .sw b{color:var(--text);font-family:var(--user-font)}
  .sw em{font-style:normal}
@@ -80,6 +80,6 @@ const resolve=v=>{const p=document.createElement('div');p.style.cssText='positio
 document.querySelectorAll('[data-var]').forEach(e=>{e.textContent=resolve(e.dataset.var)});
 
 // Report height so the portfolio can size the iframe.
-const post=()=>parent.postMessage({type:'gocus-embed-height',page:location.pathname.split('/').pop(),height:document.documentElement.scrollHeight},'*');
+const post=()=>parent.postMessage({type:'gocus-embed-height',page:location.pathname.split('/').pop(),height:Math.ceil(document.body.getBoundingClientRect().height)},'*');
 new ResizeObserver(post).observe(document.body);addEventListener('load',post);
 </script></body></html>

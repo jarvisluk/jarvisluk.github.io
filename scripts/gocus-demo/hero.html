@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;box-sizing:border-box}
+html,body{width:1600px;height:1000px;overflow:hidden}
+body{background:#121212;color:#f4f1ea;font-family:-apple-system,'SF Pro Display','Helvetica Neue',sans-serif;position:relative}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1.2px,transparent 1.4px);background-size:28px 28px;
+ -webkit-mask-image:radial-gradient(ellipse 70% 80% at 72% 50%,#000 20%,transparent 75%)}
+.glow{position:absolute;width:900px;height:900px;left:820px;top:80px;background:radial-gradient(circle,rgba(242,180,49,.16),transparent 62%)}
+.copy{position:absolute;left:120px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center}
+.brand{display:flex;align-items:center;gap:18px;margin-bottom:44px}
+.brand img{width:76px;height:76px}
+.brand b{font-size:40px;font-weight:700;letter-spacing:-.02em}
+h1{font-size:60px;line-height:1.08;font-weight:700;letter-spacing:-.025em}
+p{margin-top:28px;font-size:23px;line-height:1.5;color:#a9a59c;max-width:560px}
+.btns{display:flex;gap:14px;margin-top:44px}
+.btn{height:58px;padding:0 26px;border-radius:12px;display:flex;align-items:center;gap:12px;font-size:19px;font-weight:600}
+.btn.pri{background:#f2b431;color:#1a1408}
+.btn.sec{background:#1f1f1f;border:1px solid #333;color:#f4f1ea}
+.btn svg{width:20px;height:20px}
+.panel{position:absolute;width:336px;border-radius:24px;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 40px 90px rgba(0,0,0,.65)}
+.p1{left:1000px;top:68px;height:861px;z-index:2}
+.p2{left:1250px;top:150px;height:861px;opacity:.5;-webkit-mask-image:linear-gradient(90deg,#000 30%,transparent 95%)}
+.tag{position:absolute;left:120px;bottom:64px;font-size:16px;color:#6e6a62;letter-spacing:.02em}
+</style></head><body>
+<div class="dots"></div><div class="glow"></div>
+<div class="copy">
+ <div class="brand"><img src="../../source-assets/gocus/app-icon.svg"><b>Gocus</b></div>
+ <h1>See AI-agent Git history without leaving your flow.</h1>
+ <p>A compact side-floating Git surface for Codex, Claude Code, Antigravity, and other AI-native editors.</p>
+ <div class="btns">
+  <span class="btn pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Download for macOS</span>
+  <span class="btn sec">View GitHub Releases</span>
+ </div>
+</div>
+<img class="panel p2" src="../../source-assets/gocus/branch.png"><img class="panel p1" src="../../source-assets/gocus/main.png">
+<div class="tag">macOS · Windows &nbsp;&nbsp;v0.1.12</div>
+</body></html>

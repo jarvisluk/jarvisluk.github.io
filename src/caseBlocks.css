@@ -261,5 +261,33 @@
 .case-embed.is-app .case-embed-frame{border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.09)}
 .case-embed.is-sheet .case-embed-frame{width:100%}
 .case-embed.is-sheet iframe{min-height:400px}
+.case-embed.is-site .case-embed-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,.08)}
+@media(max-width:700px){.case-embed.is-site iframe{height:640px!important}}
 .case-embed figcaption{display:flex;justify-content:center;gap:16px;margin-top:14px;font-size:12px;color:var(--muted);text-align:center}
 .case-embed figcaption a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* A live page as the case hero (Gocus: the working panel), centred on the page's own background, no frame. */
+.case-hero.hero-embed{height:auto;background:transparent;display:block;overflow:visible;padding-block:24px}
+/* Action buttons under a case's description (Gocus: the site's download buttons, in its own colours). */
+.detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.detail-actions a{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 16px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:#1f1f1f;color:#f1f1f1;font-size:14px;font-weight:600;transition:background .15s,filter .15s}
+.detail-actions a:hover{background:#2f2f2f}
+/* Primary action colour per project (study.actionColor), Gocus amber by default. */
+.detail-actions a.is-primary{background:var(--action,#f0b43a);border-color:transparent;color:var(--action-ink,#121212);box-shadow:0 10px 26px color-mix(in srgb,var(--action,#f0b43a) 20%,transparent)}
+.detail-actions a.is-primary:hover{filter:brightness(1.06)}
+.detail-actions svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* Live hero on the right, the lead stacked on the left. */
+.detail-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;margin-top:38px;padding-bottom:90px}
+/* Two halves: the lead and brief stacked on the left, centred against the panel, which sits in the middle of the right half. */
+.detail-split .detail-lead.is-stacked{display:block;margin:0}
+.detail-split .detail-lead.is-stacked p{max-width:none}
+.detail-split .detail-lead.is-stacked p{margin-top:28px}
+.detail-split .detail-lead.is-stacked .detail-credit{margin-top:12px}
+.detail-split .case-hero.hero-embed{padding:0;justify-self:center}
+@media(max-width:900px){.detail-split{grid-template-columns:1fr;gap:36px;margin-top:25px;padding-bottom:40px}}
+/* Challenge / approach / outcome fill the left column under the lead, one per row between rules. */
+.detail-split .brief-grid{display:grid;grid-template-columns:1fr;gap:0;padding:48px 0 0}
+.detail-split .brief-grid>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:20px;padding-block:20px;border-top:1px solid var(--line)}
+.detail-split .brief-grid>div:last-child{border-bottom:1px solid var(--line)}
+.detail-split .brief-grid h3{margin:0;font-size:15px}
+.detail-split .brief-grid p{font-size:14px;line-height:1.8}
+@media(max-width:900px){.detail-split .brief-grid{padding-top:36px}.detail-split .brief-grid>div{grid-template-columns:1fr;gap:10px}}

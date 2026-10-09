@@ -1,9 +1,14 @@
 const bi = (zh, en) => ({ zh, en });
 // Home timeline, oldest first, with the (approximate) year each project was made.
+// `lab` entries are side projects (labProjects below), ordered by repo creation date; they expand on hover.
 export const timeline = [
  { id: 'matrix', year: 2023 }, { id: 'flexbench', year: 2024 }, { id: 'soundbricks', year: 2024 },
  { id: 'pawpals', year: 2025 }, { id: 'sf-eats', year: 2025 }, { id: 'just-a-2nd', year: 2025 },
- { id: 'gocus', year: 2025 }, { id: 'bambu-lab', year: 2025 }, { id: 'shokz', year: 2026 },
+ { id: 'gocus', year: 2025 }, { id: 'bambu-lab', year: 2025 },
+ { lab: 'damage-sensor-tape', year: 2026 }, { lab: 'do-not-tamper', year: 2026 },
+ { lab: 'splatoon-squid-codex-pet', year: 2026 }, { lab: 'codex-order-reset', year: 2026 }, { lab: 'remilia-codex-pet', year: 2026 },
+ { lab: 'zzz-proton-fix', year: 2026 }, { lab: 'easyeda-pcb-design', year: 2026 }, { lab: 'dsh-projectless-session', year: 2026 }, { lab: 'dsh-session-index', year: 2026 },
+ { id: 'web-style', year: 2026 }, { id: 'shokz', year: 2026 },
 ];
 export const categories = [
  { id: 'all', label: bi('全部', 'All') },
@@ -93,7 +98,17 @@ export const projects = [
   chapters:[],
  },
  {
-  id:'shokz',name:'OpenSwim Pro 2',cover:'shokz-cover',categories:['digital'],color:'#e9f0f5',pages:[],
+  id:'web-style',name:'Web Style Visualisation',cover:'web-style-cover',categories:['digital'],color:'#e8edf5',pages:[],
+  subtitle:bi('风格名词，拆成参数','Style names, turned into parameters.'),
+  type:bi('Agent 设计工具 · WebMCP','Agent design tool · WebMCP'),
+  intro:bi('一个给人和 Agent 共用的设计工具：选一种风格，整张示例页实时换肤，调好的参数导出成 CSS 变量；Agent 通过 WebMCP 直接操作同一个工作台。','A design tool shared by people and agents: pick a style, watch a full sample page restyle live, and export the result as CSS variables; agents drive the same studio through WebMCP.'),
+  brief:bi('“玻璃拟态”“粗野主义”这样的风格名词，怎样才能在一整页上看清，并落到具体的参数？','How can style names like glassmorphism or brutalism be seen on a whole page and pinned down to concrete parameters?'),
+  approach:bi('同一张示例页在 10 种风格间切换，每种风格拆成一组校验过的 CSS 变量；工作台与预览分开配色，生成交给外部 Agent。','One sample page switches between 10 styles, each broken into a validated set of CSS variables; the studio keeps its own palette, and generation is left to outside agents.'),
+  output:bi('在线工作台、WebMCP 工具、JS API 与 Agent Skill。','A live studio, WebMCP tools, a JS API and an Agent Skill.'),
+  chapters:[],
+ },
+ {
+  id:'shokz',name:'OpenSwim Pro 2 UX Design',cover:'shokz-cover',categories:['digital'],color:'#e9f0f5',pages:[],
   subtitle:bi('让耳机里的音乐，陪你游完每一程','Music and training, in the water.'),
   type:bi('App 体验设计 · 运动耳机','App experience design · Sports headphones'),
   intro:bi('为韶音 OpenSwim Pro 2 游泳耳机设计的配套 App，连接本地音乐管理、游泳训练和运动数据。','The companion app for the Shokz OpenSwim Pro 2 swimming headphones, bringing together on-board music, swim training and workout data.'),
@@ -115,47 +130,49 @@ export const copy = {
  lab:bi('小尝试','Lab'),labLabel:bi('作品集之外','Beyond the portfolio'),
  labTitle:bi('小项目与小尝试，','Small projects and experiments,'),labItalic:bi('都放在 GitHub','kept on GitHub.'),
  labText:bi('工具、插件、Agent Skills 和一些顺手做的实验。不一定完整，但都在持续生长。','Tools, plugins, agent skills and quick experiments. Not always finished, but always growing.'),
- labLink:bi('前往 GitHub','Visit GitHub'),labAll:bi('查看全部仓库','All repositories'),demo:bi('在线试用','Live demo'),contributions:bi('过去一年','in the last year'),contributionUnit:bi('次贡献','contributions'),less:bi('少','Less'),more:bi('多','More'),
+ labLink:bi('前往 GitHub','Visit GitHub'),labAll:bi('查看全部仓库','All repositories'),demo:bi('在线试用','Live demo'),repo:bi('仓库','Repo'),sideProject:bi('小尝试','Side project'),contributions:bi('过去一年','in the last year'),contributionUnit:bi('次贡献','contributions'),less:bi('少','Less'),more:bi('多','More'),
 };
 const gh = repo => `https://github.com/jarvisluk/${repo}`;
-// Side projects shown as cards in the Lab section; repos in the same series share one card.
+// Side projects shown as cards in the Lab section, ordered by quality; repos in the same series share one card.
 export const labProjects = [
  {
-  id:'codex-pets', series:bi('Codex 桌宠系列','Codex pets'), icons:['codex'], tags:['Codex','Sprite'],
-  media:[{src:'remilia-pet',alt:bi('蕾米桌宠的待机动画','Remilia pet idle animation')},{src:'squid-pet',alt:bi('像素鱿鱼桌宠的待机动画','Pixel squid pet idle animation'),pixel:true}],
-  items:[
-   {name:'Remilia Codex Pet',repo:gh('remilia-codex-pet'),stars:12,text:bi('以《绝区零》周边里的蕾米为原型，平滑、非像素化的 Codex 自定义桌宠。','A smooth, non-pixelated Codex pet based on Remilia from Zenless Zone Zero merchandise.')},
-   {name:'Splatoon Squid Codex Pet',repo:gh('splatoon-squid-codex-pet'),text:bi('黄色像素风鱿鱼桌宠，带完整动画和 16 个朝向。','A yellow pixel-art squid with complete animations and 16 look directions.')},
-  ],
- },
- {
   id:'death-stranding', series:bi('死亡搁浅道具生成器','Death Stranding prop generators'), tags:['Web','SVG'],
-  media:[{src:'do-not-tamper',alt:bi('“请勿篡改”贴纸生成器：贴纸预览和参数面板','Do Not Tamper generator: sticker preview and control panel'),cover:true},{src:'damage-sensor-tape',alt:bi('损伤感应胶带生成器：黄色胶带预览和参数面板','Damage Sensor Tape generator: yellow tape preview and control panel'),cover:true}],
+  media:[{src:'damage-sensor-tape',alt:bi('损伤感应胶带生成器：黄色胶带预览和参数面板','Damage Sensor Tape generator: yellow tape preview and control panel'),cover:true},{src:'do-not-tamper',alt:bi('“请勿篡改”贴纸生成器：贴纸预览和参数面板','Do Not Tamper generator: sticker preview and control panel'),cover:true}],
   items:[
-   {name:'Do Not Tamper',repo:gh('Do-Not-Temper'),demo:'https://do-not-tamper.pages.dev/',text:bi('“请勿篡改”贴纸生成器：调整标题、编号、追踪码、强调色和全息渐变，导出 PNG / SVG。','A “Do Not Tamper” sticker generator: tweak title, serial, tracking codes, accent and holographic gradient, then export PNG / SVG.')},
-   {name:'Damage Sensor Tape',repo:gh('damage-sensor-tape'),demo:'https://damage-sensor-tape.pages.dev/',stars:6,text:bi('损伤感应胶带生成器：实时预览，含 PDF417 条码，导出 PNG / SVG / PDF。','A damage sensor tape generator with live preview and a PDF417 barcode, exporting PNG / SVG / PDF.')},
+   {id:'damage-sensor-tape',date:'2026-04-07',short:'Sensor Tape',thumb:'damage-sensor-tape',name:'Damage Sensor Tape',repo:gh('damage-sensor-tape'),demo:'https://damage-sensor-tape.pages.dev/',stars:6,text:bi('损伤感应胶带生成器：实时预览，含 PDF417 条码，导出 PNG / SVG / PDF。','A damage sensor tape generator with live preview and a PDF417 barcode, exporting PNG / SVG / PDF.')},
+   {id:'do-not-tamper',date:'2026-04-21',short:'Do Not Tamper',thumb:'do-not-tamper',name:'Do Not Tamper',repo:gh('Do-Not-Temper'),demo:'https://do-not-tamper.pages.dev/',text:bi('“请勿篡改”贴纸生成器：调整标题、编号、追踪码、强调色和全息渐变，导出 PNG / SVG。','A “Do Not Tamper” sticker generator: tweak title, serial, tracking codes, accent and holographic gradient, then export PNG / SVG.')},
   ],
  },
  {
   id:'easyeda', series:bi('Agent Skill','Agent Skill'), icons:['easyeda'], tags:['EasyEDA Pro','PCB'],
   items:[
-   {name:'EasyEDA PCB Design',repo:gh('easyeda-pcb-design'),text:bi('让 Agent 在 EasyEDA Pro 里创建、修改和审查原理图与 PCB。按需加载对应流程，覆盖阻抗控制、高速、射频、BGA/HDI 与制造审查。','Lets an agent create, modify and review schematics and PCBs in EasyEDA Pro, loading only the workflows it needs — from controlled impedance and high-speed to RF, BGA/HDI and manufacturing review.')},
-  ],
- },
- {
-  id:'fixes', series:bi('技术修复','Fixes & workarounds'), icons:['steamdeck','codex'], tags:['Shell','Steam Deck','macOS'],
-  items:[
-   {name:'ZZZ Proton 11 Fix',repo:gh('zzz-steam-deck-proton11-fix'),text:bi('Steam Deck 上《绝区零》HoYoPlay 版在 Proton 10 / 11 下约 85 秒必崩的一键修复与启动器。不替换游戏文件，也不改动官方 Proton。','A one-click fix and launcher for the HoYoPlay build of Zenless Zone Zero crashing ~85 seconds in under Proton 10 / 11 on Steam Deck — without replacing game files or the official Proton.')},
-   {name:'Codex Project Order Reset',repo:gh('codex-project-order-reset'),text:bi('修复 macOS 版 ChatGPT / Codex 侧边栏项目顺序被锁住的问题：先备份状态文件，只删除两个排序字段，再重启应用。','Unlocks the stuck project order in the macOS ChatGPT / Codex sidebar: backs up the state file, removes only the two ordering keys, then relaunches the app.')},
+   {id:'easyeda-pcb-design',date:'2026-08-10',short:'EasyEDA Skill',icon:'easyeda',name:'EasyEDA PCB Design',repo:gh('easyeda-pcb-design'),text:bi('让 Agent 在 EasyEDA Pro 里创建、修改和审查原理图与 PCB。按需加载对应流程，覆盖阻抗控制、高速、射频、BGA/HDI 与制造审查。','Lets an agent create, modify and review schematics and PCBs in EasyEDA Pro, loading only the workflows it needs — from controlled impedance and high-speed to RF, BGA/HDI and manufacturing review.')},
   ],
  },
  {
   id:'dsh', series:bi('DeepSeek Harness 插件','DeepSeek Harness plugins'), icons:['deepseek'], tags:['DSH','Plugin'], wide:true,
   media:[{src:bi('dsh-projectless-zh','dsh-projectless-en'),alt:bi('工作区菜单里新增的“无工作区会话”选项','The new “Session without workspace” option in the Workspace picker'),cover:true}],
   items:[
-   {name:'Projectless Session',repo:gh('dsh-projectless-session'),text:bi('不选工作区也能开会话，每个会话自动获得按日期整理的独立工作目录。','Start a session without a workspace; each one gets its own date-organised working directory.')},
-   {name:'Session Index',repo:gh('dsh-session-index-plugin'),text:bi('为已有会话生成简短索引并复制路径，方便交给 Codex 等其他 Agent 接着做。','Writes a short index of an existing session and copies its path, so Codex or another agent can pick up the thread.')},
+   {id:'dsh-projectless-session',date:'2026-08-18',short:'Projectless',thumb:bi('dsh-projectless-zh','dsh-projectless-en'),name:'Projectless Session',repo:gh('dsh-projectless-session'),text:bi('不选工作区也能开会话，每个会话自动获得按日期整理的独立工作目录。','Start a session without a workspace; each one gets its own date-organised working directory.')},
+   {id:'dsh-session-index',date:'2026-08-19',short:'Session Index',icon:'deepseek',name:'Session Index',repo:gh('dsh-session-index-plugin'),text:bi('为已有会话生成简短索引并复制路径，方便交给 Codex 等其他 Agent 接着做。','Writes a short index of an existing session and copies its path, so Codex or another agent can pick up the thread.')},
+  ],
+ },
+ {
+  id:'codex-pets', series:bi('Codex 桌宠系列','Codex pets'), icons:['codex'], tags:['Codex','Sprite'],
+  media:[{src:'remilia-pet',alt:bi('蕾米桌宠的待机动画','Remilia pet idle animation')},{src:'squid-pet',alt:bi('像素鱿鱼桌宠的待机动画','Pixel squid pet idle animation'),pixel:true}],
+  items:[
+   {id:'remilia-codex-pet',date:'2026-07-29',short:'Remilia',thumb:'remilia-pet',name:'Remilia Codex Pet',repo:gh('remilia-codex-pet'),stars:12,text:bi('以《绝区零》周边里的蕾米为原型，平滑、非像素化的 Codex 自定义桌宠。','A smooth, non-pixelated Codex pet based on Remilia from Zenless Zone Zero merchandise.')},
+   {id:'splatoon-squid-codex-pet',date:'2026-07-21',short:'Squid',thumb:'squid-pet',pixel:true,name:'Splatoon Squid Codex Pet',repo:gh('splatoon-squid-codex-pet'),text:bi('黄色像素风鱿鱼桌宠，带完整动画和 16 个朝向。','A yellow pixel-art squid with complete animations and 16 look directions.')},
+  ],
+ },
+ {
+  id:'fixes', series:bi('技术修复','Fixes & workarounds'), icons:['steamdeck','codex'], tags:['Shell','Steam Deck','macOS'],
+  items:[
+   {id:'zzz-proton-fix',date:'2026-08-06',short:'ZZZ Fix',icon:'steamdeck',name:'ZZZ Proton 11 Fix',repo:gh('zzz-steam-deck-proton11-fix'),text:bi('Steam Deck 上《绝区零》HoYoPlay 版在 Proton 10 / 11 下约 85 秒必崩的一键修复与启动器。不替换游戏文件，也不改动官方 Proton。','A one-click fix and launcher for the HoYoPlay build of Zenless Zone Zero crashing ~85 seconds in under Proton 10 / 11 on Steam Deck — without replacing game files or the official Proton.')},
+   {id:'codex-order-reset',date:'2026-07-21',short:'Order Reset',icon:'codex',name:'Codex Project Order Reset',repo:gh('codex-project-order-reset'),text:bi('修复 macOS 版 ChatGPT / Codex 侧边栏项目顺序被锁住的问题：先备份状态文件，只删除两个排序字段，再重启应用。','Unlocks the stuck project order in the macOS ChatGPT / Codex sidebar: backs up the state file, removes only the two ordering keys, then relaunches the app.')},
   ],
  },
 ];
+// Every side project as one timeline entry, keyed by its id.
+export const labItems = labProjects.flatMap(g=>g.items.map(item=>({...item,series:g.series})));
 export const githubUrl='https://github.com/jarvisluk?tab=repositories&q=&type=&language=&sort=stargazers';

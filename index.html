@@ -30,7 +30,7 @@
       #intro{display:none}
       html.intro #intro{display:block;position:fixed;inset:0;z-index:300;pointer-events:none}
       #intro>div{position:absolute;inset:0;will-change:transform}
-      .intro-band{background:#182f28}
+      .intro-band{background:#2c5a46}
       .intro-cover{background:#d7ef69;display:grid;place-items:center}
       .intro-sq{width:14px;height:14px;background:#182f28;animation:intro-flip 1s cubic-bezier(.7,0,.2,1) infinite}
       .intro-bar{position:absolute;left:4.15vw;right:4.15vw;bottom:48px;height:1px;background:rgba(24,47,40,.18);overflow:hidden}
@@ -45,8 +45,14 @@
       (function(){
         if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
         var d=document.documentElement,p=location.pathname.replace(/\/+$/,'');d.classList.add('intro');
-        // Home opened at the top: after the curtain lifts, the project timeline plays. Anywhere else the page just fades in.
-        if((p===''||p==='/en')&&!location.hash)d.classList.add('intro-hero');window.__introT0=Date.now();
+        // Home: a page load always opens on the timeline (no jump to #work / #lab, no restored scroll), and after the
+        // curtain lifts the timeline plays. In-app links to #work still scroll there. Other pages just fade in.
+        if(p===''||p==='/en'){
+          if('scrollRestoration' in history)history.scrollRestoration='manual';
+          if(location.hash==='#work'||location.hash==='#lab')history.replaceState(history.state,'',location.pathname+location.search);
+          if(!location.hash)d.classList.add('intro-hero');
+        }
+        window.__introT0=Date.now();
         setTimeout(function(){if(!window.__introStarted){d.classList.remove('intro','intro-hero');var s=document.getElementById('intro');s&&s.remove();}},5000);
       })();
     </script><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>

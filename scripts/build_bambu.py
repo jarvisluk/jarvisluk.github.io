@@ -3,8 +3,8 @@
 Run with the project venv: .venv/bin/python scripts/build_bambu.py [ids...]
 The portfolio (Lu_Junrong_Portfolio.pdf pp. 11-18) reuses slides 1, 3, 13, 16, 20, 21, 22 and 24 of this deck.
 Boxes are in slide units (1920x1080). The Bambu Lab / PolyU Design logos are painted out by blending the
-background on either side of them, row by row. Co-design and interview photos show participants' faces, so those
-parts of the slides are cropped away.
+background on either side of them, row by row. The co-design slide keeps its workshop photos (cleared by the
+author); interview photos are left out.
 """
 from pathlib import Path
 import json, sys
@@ -38,7 +38,7 @@ BOARDS = {
  'bb-board-outcomes': (24, FULL, [L]),
  'bb-board-floor-after': (16, FULL, [R]),
  'bb-board-floor-before': (15, FULL, [R]),
- 'bb-board-codesign': (13, (0, 0, 1120, 1080), [(20, 25, 405, 105)]),
+ 'bb-board-codesign': (13, FULL, [(20, 25, 405, 105)]),
  'bb-board-insights': (14, FULL, [R]),
  'bb-board-goals': (3, FULL, [L]),
  'bb-board-stakeholders': (4, FULL, [(30, 40, 395, 120)]),

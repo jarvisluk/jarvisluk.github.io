@@ -110,7 +110,8 @@ function Video({block,lang}){
  </figure>;
 }
 
-// Live page from public/embeds (a working app or a styled component sheet). Pages post their height so the frame fits.
+// Live page from public/embeds (a working app or a styled component sheet), or a whole external site (block.site) in a framed window.
+// Embeds post their height so the frame fits; external sites keep block.height.
 function Embed({block,lang}){
  const ref=useRef(null),[height,setHeight]=useState(block.height);
  const src=`${block.src}${block.src.includes('?')?'&':'?'}lang=${lang}`;
@@ -119,7 +120,7 @@ function Embed({block,lang}){
   const on=e=>{if(e.source===ref.current?.contentWindow&&e.data?.type==='gocus-embed-height')setHeight(Math.ceil(e.data.height));};
   window.addEventListener('message',on);return()=>window.removeEventListener('message',on);
  },[block.fixed]);
- return <figure className={`case-embed ${block.fixed?'is-app':'is-sheet'}`}>
+ return <figure className={`case-embed ${block.fixed?'is-app':'is-sheet'}${block.site?' is-site':''}`}>
   <div className="case-embed-frame" style={block.fixed?{width:block.width,height:block.height}:undefined}>
    <iframe ref={ref} src={src} title={t(block.title,lang)} loading="lazy" style={block.fixed?undefined:{height}}/>
   </div>
