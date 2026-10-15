@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { projects, categories, copy, githubUrl, labProjects } from '../data';
 import Arrow from './Arrow';
 import { localize } from '../localize';
+import { format } from '../i18n';
 import Contributions from './Contributions';
 import Timeline from './Timeline';
 function ProjectCard({project,index,lang}) {
@@ -30,16 +31,16 @@ export default function Home({lang}) {
  const filtered=projects.filter(p=>filter==='all'||p.categories.includes(filter));
  return <>
   <main id="main">
-   <section className={`hero timeline-hero wrap ${lang==='zh'?'hero-zh':''}`} aria-label={lang==='zh'?'介绍':'Introduction'}>
+   <section className={`hero timeline-hero wrap ${lang==='zh'?'hero-zh':''}`} aria-label={copy.heroLabel[lang]}>
     <div className="hero-copy">
-     <h1>{(lang==='en'?['Design for','a little more','possibility.']:['以设计，','探索多一点','可能。']).map((t,i)=>{const Line=i===1?'em':'span';return <Line key={i}><span className="line-in">{t}</span></Line>;})}</h1>
+     <h1>{copy.heroLines[lang].map((t,i)=>{const Line=i===1?'em':'span';return <Line key={i}><span className="line-in">{t}</span></Line>;})}</h1>
     </div>
     <Timeline lang={lang}/>
    </section>
    <section id="work" className="work wrap">
-    <div className="section-top"><h2>{copy.selected[lang]} <em>{copy.works[lang]}</em><sup>{String(projects.length).padStart(2,'0')}</sup></h2><div className="filters" aria-label={lang==='zh'?'筛选项目':'Filter projects'}>{categories.map(c=><button key={c.id} onClick={()=>setFilter(c.id)} className={filter===c.id?'selected':''} aria-pressed={filter===c.id}>{c.label[lang]}</button>)}</div></div>
+    <div className="section-top"><h2>{copy.selected[lang]} <em>{copy.works[lang]}</em><sup>{String(projects.length).padStart(2,'0')}</sup></h2><div className="filters" aria-label={copy.filter[lang]}>{categories.map(c=><button key={c.id} onClick={()=>setFilter(c.id)} className={filter===c.id?'selected':''} aria-pressed={filter===c.id}>{c.label[lang]}</button>)}</div></div>
     <div className="project-grid" key={filter}>{filtered.map(p=><ProjectCard key={p.id} project={p} index={projects.indexOf(p)} lang={lang}/>)}</div>
-    <p className="project-count" aria-live="polite">{lang==='zh'?`正在展示 ${filtered.length} 个项目`:`Showing ${filtered.length} projects`}<span>IDEAS INTO EXPERIENCES</span></p>
+    <p className="project-count" aria-live="polite">{format(copy.showing[lang],{n:filtered.length})}<span>IDEAS INTO EXPERIENCES</span></p>
    </section>
    <section id="lab" className="lab wrap">
     <p className="section-label">{copy.labLabel[lang]}</p>

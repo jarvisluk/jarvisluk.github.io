@@ -19,7 +19,7 @@ export function matchRoute(path){
 }
 export function pageMeta(path){
  const {lang,project}=matchRoute(path);
- return {lang,title:`${project?project.name+' — ':''}${copy.name[lang]} — ${lang==='zh'?'设计作品集':'Design portfolio'}`,description:project?project.intro[lang]:copy.intro[lang]};
+ return {lang,title:`${project?project.name+' — ':''}${copy.name[lang]} — ${copy.siteTitle[lang]}`,description:project?project.intro[lang]:copy.intro[lang]};
 }
 
 export default function App({initialPath,initialHash=''}){
@@ -52,5 +52,5 @@ export default function App({initialPath,initialHash=''}){
   if(route.hash==='#work'||route.hash==='#lab')requestAnimationFrame(()=>document.getElementById(route.hash.slice(1))?.scrollIntoView({block:'start'}));
   else window.scrollTo({top:0,behavior:'instant'});
  },[route]);
- return <><a href="#main" className="skip-link">{lang==='zh'?'跳至内容':'Skip to content'}</a><Header lang={lang} setLang={setLang} detail={!home}/>{home?<Home lang={lang}/>:project?<ProjectDetail key={project.id} project={project} lang={lang}/>:<main id="main" className="not-found wrap"><h1>{copy.notfound[lang]}</h1><a href={localize(lang,'/#work')}>{copy.back[lang]}</a></main>}</>;
+ return <><a href="#main" className="skip-link">{copy.skip[lang]}</a><Header lang={lang} setLang={setLang} detail={!home}/>{home?<Home lang={lang}/>:project?<ProjectDetail key={project.id} project={project} lang={lang}/>:<main id="main" className="not-found wrap"><h1>{copy.notfound[lang]}</h1><a href={localize(lang,'/#work')}>{copy.back[lang]}</a></main>}</>;
 }

@@ -11,11 +11,6 @@ import gocus from './studies/gocus.js';
 import shokz from './studies/shokz.js';
 import webstyle from './studies/webstyle.js';
 // Reflowed case studies. Text is native HTML; media are independent visual elements.
-const b=(zh,en)=>({zh,en});
-const img=(id,zh,en,kind='photo')=>({id:typeof id==='number'?`x${id}`:id,caption:b(zh,en),kind});
-const imgs=(ids,zh,en,kind='photo')=>ids.map((id,i)=>img(id,`${zh} ${String(i+1).padStart(2,'0')}`,`${en} ${String(i+1).padStart(2,'0')}`,kind));
-const group=(layout,items)=>({layout,items});
-const sec=(id,title,body,groups,extra={})=>({id,title,body,groups,...extra});
 export const caseStudies={
  'soundbricks':soundbricks,
  'flexbench':flexbench,

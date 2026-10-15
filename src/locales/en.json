@@ -1,0 +1,2611 @@
+{
+ "ui": {
+  "name": "Jarvis Luk",
+  "work": "Work",
+  "intro": "Start with real contexts. Connect people, objects and systems. Turn possibilities into experiences that can be lived, used and built upon.",
+  "explore": "Explore my work",
+  "now": "Now",
+  "drag": "Drag to explore",
+  "selected": "Selected",
+  "works": "work",
+  "closer": "Let the work speak.",
+  "top": "Back to top",
+  "back": "All projects",
+  "challenge": "The question",
+  "approach": "The approach",
+  "outcome": "The output",
+  "documentation": "Process & details",
+  "sourceNote": "Original project documentation · Select an image to enlarge",
+  "next": "Next project",
+  "close": "Close image",
+  "previous": "Previous page",
+  "nextPage": "Next page",
+  "notfound": "Project not found",
+  "lab": "Lab",
+  "labLabel": "Beyond the portfolio",
+  "labTitle": "Small projects and experiments,",
+  "labItalic": "kept on GitHub.",
+  "labText": "Tools, plugins, agent skills and quick experiments. Not always finished, but always growing.",
+  "labLink": "Visit GitHub",
+  "labAll": "All repositories",
+  "demo": "Live demo",
+  "repo": "Repo",
+  "sideProject": "Side project",
+  "contributions": "in the last year",
+  "contributionUnit": "contributions",
+  "less": "Less",
+  "more": "More",
+  "siteTitle": "Design portfolio",
+  "skip": "Skip to content",
+  "home": "Jarvis Luk — home",
+  "mainNav": "Main navigation",
+  "switchLang": "切换至中文",
+  "langShort": "EN",
+  "heroLabel": "Introduction",
+  "heroLines": [
+   "Design for",
+   "a little more",
+   "possibility."
+  ],
+  "filter": "Filter projects",
+  "showing": "Showing {n} projects",
+  "contributionDay": "{n} contributions on {date}",
+  "contributionDayOne": "{n} contribution on {date}",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "enlarge": "Enlarge: {caption}",
+  "fitScreen": "Fit to screen",
+  "zoomIn": "Zoom in",
+  "prevImage": "Previous",
+  "nextImage": "Next",
+  "arrowHint": "Use arrow keys to browse",
+  "noVideo": "Your browser does not support video playback.",
+  "references": "Research material & early explorations",
+  "chapters": "Project chapters",
+  "sectionNav": {
+   "canvas": "Canvas",
+   "studio": "Studio",
+   "agents": "Agents",
+   "type": "Chinese type",
+   "homepage": "Home",
+   "training": "Training",
+   "player": "Player",
+   "data": "Data",
+   "import": "Import",
+   "courses": "Courses",
+   "tracks": "Music",
+   "wifi": "Wi-Fi",
+   "films": "Films",
+   "group": "Group orders",
+   "sound": "Sound",
+   "habit": "Habit",
+   "mistakes": "Mistakes",
+   "platforms": "Platforms",
+   "build": "Build",
+   "graph": "Graph",
+   "try": "Try it",
+   "library": "Components",
+   "guidelines": "Guidelines",
+   "identity": "Identity",
+   "workspace": "Workspace",
+   "actions": "Actions",
+   "research": "Research",
+   "interaction": "Interaction",
+   "prototype": "Prototype",
+   "digital": "Digital",
+   "testing": "Testing",
+   "outcome": "Outcome",
+   "context": "Context",
+   "community": "Community",
+   "planning": "Planning",
+   "ordering": "Journey",
+   "habits": "Habits",
+   "co-design": "Co-design",
+   "journey": "Journey",
+   "assistant": "Assistant",
+   "system": "System",
+   "workflow": "Needs",
+   "space": "Space",
+   "service": "Service",
+   "modules": "Modules",
+   "voices": "Voices",
+   "process": "Process",
+   "organize": "Tools",
+   "question": "Question",
+   "structure": "Structure",
+   "control": "Control",
+   "making": "Making",
+   "experience": "Experience",
+   "daily": "Daily",
+   "practice": "Practice",
+   "reflect": "Reflect",
+   "platform": "Platform",
+   "wearable": "Wearable",
+   "field": "Field test",
+   "station": "Station",
+   "exhibition": "Exhibition"
+  },
+  "pains": "Pain points",
+  "needs": "Needs",
+  "workflowHead": [
+   "Space",
+   "Tools",
+   "Workshop",
+   "Best place"
+  ],
+  "spaceHead": [
+   "Space",
+   "Traffic"
+  ],
+  "suitable": "Suitable",
+  "unsuitable": "Not suitable",
+  "phase": "Time",
+  "bilibili": "哔哩哔哩",
+  "playOn": "Play on {source}",
+  "videoSource": "Video source",
+  "openNew": "Open"
+ },
+ "categories": {
+  "all": "All",
+  "service": "Service & systems",
+  "digital": "Digital experience",
+  "physical": "Objects & interaction"
+ },
+ "projects": {
+  "soundbricks": {
+   "subtitle": "Play, listen, connect.",
+   "type": "Interactive toy · Digital product",
+   "intro": "An exploration of sound and construction play for children on the autism spectrum. SoundBricks connects physical building blocks, audio feedback and a companion app, bringing interaction into the hands.",
+   "brief": "Field research and teacher interviews explore design opportunities around repetitive behaviours, sensory experiences and everyday play.",
+   "approach": "The concept draws on stimulus–stimulus pairing (SSP), connecting building actions with audio feedback through electronics, structural prototypes and a companion app.",
+   "output": "An interactive brick prototype, companion app design and documentation of two test rounds.",
+   "chapters": [
+    "Overview",
+    "Research & insights",
+    "Prototype & app",
+    "Testing & presentation"
+   ]
+  },
+  "pawpals": {
+   "subtitle": "A kinder city, together.",
+   "type": "Service system · IoT · Graduation project",
+   "intro": "PawPals is a service system for community cat care. Wearable tracking devices, IoT stations and a multi-platform app connect community participation with ongoing care and support for TNR programmes.",
+   "brief": "Fragmented observations and records make sustained collaboration difficult. The project maps existing intervention processes and stakeholders to explore a more connected care system.",
+   "approach": "The system brings together multi-mode GNSS tracking, wearables, care stations and task incentives, developed through journey mapping, service blueprints and prototype testing.",
+   "output": "Service blueprints, multi-platform interfaces, tracking hardware prototypes, station design and a graduation exhibition.",
+   "chapters": [
+    "Overview",
+    "Context & service blueprint",
+    "System & user experience",
+    "Hardware prototyping",
+    "Stations & exhibition"
+   ]
+  },
+  "sf-eats": {
+   "subtitle": "Better meals. Better everyday.",
+   "type": "Service design · Healthy eating · 2025",
+   "intro": "A campus dining concept exploring convenient, personalised food ordering for university students. Community, group orders, AI diet plans and pre-ordered meals come together in one connected experience.",
+   "brief": "The project rethinks the campus food ecosystem around busy-hour waiting, overcrowding and the challenge of maintaining healthy eating habits.",
+   "approach": "Group ordering, themed events, personalised plans and streaks are combined with a proposed ordering journey supported by SF Express unmanned delivery vehicles.",
+   "output": "A mobile service concept, ordering journey, community mechanics and a squirrel mascot identity.",
+   "chapters": [
+    "Context & goals",
+    "Service & identity",
+    "Community & group orders",
+    "Diet plans & ordering"
+   ]
+  },
+  "flexbench": {
+   "subtitle": "A workshop, wherever you make.",
+   "type": "Modular product · Service design",
+   "intro": "A mobile workshop system for design students. Modular workbenches, tool storage and a booking service make fabrication spaces adaptable to different projects.",
+   "brief": "Making happens across different spaces and projects. Workshop locations, equipment management and tool access all shape the path from an idea to a physical outcome.",
+   "approach": "Interviews, workflow analysis and spatial research inform a service blueprint, translated into a physical workbench through modular structures and tool organisation.",
+   "output": "A physical mobile workbench, modular configurations, tool storage and a proposed booking-to-return service journey.",
+   "chapters": [
+    "Overview",
+    "Research & context",
+    "Service & modular design",
+    "Prototype & use journey"
+   ]
+  },
+  "bambu-lab": {
+   "subtitle": "From curiosity to making.",
+   "type": "Retail experience · Service design · 2025",
+   "intro": "A customer experience concept for Bambu Lab’s first flagship store. Physical displays, visitor journeys and a mini program help first-time visitors explore 3D printing and making.",
+   "brief": "How can displays do more than spark curiosity—helping first-time visitors understand the technology, find guidance and take a first step towards making?",
+   "approach": "Co-design workshops inform displays, guidance, sandbox areas and a new customer journey. AR guidance, an AI assistant and booking features connect physical and digital experiences.",
+   "output": "A store layout and visitor journey proposal, mini program interfaces, workshop booking and 3D printing service reservation flows.",
+   "chapters": [
+    "Project goals",
+    "Co-design & visitor journey",
+    "Digital service experience"
+   ]
+  },
+  "matrix": {
+   "subtitle": "Simple parts. Emergent possibilities.",
+   "type": "Interactive installation · Structural exploration",
+   "intro": "Matrix — Emergence Necessity explores the relationship between structure, interaction and emergence. Triangular modules form an expandable matrix where local movements create changing patterns across the whole.",
+   "brief": "How can simple components, connected through a set of rules, produce behaviours and experiences beyond any single part?",
+   "approach": "Structural experiments around matrices and emergence lead to triangular modules, nodes and tensioned lines, with interaction responding to proximity and movement.",
+   "output": "A modular interactive installation, control panel, structural details and documentation of the making process.",
+   "chapters": [
+    "Concept",
+    "Matrix & emergence",
+    "Structure & control",
+    "Final presentation"
+   ]
+  },
+  "just-a-2nd": {
+   "subtitle": "Sharpen your ears in seconds.",
+   "type": "Mobile app · Music learning",
+   "intro": "A pocket-sized ear-training tool. Short interval exercises, daily goals and learning feedback bring listening practice into everyday life.",
+   "brief": "How can ear training feel less repetitive and become easier to sustain for people learning an instrument or exploring the music they love?",
+   "approach": "Focused listening tasks are paired with goals, daily streaks and opportunities to learn from mistakes.",
+   "output": "App interfaces covering goals, interval practice and review feedback.",
+   "chapters": [
+    "App experience"
+   ]
+  },
+  "gocus": {
+   "subtitle": "Git history, beside your flow.",
+   "type": "Desktop tool · AI-native coding",
+   "intro": "A compact Git panel that floats beside the editor, made for AI-native coding tools such as Codex, Claude Code and Antigravity.",
+   "brief": "When agents commit and open worktrees faster than people do, how can you keep track of a repository without leaving the coding session?",
+   "approach": "Fold the high-frequency repository state into one narrow panel: branch rails, commits, worktrees and current changes, with every Git action confirmed first.",
+   "output": "Desktop app for macOS and Windows, an official site and a Codex plugin preview."
+  },
+  "web-style": {
+   "subtitle": "Style names, turned into parameters.",
+   "type": "Agent design tool · WebMCP",
+   "intro": "A design tool shared by people and agents: pick a style, watch a full sample page restyle live, and export the result as CSS variables; agents drive the same studio through WebMCP.",
+   "brief": "How can style names like glassmorphism or brutalism be seen on a whole page and pinned down to concrete parameters?",
+   "approach": "One sample page switches between 10 styles, each broken into a validated set of CSS variables; the studio keeps its own palette, and generation is left to outside agents.",
+   "output": "A live studio, WebMCP tools, a JS API and an Agent Skill."
+  },
+  "shokz": {
+   "subtitle": "Music and training, in the water.",
+   "type": "App experience design · Sports headphones",
+   "intro": "The companion app for the Shokz OpenSwim Pro 2 swimming headphones, bringing together on-board music, swim training and workout data.",
+   "brief": "When headphones play music and track swims without a phone, how can the app keep importing music, setting up training and reviewing data simple?",
+   "approach": "Everything that needs a phone happens before the swim, and the water belongs to the headphones. The failure-prone Wi-Fi setup was redesigned: requirements first, choosing instead of typing, errors handled by cause.",
+   "output": "Companion app interfaces and a reworked interaction flow for the Wi-Fi setup behind audio import."
+  }
+ },
+ "lab": {
+  "death-stranding": {
+   "series": "Death Stranding prop generators",
+   "media": [
+    {
+     "alt": "Damage Sensor Tape generator: yellow tape preview and control panel"
+    },
+    {
+     "alt": "Do Not Tamper generator: sticker preview and control panel"
+    }
+   ],
+   "items": {
+    "damage-sensor-tape": {
+     "text": "A damage sensor tape generator with live preview and a PDF417 barcode, exporting PNG / SVG / PDF."
+    },
+    "do-not-tamper": {
+     "text": "A “Do Not Tamper” sticker generator: tweak title, serial, tracking codes, accent and holographic gradient, then export PNG / SVG."
+    }
+   }
+  },
+  "easyeda": {
+   "series": "Agent Skill",
+   "items": {
+    "easyeda-pcb-design": {
+     "text": "Lets an agent create, modify and review schematics and PCBs in EasyEDA Pro, loading only the workflows it needs — from controlled impedance and high-speed to RF, BGA/HDI and manufacturing review."
+    }
+   }
+  },
+  "dsh": {
+   "series": "DeepSeek Harness plugins",
+   "media": [
+    {
+     "alt": "The new “Session without workspace” option in the Workspace picker"
+    }
+   ],
+   "items": {
+    "dsh-projectless-session": {
+     "text": "Start a session without a workspace; each one gets its own date-organised working directory."
+    },
+    "dsh-session-index": {
+     "text": "Writes a short index of an existing session and copies its path, so Codex or another agent can pick up the thread."
+    }
+   }
+  },
+  "codex-pets": {
+   "series": "Codex pets",
+   "media": [
+    {
+     "alt": "Remilia pet idle animation"
+    },
+    {
+     "alt": "Pixel squid pet idle animation"
+    }
+   ],
+   "items": {
+    "remilia-codex-pet": {
+     "text": "A smooth, non-pixelated Codex pet based on Remilia from Zenless Zone Zero merchandise."
+    },
+    "splatoon-squid-codex-pet": {
+     "text": "A yellow pixel-art squid with complete animations and 16 look directions."
+    }
+   }
+  },
+  "fixes": {
+   "series": "Fixes & workarounds",
+   "items": {
+    "zzz-proton-fix": {
+     "text": "A one-click fix and launcher for the HoYoPlay build of Zenless Zone Zero crashing ~85 seconds in under Proton 10 / 11 on Steam Deck — without replacing game files or the official Proton."
+    },
+    "codex-order-reset": {
+     "text": "Unlocks the stuck project order in the macOS ChatGPT / Codex sidebar: backs up the state file, removes only the two ordering keys, then relaunches the app."
+    }
+   }
+  }
+ },
+ "studies": {
+  "soundbricks": {
+   "heroCaption": "SoundBricks: coloured acrylic bricks on a base with magnetic contacts; each brick placed plays a sound.",
+   "oneLiner": "Sound bricks for autistic children: each brick placed plays a sound, using stimulus pairing to ease repetitive behaviours.",
+   "credit": "Individual project",
+   "showcase": {
+    "sb-towers": {
+     "caption": "Bricks stacked into towers on the base."
+    },
+    "sb-play-469": {
+     "caption": "During a play session, a child sets a triangle roof on the house they built."
+    },
+    "sb-houses": {
+     "caption": "Little houses built from cubes, bars and triangular roofs."
+    },
+    "sb-glow": {
+     "caption": "Light through the clear acrylic casts coloured shadows on the table."
+    },
+    "sb-play-149": {
+     "caption": "A child reaches to place a brick on the base while an adult holds a pattern card."
+    },
+    "sb-five": {
+     "caption": "Five bricks in different colours, with magnetic contacts on top."
+    },
+    "sb-hand": {
+     "caption": "A yellow brick that fits in one hand."
+    },
+    "sb-app-bricks": {
+     "caption": "The companion app beside a spread of bricks."
+    }
+   },
+   "outcome": {
+    "title": "Bricks that make sound.",
+    "body": "The bricks come as cubes, bars and triangles, with clear coloured acrylic as a visual cue. The base reads each brick through magnetic contacts and plays a sound when it lands; the companion app lets parents choose sounds, generate building patterns and join in. The photos below come from play sessions at the development centre.",
+    "blocks": [
+     {
+      "items": {
+       "sb-set": {
+        "caption": "The full set: bricks of every shape plugged into the base."
+       },
+       "sb-types": {
+        "caption": "Three brick types: cubes, bars and triangles."
+       },
+       "sb-base": {
+        "caption": "The base with four stacks of bricks."
+       }
+      }
+     },
+     {
+      "items": {
+       "sb-play-213": {
+        "caption": "A child plugs coloured bricks into the base one by one."
+       },
+       "sb-play-197": {
+        "caption": "A child checks the pattern card in their hands."
+       },
+       "sb-play-293": {
+        "caption": "A teacher holds up a pattern card to guide the build."
+       },
+       "sb-play-245": {
+        "caption": "Small hands holding bricks, about to place them on the base."
+       }
+      }
+     },
+     {
+      "items": {
+       "sb-board-phones": {
+        "caption": "The SoundBricks app: create patterns, customise and record sounds, share with the community and track practice on a calendar."
+       }
+      }
+     },
+     {
+      "items": {
+       "sb-patterns": {
+        "caption": "Clear cards printed with brick patterns, one build per card."
+       },
+       "sb-pattern-book": {
+        "caption": "The pattern book and bricks."
+       }
+      }
+     }
+    ]
+   },
+   "films": {
+    "title": "From prototype to play.",
+    "body": "The film starts with circuit and code testing, moves through modelling, slicing, 3D printing, laser-cut acrylic and soldering, then demonstrates building and sound on the base board, and ends with children playing in a classroom.",
+    "blocks": [
+     {
+      "title": "The Made of SoundBricks"
+     }
+    ]
+   },
+   "research": {
+    "title": "Understand the children before the toy.",
+    "body": "Autism affects about 0.7% of children aged 6 to 12, and restricted, repetitive behaviours are a core trait. Studies in applied behaviour analysis (ABA) and stimulus–stimulus pairing (SSP) show that reinforcing or extinguishing sensory stimuli can reduce them. At a Hangzhou development centre that has served over 300 children, I observed classes and interviewed teachers, and found most training engages only one sense.",
+    "blocks": [
+     {
+      "items": {
+       "sb-board-background": {
+        "caption": "Background research: autism traits, the ABA behaviour chain, how SSP works, and case studies and procedure for SSP reducing repetitive behaviours."
+       }
+      }
+     },
+     {
+      "items": {
+       "sb-board-field": {
+        "caption": "The centre’s five class types: sensory integration, one-to-one, parent–child, group and social."
+       }
+      }
+     },
+     {
+      "items": [
+       {
+        "text": "The sooner the better. Before six we call it rescue intervention. Diagnosis comes earlier now; our youngest is only eighteen months.",
+        "who": "Teacher B",
+        "tag": "Sensory integration"
+       },
+       {
+        "text": "Parents notice, consult a hospital and the centre, then come assessment, enrolment and an individual education plan, followed by steady intervention with home and school working together.",
+        "who": "Teacher A",
+        "tag": "Centre lead"
+       },
+       {
+        "text": "If a child lags in cognition, can’t tell cake from water, understands little or can’t express themselves, you should pay attention.",
+        "who": "Teacher B",
+        "tag": "Early signs"
+       }
+      ]
+     },
+     {
+      "items": {
+       "sb-board-toys": {
+        "caption": "Toys and training: one toy often trains several skills across classes, yet most training is single- or weakly multi-sensory. The conclusions point to multi-sensory play, parent involvement, before age six and repetitive behaviours."
+       }
+      }
+     }
+    ]
+   },
+   "interaction": {
+    "title": "Pair an action with a sound.",
+    "body": "The bricks are open-ended, brightly coloured and stackable for under-sixes. Placing a brick triggers a sound; if a child keeps stacking the same way (a repetitive behaviour), the sound stops. Pairing a neutral sound with building builds a conditioned response that helps the behaviour fade.",
+    "blocks": [
+     {
+      "items": {
+       "sb-board-concept": {
+        "caption": "SSP on bricks: the appearance concept (open, multi-stimulus, stackable, bright) and the interaction logic."
+       }
+      }
+     }
+    ]
+   },
+   "prototype": {
+    "title": "One ADC pin, ten bricks.",
+    "body": "Each brick holds a resistor; stacked bricks join in series, so one ADC pin on the base reads how many are placed. Quick-release magnetic contacts keep the joint firm yet easy to separate, which is what makes the reading stable. The shells are 3D printed, with the acrylic inserted mid-print.",
+    "blocks": [
+     {
+      "items": {
+       "sb-board-prototype": {
+        "caption": "Circuit design, magnetic contacts, ADC readings as three bricks are stacked, and the exploded view."
+       }
+      }
+     },
+     {
+      "items": {
+       "sb-proc-acrylic": {
+        "caption": "Coloured acrylic sheets, magnets and a glue gun."
+       },
+       "sb-proc-shell": {
+        "caption": "An early shell: orange acrylic set into a white print."
+       },
+       "sb-proc-circuit": {
+        "caption": "The resistor and wiring inside a brick."
+       },
+       "sb-proc-base": {
+        "caption": "Wiring on the underside of the base."
+       },
+       "sb-proc-wiring": {
+        "caption": "The base wired to a dev board to test readings."
+       },
+       "sb-proc-reading": {
+        "caption": "Soldering, with live readings on the laptop."
+       }
+      }
+     }
+    ]
+   },
+   "digital": {
+    "title": "The other half of play.",
+    "body": "The app links choosing a sound, generating a pattern, building and sharing. It first finds the sound that suits the child, then generates a 2D pattern the child can build at any height while keeping the same front. Reminders help parents keep up the pairing practice.",
+    "blocks": [
+     {
+      "items": {
+       "sb-board-app": {
+        "caption": "App control flow, information architecture, colours, type and wireframes."
+       }
+      }
+     }
+    ]
+   },
+   "testing": {
+    "title": "Let testing change the design.",
+    "body": "In round one, nine children aged 4 to 20 built from patterns: they liked the toy, but the patterns were too hard, no repetitive behaviour appeared and the sound went unnoticed. Round two dropped the patterns and tested five sounds with one brick type: the children noticed the sound, and many named the piano, which they had all learned. So custom sounds were added, and triangle bricks now block vertical stacking to interrupt repetition.",
+    "blocks": [
+     {
+      "items": {
+       "sb-board-test-1": {
+        "caption": "First test: building from patterns. It was attractive and fit many classes, but too hard; no repetitive behaviour appeared and the sound was ignored."
+       }
+      }
+     },
+     {
+      "items": {
+       "sb-board-test-2": {
+        "caption": "Second test: no patterns, just sound. The sound was noticed, piano came up most, custom sounds are needed, and triangles can interrupt repetition."
+       }
+      }
+     }
+    ]
+   }
+  },
+  "flexbench": {
+   "heroCaption": "Drilling on the folding extension: the work surface extends when needed and clamps hold the timber.",
+   "oneLiner": "A modular mobile workbench and booking service that brings the workshop to where design students are.",
+   "credit": "Individual project",
+   "showcase": {
+    "fb-final-front": {
+     "caption": "The complete FlexBench: drawer and box modules hang in the frame, on casters that roll anywhere."
+    },
+    "fb-final-pegboard-side": {
+     "caption": "The other side: a pegboard holds a power strip and clamps above the empty snap-fit frame."
+    },
+    "fb-story-setup": {
+     "caption": "The bench rolled into the hall with its modules in place."
+    },
+    "fb-final-drawer-tools": {
+     "caption": "Files, rulers, scissors and pens stored in a drawer grid."
+    },
+    "fb-final-box-tools": {
+     "caption": "Taking a drill out of the box module."
+    },
+    "fb-final-snap-hand": {
+     "caption": "A hand hooking a clip onto a frame rail."
+    },
+    "fb-final-fold-2": {
+     "caption": "Raising the extension level with the top."
+    },
+    "fb-story-use": {
+     "caption": "Using a nail gun with the phone close at hand on the bench."
+    }
+   },
+   "modules": {
+    "title": "One frame, four modules.",
+    "body": "An aluminium frame with a snap-fit system lets every module be removed and repositioned for each project.",
+    "blocks": [
+     {
+      "items": {
+       "fb-final-front": {
+        "caption": "The complete FlexBench: drawer and box modules hang in the frame, on casters that roll anywhere."
+       },
+       "fb-final-pegboard-side": {
+        "caption": "The other side: a pegboard holds a power strip and clamps above the empty snap-fit frame."
+       },
+       "fb-final-frame": {
+        "caption": "The frame with all modules removed, showing rows of snap-fit mounts."
+       }
+      }
+     },
+     {
+      "items": [
+       {
+        "name": "Snap-fit system",
+        "body": "Clips on each module hang directly on the frame rails and come off without tools.",
+        "specs": [
+         {
+          "1": "Centre spacing, both ways"
+         }
+        ],
+        "images": {
+         "fb-final-snap-hand": {
+          "caption": "A hand hooking a clip onto a frame rail."
+         },
+         "fb-final-snap-detail": {
+          "caption": "Close-up of white 3D-printed clips and a drawer slide."
+         }
+        }
+       },
+       {
+        "name": "Drawer module · grid storage",
+        "body": "Drawers in three heights are interchangeable; inside, a Gridfinity-style grid takes 3D-printed holders made for each tool.",
+        "specs": [
+         {
+          "1": "One drawer unit height"
+         },
+         {
+          "1": "Grid unit"
+         }
+        ],
+        "images": {
+         "fb-final-drawers": {
+          "caption": "A two-drawer module standing on its own."
+         },
+         "fb-final-drawer-tools": {
+          "caption": "Files, rulers, scissors and pens stored in a drawer grid."
+         },
+         "fb-final-grid": {
+          "caption": "The empty grid insert with a single pen holder."
+         }
+        }
+       },
+       {
+        "name": "Box module",
+        "body": "The largest module holds big power tools such as saws and dust extractors, ready to grab.",
+        "images": {
+         "fb-final-box-tools": {
+          "caption": "Taking a drill out of the box module."
+         },
+         "fb-final-box-back": {
+          "caption": "The four clips on the back of a box module."
+         }
+        }
+       },
+       {
+        "name": "Pegboard and folding extension",
+        "body": "The pegboard mainly connects power and holds tools in use; the side extension folds down or lies flat to help with drilling and cutting.",
+        "specs": [
+         {
+          "1": "Pegboard hole / spacing"
+         }
+        ],
+        "images": {
+         "fb-final-pegboard-power": {
+          "caption": "Hanging a power strip on the pegboard."
+         },
+         "fb-final-fold-1": {
+          "caption": "The extension folded down."
+         },
+         "fb-final-fold-2": {
+          "caption": "Raising the extension level with the top."
+         },
+         "fb-final-fold-use": {
+          "caption": "Drilling clamped timber on the opened extension."
+         }
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "films": {
+    "title": "Making and demo.",
+    "body": "The first half builds the prototype in the exhibition hall: cutting boards and aluminium profiles, assembling the frame, making drawers and tool boxes. The second half demonstrates each function: the pegboard and power strip, drawer storage, tool boxes and the extendable worktop.",
+    "blocks": [
+     {
+      "title": "The Made of FlexBench"
+     },
+     {
+      "items": {
+       "fb-make-frame": {
+        "caption": "Assembling the aluminium base frame on the floor."
+       },
+       "fb-make-drill": {
+        "caption": "Drilling to fix the board onto the aluminium frame."
+       }
+      }
+     }
+    ]
+   },
+   "context": {
+    "title": "Plenty of ideas, few places to make them.",
+    "body": "The Liangzhu campus of the China Academy of Art opened recently. Courses at the School of Design and Innovation often end in physical products or installations, yet the workshop’s facilities and management are still incomplete, so students must first work out where and with what to make.",
+    "blocks": [
+     {
+      "items": {
+       "fb-campus": {
+        "caption": "Satellite view of the Liangzhu campus: the design schools sit on the western edge, surrounded by farmland."
+       }
+      }
+     },
+     {
+      "items": [
+       {
+        "title": "Conflicts over space",
+        "body": "Large projects take up room and making them creates noise and odours, so many students work in corridors outside classrooms or in the lobby of Building 8.",
+        "image": {
+         "caption": "Foam blocks, unfinished work and packaging piled in the central hall."
+        }
+       },
+       {
+        "title": "Asked to leave",
+        "body": "These public spaces serve other purposes, and security often asks students working there to leave.",
+        "image": {
+         "caption": "Cardboard boxes and timber spread along a classroom corridor, where making temporarily occupies the passage."
+        }
+       },
+       {
+        "title": "A closed tool room",
+        "body": "Because of management issues, the school’s tool room has not been open to students for a long time.",
+        "image": {
+         "caption": "Inside the tool room: power tools and cases piled up with no one organising them."
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "voices": {
+    "title": "Students need more than a classroom.",
+    "body": "Interviews with four students and one workshop tutor. Students care about privacy, atmosphere and convenience; the tutor sees gaps in staffing and management. All participants are anonymised.",
+    "blocks": [
+     {
+      "items": [
+       {
+        "who": "Student A",
+        "tag": "Unwritten rules",
+        "text": "“Although classrooms are public spaces, once someone occupies them, you can’t stay there.”"
+       },
+       {
+        "who": "Student A",
+        "tag": "First come, first served",
+        "text": "“Empty classrooms not scheduled each semester may be occupied by other students—first come, first served.”"
+       },
+       {
+        "who": "Student B",
+        "tag": "Privacy",
+        "text": "“I prefer working in my dorm room; a private workspace feels better.”"
+       },
+       {
+        "who": "Student B",
+        "tag": "Crowding",
+        "text": "“The current designated activity spaces at the school are too small and overcrowded.”"
+       },
+       {
+        "who": "Student C",
+        "tag": "Atmosphere",
+        "text": "“Workshops with more tools make it easier to work for long periods and create a better atmosphere.”"
+       },
+       {
+        "who": "Student D",
+        "tag": "Convenience",
+        "text": "“I mainly work in classrooms and occasionally use the workshop, though I’d prefer the workshop. Building installations in a classroom is noisy, messy and inconvenient.”"
+       },
+       {
+        "who": "Workshop tutor",
+        "tag": "Current system failed",
+        "text": "“There aren’t many workshop instructors, and not all students know how to use the equipment. When students need to process materials, I can only suggest external factories.”"
+       }
+      ]
+     },
+     {
+      "label": "Anonymised persona",
+      "name": "A design and innovation student",
+      "facts": [
+       [
+        "Age",
+        "22"
+       ],
+       [
+        "School",
+        "School of Design and Innovation"
+       ],
+       [
+        "Course outcome",
+        "Installations or physical products"
+       ]
+      ],
+      "pains": [
+       "No space to use tools freely",
+       "Crowded classrooms and too little room",
+       "Making in classrooms disturbs others",
+       "Classrooms change each term; public space is off-limits",
+       "The workshop is far away and tools can’t be borrowed"
+      ],
+      "needs": [
+       "A space for using specific tools",
+       "Not disturbing others",
+       "Convenient access to tools"
+      ]
+     }
+    ]
+   },
+   "process": {
+    "title": "Follow the making process to see where a workshop matters.",
+    "body": "A physical project usually passes through six stages. Comparing their spatial and tool demands shows which ones a mobile workshop should serve.",
+    "blocks": [
+     {
+      "items": [
+       {
+        "name": "Low-fi prototyping",
+        "detail": "Cardboard and plastic models",
+        "need": "Depends on size",
+        "place": "Classroom if small, workshop if large",
+        "image": {
+         "caption": "A cardboard massing model with a cut-out window, used to test form quickly."
+        }
+       },
+       {
+        "name": "Electronic prototyping",
+        "detail": "Coding, soldering and wiring",
+        "need": "No",
+        "place": "Classroom",
+        "image": {
+         "caption": "Wiring and testing an Arduino on a breadboard."
+        }
+       },
+       {
+        "name": "Digital prototyping",
+        "detail": "Modelling and simulation",
+        "need": "No",
+        "place": "Classroom",
+        "image": {
+         "caption": "Modelling the workbench in Rhino."
+        }
+       },
+       {
+        "name": "Outside processing",
+        "detail": "Factory processing and digital fabrication",
+        "space": "—",
+        "tools": "—",
+        "need": "Done off campus",
+        "place": "Outside",
+        "image": {
+         "caption": "A CNC lathe machining a metal part."
+        }
+       },
+       {
+        "name": "Self-processing & hi-fi prototyping",
+        "detail": "Making and assembling wood and metal parts",
+        "need": "Yes",
+        "place": "Workshop",
+        "image": {
+         "caption": "Boards, aluminium profiles and a circular saw spread on the floor: large parts need a large area."
+        }
+       },
+       {
+        "name": "Final finishing",
+        "detail": "Sanding and painting",
+        "need": "Yes",
+        "place": "Workshop",
+        "image": {
+         "caption": "A white arched installation model after painting."
+        }
+       }
+      ],
+      "note": "Steps 2 and 3 mostly happen in classrooms without real conflict. Large low-fi models and steps 5 and 6 need more space and tools and, under current conditions, must be done in a workshop—the gap a mobile workshop fills."
+     }
+    ]
+   },
+   "levels": {
+    "low": "Low",
+    "high": "High",
+    "medium": "Medium"
+   },
+   "space": {
+    "title": "Put the workshop where students already are.",
+    "body": "The campus divides into five types of space. Using the School of Design and Innovation as an example, size, traffic and character identify where a workshop can be deployed.",
+    "blocks": [
+     {
+      "diagram": {
+       "caption": "Spatial analysis: ground-floor flows, deployable spots (green classroom corridors, blue central hall, red eaves) and the building stack."
+      },
+      "map": {
+       "caption": "The School of Design and Innovation on campus. Most buildings share this structure, so the layout extends to other schools."
+      },
+      "items": [
+       {
+        "name": "Central hall",
+        "space": "Indoor / large",
+        "note": "A large indoor space, unavailable when exhibitions or events are held.",
+        "works": [
+         "Low-fi prototyping",
+         "Large parts making",
+         "Large parts assembling"
+        ],
+        "image": {
+         "caption": "The open central hall with a golden installation at its centre."
+        }
+       },
+       {
+        "name": "Classroom",
+        "space": "Indoor / small",
+        "note": "Small rooms for teaching and project presentations.",
+        "works": [
+         "Low-fi prototyping",
+         "Electronic prototyping",
+         "Digital prototyping",
+         "Small parts making & assembling"
+        ],
+        "image": {
+         "caption": "A fashion design classroom with dress forms, worktables and fabric."
+        }
+       },
+       {
+        "name": "Central hall corridor",
+        "space": "Indoor / large",
+        "note": "A vital campus passage, already partly blocked by stored clutter.",
+        "image": {
+         "caption": "The central hall corridor, lined with worktables, lockers and equipment cases."
+        }
+       },
+       {
+        "name": "Classroom corridor",
+        "space": "Indoor / medium",
+        "note": "Closest to classrooms; indoors, it shelters most kinds of making.",
+        "works": [
+         "Low-fi prototyping",
+         "Large parts making",
+         "Large parts assembling"
+        ],
+        "image": {
+         "caption": "The long corridor outside classrooms, with coloured benches along the way."
+        }
+       },
+       {
+        "name": "Under the eaves",
+        "space": "Outdoor / large",
+        "note": "A deep overhang shelters from ordinary weather and is close to classrooms.",
+        "works": [
+         "Large parts making",
+         "Large parts assembling",
+         "Final finishing"
+        ],
+        "image": {
+         "caption": "A deep building overhang above a paved walkway."
+        }
+       }
+      ],
+      "conclusion": "Considering size, traffic and character, three locations suit a workshop at the School of Design and Innovation: the central hall, classroom corridors and the eaves. Most campus buildings share this structure, so the layout can extend to other schools."
+     }
+    ]
+   },
+   "system": {
+    "title": "Behind one bench, a whole service.",
+    "body": "Students want a dedicated, efficient place to make, but fixed space is scarce. Public areas are adapted into mobile workshops that follow the course schedule, with an app connecting the school, teachers, students and workshop staff.",
+    "blocks": [
+     {
+      "items": [
+       {
+        "name": "School",
+        "role": "Changes how workshops are managed."
+       },
+       {
+        "name": "Teacher",
+        "role": "Books workshops and runs courses.",
+        "app": "App: book workshops and check their status"
+       },
+       {
+        "name": "Student",
+        "role": "Uses the workshop and focuses on the project.",
+        "app": "App: find workshops and ask for help"
+       },
+       {
+        "name": "Workshop staff",
+        "role": "Maintains workshops, gives guidance and helps with setup and orders.",
+        "app": "App: check status and see user needs"
+       }
+      ]
+     },
+     {
+      "caption": "Service blueprint for the mobile workshop: from booking before term, through use in class, to return checks afterwards.",
+      "phases": [
+       {
+        "label": "Before the semester"
+       },
+       {
+        "label": "During the class"
+       },
+       {
+        "label": "Class ended"
+       }
+      ],
+      "lanes": [
+       {
+        "label": "Evidence",
+        "cells": {
+         "1": {
+          "text": "Mobile app"
+         },
+         "2": "Storage area, mobile workbench",
+         "4": "Mobile workbench, tools",
+         "5": "Workbench, QR code for online instructions, face-to-face guidance",
+         "6": "Storage area, mobile workbench"
+        }
+       },
+       {
+        "label": "Teacher journey",
+        "cells": {
+         "0": "Make the teaching plan",
+         "1": "Check available workshops in the app",
+         "2": "Reserve a mobile workshop",
+         "4": "Class starts",
+         "7": "Confirm the workshop has ended"
+        }
+       },
+       {
+        "label": "Student journey",
+        "cells": {
+         "0": "Select the course",
+         "2": "Check the workshop location",
+         "3": "Set up the workshop",
+         "4": "Class starts",
+         "5": "Decide and register tools and workbench",
+         "6": "Use the workshop for the project",
+         "7": "Return the workshop"
+        }
+       },
+       {
+        "line": "Line of interaction",
+        "label": "Frontstage staff",
+        "cells": {
+         "2": "Allocate workbenches to each class",
+         "3": "Help students set up",
+         "5": "Allocate tools and benches to each team",
+         "6": "Provide video guidance or repair tools when needed"
+        }
+       },
+       {
+        "label": "Technology",
+        "cells": {
+         "1": "Online booking platform",
+         "6": "Power tools"
+        }
+       },
+       {
+        "line": "Line of visibility",
+        "label": "Backstage",
+        "cells": {
+         "1": "Check available tools",
+         "2": "Storage management system",
+         "4": "Confirm tools in use",
+         "5": "Register who uses which tools",
+         "6": "Staff trained on the tools",
+         "7": "Check tool condition"
+        }
+       },
+       {
+        "line": "Line of internal interaction",
+        "label": "Support",
+        "cells": {
+         "0": "Estimate the tools needed",
+         "2": "Application process",
+         "3": "Customer–staff cooperation",
+         "4": "Inventory check",
+         "6": "Staff training, safety inspection",
+         "7": "Consumables procurement, damage compensation"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "organize": {
+    "title": "Organise the tools, then the modules.",
+    "body": "Tools needed across the making stages fall into eight groups, sorted by size into three modules: small items in drawers, frequently used and powered items on the pegboard, large power tools in boxes.",
+    "blocks": [
+     {
+      "items": {
+       "fb-board-tools": {
+        "caption": "Eight tool groups: power supply, small hand tools, light fastening, measuring, power-tool charging, wood and metal working, spray painting and polishing."
+       }
+      }
+     },
+     {
+      "items": {
+       "fb-board-mapping": {
+        "caption": "From making stages to tools, then by power need and size into the pegboard, drawer and box modules."
+       }
+      }
+     },
+     {
+      "text": "Workbench design"
+     },
+     {
+      "items": {
+       "fb-board-bench": {
+        "caption": "Workbench design: the 160mm snap-fit system, three drawer sizes, box modules, a folding extension, a movable pegboard (15mm holes at 80mm) and a 35mm grid organiser."
+       }
+      }
+     }
+    ]
+   },
+   "journey": {
+    "title": "From booking to return.",
+    "body": "A complete use takes four steps, each with its own scene and app screens.",
+    "blocks": [
+     {
+      "steps": [
+       {
+        "title": "Prepare for class",
+        "roles": [
+         [
+          "Everyone",
+          "Register and log in as student, teacher or staff."
+         ],
+         [
+          "Teacher",
+          "Upload class information and reserve a workshop."
+         ],
+         [
+          "Staff",
+          "Check tool status and confirm the booking."
+         ]
+        ],
+        "scene": {
+         "caption": "Logging in to FlexBench on a phone at the bench."
+        },
+        "screens": {
+         "fb-app-login": {
+          "caption": "Login: choose student, teacher or staff."
+         },
+         "fb-app-reserve": {
+          "caption": "Booking: pick a workshop spot on the building plan."
+         }
+        }
+       },
+       {
+        "title": "Set up the workshop",
+        "roles": [
+         [
+          "Students & staff",
+          "Find the workshop location and set it up."
+         ],
+         [
+          "Student",
+          "Claim tools and read the guidance."
+         ]
+        ],
+        "scene": {
+         "caption": "The bench rolled into the hall with its modules in place."
+        },
+        "screens": {
+         "fb-app-map": {
+          "caption": "My workshop: the Building 7 workshop and its dates on the map."
+         },
+         "fb-app-workshop": {
+          "caption": "Workshop list: each location and its booking period."
+         }
+        }
+       },
+       {
+        "title": "Use and get help",
+        "roles": [
+         [
+          "Student / teacher",
+          "Ask for help on the service tickets page."
+         ],
+         [
+          "Staff",
+          "Provide information or come to repair."
+         ]
+        ],
+        "scene": {
+         "caption": "Using a nail gun with the phone close at hand on the bench."
+        },
+        "screens": {
+         "fb-app-tickets": {
+          "caption": "Service tickets: requests such as “tool not working” or “need more tools” with their status."
+         }
+        }
+       },
+       {
+        "title": "Return the workshop",
+        "roles": [
+         [
+          "Staff",
+          "Check the workshop and count the tools."
+         ]
+        ],
+        "scene": {
+         "caption": "Rolling the bench back to storage after class."
+        },
+        "screens": {
+         "fb-app-overview": {
+          "caption": "Overview: 70% of tools and 65% of workbenches available."
+         }
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "matrix": {
+   "heroCaption": "The Matrix installation, four triangular units glowing blue in the dark.",
+   "oneLiner": "An interactive installation of linked triangular units: each node only moves back and forth, yet together they produce movement and light no single part has.",
+   "credit": "Individual project",
+   "showcase": {
+    "mx-still-blue": {
+     "caption": "All four units lit in blue."
+    },
+    "mx-still-white": {
+     "caption": "The installation by day: white frames, rods and tensioned lines."
+    },
+    "mx-still-hand": {
+     "caption": "As a hand approaches, the nodes retreat from it."
+    },
+    "mx-still-colour": {
+     "caption": "Each unit can show a different colour."
+    },
+    "mx-still-violet": {
+     "caption": "Switched to violet light."
+    },
+    "mx-detail": {
+     "caption": "Inside a unit: LED strips, servos and crossing lines."
+    }
+   },
+   "films": {
+    "title": "See it move.",
+    "body": "The demo runs through four movement modes (loop, retreat, approach, random), three lighting effects, and a hybrid of light and servo motion.",
+    "blocks": [
+     {
+      "title": "Matrix - Emergence Necessity Demo Video"
+     }
+    ]
+   },
+   "experience": {
+    "title": "New relationships between the parts.",
+    "body": "I built a four-unit demo; each unit is fully modular and can be extended in any direction. A single node only moves back and forth, but in the interactive modes the whole forms a dynamic of its own, and that emergence repeats as the matrix grows.",
+    "blocks": [
+     {
+      "items": {
+       "mx-board-final": {
+        "caption": "Final presentation: the installation with its controller, tensioned-line details and the unit interior under blue light."
+       }
+      }
+     }
+    ]
+   },
+   "structure": {
+    "title": "Begin with a triangle.",
+    "body": "Three nodes form a triangular unit. Each node has a frame, a connecting rod and a servo that drives the rod back and forth, pulling the lines between nodes. Four movements: expand, contract, approach and retreat.",
+    "blocks": [
+     {
+      "items": {
+       "mx-board-structure": {
+        "caption": "Concept and structure: how triangles tile, the four movements, node and unit construction, and side and top views."
+       }
+      }
+     }
+    ],
+    "steps": [
+     "Expand",
+     "Contract",
+     "Approach",
+     "Retreat"
+    ]
+   },
+   "control": {
+    "title": "Connect light and movement.",
+    "body": "The backstage control panel is built in Unity; on a PC or iPad it sends OSC commands to a Raspberry Pi, which drives the IR sensors, a PCA9685 servo board and WS2812 LEDs. The panel selects colour, brightness, lighting effects and interaction modes; the structure was iterated through 3D printing, testing different lines.",
+    "blocks": [
+     {
+      "items": {
+       "mx-board-control": {
+        "caption": "Control panel: control hierarchy, setup flow, colour and lighting effects, interaction modes, plus Unity development and the making process."
+       }
+      }
+     }
+    ],
+    "steps": [
+     "Unity controller",
+     "OSC communication",
+     "Raspberry Pi",
+     "Servos & light"
+    ]
+   },
+   "question": {
+    "title": "When does a whole become more?",
+    "body": "A matrix is an array in mathematics, but also a way of structuring and organising. From array methods in The Nine Chapters to Sylvester naming the “matrix”, and on to Holland’s Emergence: simple local interactions generate features only the whole has. The installation sets out to make that emergence visible.",
+    "blocks": [
+     {
+      "items": {
+       "mx-board-origin": {
+        "caption": "The origin of the matrix: from ancient Chinese array methods and Japanese determinants to Sylvester coining “matrix” in 1850; the matrix as structure, organisation and form."
+       }
+      }
+     },
+     {
+      "items": {
+       "mx-board-emergence": {
+        "caption": "Emergence in the matrix: a multi-layer system model, the conditions for emergence, and the idea from unit interaction to the whole."
+       }
+      }
+     }
+    ]
+   }
+  },
+  "just-a-2nd": {
+   "heroCaption": "Just A 2nd in the portfolio: the home, listening exercise and mistakes screens.",
+   "oneLiner": "A pocket-sized ear trainer: spend a few seconds a day hearing two notes and naming the interval, instead of dull music-theory drills. Available on the App Store.",
+   "credit": "Individual project",
+   "showcase": {
+    "j2-show-trio": {
+     "caption": "App Store screenshots: home, listening exercise and mistakes."
+    },
+    "j2-show-feedback": {
+     "caption": "A right answer gets “Solid.”; a wrong one shows the correct interval."
+    },
+    "j2-show-dark": {
+     "caption": "The exercise screen in dark mode."
+    },
+    "j2-show-ipad": {
+     "caption": "The exercise and mistakes on iPad."
+    },
+    "j2-show-mac": {
+     "caption": "The exercise running on a Mac."
+    },
+    "j2-show-settings": {
+     "caption": "The settings screen in light and dark."
+    }
+   },
+   "practice": {
+    "title": "Hear two notes, name the gap.",
+    "body": "Tap play, hear two notes in turn and pick the interval from a few options. Get it right and the app says “Solid.” or “Basic stuff.”; get it wrong and it says “Slipped? It was a Perfect 5th”, with the two note names. Each question takes seconds, so a few fit anywhere.",
+    "blocks": [
+     {
+      "items": {
+       "j2-ui-listen": {
+        "caption": "Listen: tap play and listen closely."
+       },
+       "j2-ui-correct": {
+        "caption": "Right: “Solid.”, and the answer turns green."
+       },
+       "j2-ui-wrong": {
+        "caption": "Wrong: your choice and the right answer are marked, with both note names."
+       }
+      }
+     }
+    ],
+    "steps": [
+     "Listen",
+     "Choose",
+     "Feedback"
+    ]
+   },
+   "sound": {
+    "title": "Tuned in just intonation.",
+    "body": "Each root note is random between C3 and C5, and the second note follows just-intonation ratios (3:2 for a perfect fifth, 5:4 for a major third), so intervals sound clean rather than beating. The tone is a sine wave with an attack and release envelope to avoid clicks. Besides intervals there is a mode for major and minor chords.",
+    "points": [
+     "Easy: major 3rd, perfect 5th, octave.",
+     "Medium: adds minor 3rd, perfect 4th and major 6th.",
+     "Hard: all twelve intervals."
+    ]
+   },
+   "habit": {
+    "title": "A few seconds, every day.",
+    "body": "The home screen just asks “Got a second?”: a daily goal of ten questions by default, your streak and total below it, then an activity grid. Daily reminders keep it light: “You’re here anyway, listen to a couple?” “Just a second.”",
+    "blocks": [
+     {
+      "items": {
+       "j2-ui-home": {
+        "caption": "Home: daily goal, streak, total and activity."
+       },
+       "j2-ui-progress": {
+        "caption": "After the first question, goal progress and the streak update."
+       },
+       "j2-ui-stats": {
+        "caption": "Statistics: daily accuracy and correct answers."
+       }
+      }
+     }
+    ]
+   },
+   "mistakes": {
+    "title": "Learn from mistakes.",
+    "body": "Every miss is saved with the interval, the date and both notes; tap the speaker in Mistakes to hear it again and replay the intervals you tend to confuse.",
+    "blocks": [
+     {
+      "items": {
+       "j2-ui-mistakes": {
+        "caption": "Mistakes: each entry has the interval, date and notes, with replay."
+       },
+       "j2-ui-settings": {
+        "caption": "Settings: daily target, reminders and iCloud sync."
+       }
+      }
+     }
+    ]
+   },
+   "platforms": {
+    "title": "iPhone, iPad, Mac, light and dark.",
+    "body": "One SwiftUI interface adapts to iPhone and iPad and also runs on the Mac; in dark mode the orange glow stays at the centre. Practice history syncs across devices through iCloud.",
+    "blocks": [
+     {
+      "items": {
+       "j2-show-ipad": {
+        "caption": "The exercise and mistakes on iPad."
+       },
+       "j2-show-mac": {
+        "caption": "The exercise running on a Mac."
+       }
+      }
+     },
+     {
+      "items": {
+       "j2-ui-dark-home": {
+        "caption": "Home in dark mode."
+       },
+       "j2-ui-dark-listen": {
+        "caption": "The exercise in dark mode."
+       },
+       "j2-ui-dark-wrong": {
+        "caption": "Wrong-answer feedback in dark mode."
+       }
+      }
+     }
+    ]
+   },
+   "build": {
+    "title": "From prototype to the App Store.",
+    "body": "I first prototyped the listening exercise on the web, then rebuilt it as a native SwiftUI app: AVAudioEngine synthesises the audio in real time, StoreKit offers a one-time Pro unlock (medium and hard levels plus custom goals), and the interface is in Chinese and English. It launched on the App Store in January 2026 and is now at version 1.2.",
+    "points": [
+     "SwiftUI · real-time AVAudioEngine synthesis",
+     "StoreKit Pro unlock · iCloud sync · daily reminders",
+     "Chinese and English · App Store v1.2"
+    ]
+   }
+  },
+  "gocus": {
+   "heroEmbed": {
+    "title": "Interactive Gocus panel"
+   },
+   "actions": [
+    {
+     "label": "Download for macOS"
+    },
+    {
+     "label": "View GitHub Releases"
+    }
+   ],
+   "heroCaption": "Gocus: the site’s pitch and download on the left, the panel and its branch menu on the right.",
+   "oneLiner": "A compact Git panel that sits beside AI-native editors, keeping agent commits, branches and worktrees in view without switching to a full IDE.",
+   "credit": "Individual project",
+   "context": {
+    "title": "Faster agents need a clearer view.",
+    "body": "When you code with Codex, Claude Code or Antigravity, the main surface is a conversation, not an IDE. Agents commit and open worktrees constantly; an IDE’s Git sidebar can’t keep up, and a full Git client breaks the flow. Gocus is a narrow panel beside the editor holding only the state you check most: branch rails and tags, lines changed per commit, worktrees and the files changed right now.",
+    "points": [
+     "Every Git change is confirmed first: branch, merge, checkout.",
+     "Merged worktrees are marked safe to clean, tidying up after agents.",
+     "One click back to VS Code, Cursor, Antigravity, Finder, Terminal or Xcode."
+    ]
+   },
+   "graph": {
+    "title": "Every fork, easy to read.",
+    "body": "The commit graph is what people look at most in Gocus. How far a fork or a join bends, the gap left around each node and the half-pixel alignment of every line were all adjusted against real repositories, again and again. The graph below uses the app’s own formulas; try dragging it.",
+    "blocks": [
+     {
+      "title": "Gocus commit graph drawing"
+     }
+    ]
+   },
+   "build": {
+    "title": "From a panel to regular releases.",
+    "body": "Gocus is built with Electron, React and TypeScript, ships for macOS (Apple silicon) and Windows, and updates itself from GitHub Releases. Version 0.1.0 shipped on 19 June 2026, reaching 0.1.12 a month later. Each release passes a quality gate of dependency audit, secret scan, lint, unit tests, UI smoke tests and build. The same commit graph also ships as a Codex plugin preview that starts conflict-resolution, commit or worktree-cleanup sessions inside Codex.",
+    "blocks": [
+     {
+      "title": "Gocus repository detection"
+     }
+    ],
+    "points": [
+     "Electron · React · TypeScript",
+     "macOS and Windows · auto-update from GitHub Releases",
+     "13 releases: 0.1.0 → 0.1.12"
+    ]
+   },
+   "library": {
+    "title": "A compact component set.",
+    "body": "Every part of the panel comes from one set of ui-* primitives. The components below are lifted from the 0.1.12 interface with its original CSS. Each card is one component with its states (default, hover, focus, active, open, disabled) side by side or composed together, generated from the interface’s own :hover and :focus rules; segmented controls and view chips respond to clicks.",
+    "blocks": [
+     {
+      "title": "Gocus component library"
+     }
+    ]
+   },
+   "guidelines": {
+    "title": "Guidelines enforced in code.",
+    "body": "Gocus should read like a narrow desktop tool, not a large content page. Type, colour, spacing and control sizes live in CSS tokens; the values below are read live from the tokens the interface uses. The rules come from the repository’s DESIGN.md and a custom Stylelint rule checks them on every change.",
+    "blocks": [
+     {
+      "title": "Gocus design guidelines"
+     }
+    ]
+   },
+   "identity": {
+    "title": "The icon: one main line, one branch.",
+    "body": "The project began in early June 2026 as Git Peek, a sidecar prototype, and became Gocus on 19 June. The icon is taken straight from the panel’s commit graph: a graphite tile, a fading dot grid, three commits on an amber main line and one blue branch leaving the middle. Below, the original SVG is split into its five layers: explode them, show the construction lines, or hover a layer to isolate it. The menu bar icon is a monochrome template of the same mark.",
+    "blocks": [
+     {
+      "title": "Gocus icon breakdown"
+     }
+    ]
+   }
+  },
+  "shokz": {
+   "heroCaption": "Home in Bluetooth and local mode.",
+   "oneLiner": "OpenSwim Pro 2 are bone-conduction headphones made for the water: they play from a phone or, without one, from their own storage. The companion app’s job is to get music, training and the network ready before you get in the pool.",
+   "credit": "Shokz · App interface design",
+   "homepage": {
+    "title": "First, which mode are the headphones in?",
+    "body": "The same headphones are used in two very different ways: streaming from a phone, or playing their own music in the pool with no phone nearby. Many actions only make sense in one of them, so the home screen settles the mode first, then puts the most-used entry points for both on the first screen."
+   },
+   "training": {
+    "title": "Set up on land, control by button in the water.",
+    "body": "There is no phone, and no usable screen, in the pool. Training is chosen and configured before getting in; in the water, a long press on the headphones’ mode button ends the workout without touching the phone.",
+    "blocks": [
+     {
+      "items": {
+       "sk-training": {
+        "caption": "Free and course training."
+       }
+      }
+     }
+    ]
+   },
+   "player": {
+    "title": "Sound by situation, not by frequency.",
+    "body": "Nobody tunes an equaliser at the poolside. Sound modes are named by situation (everyday music, lectures and audiobooks, swimming with earplugs) so choosing is one tap. The player keeps track list, skipping and sound mode together because they tend to be needed at the same moment.",
+    "blocks": [
+     {
+      "items": {
+       "sk-player": {
+        "caption": "The player and sound modes."
+       }
+      }
+     }
+    ]
+   },
+   "data": {
+    "title": "Progress shows up in comparison.",
+    "body": "A single swim says little on its own; pace and SWOLF only mean something across sessions. So the data has three layers: the latest swim and personal bests for instant feedback, per-set detail for a single session, and day-to-year totals for the long view.",
+    "blocks": [
+     {
+      "items": {
+       "sk-data": {
+        "caption": "Three layers of workout data."
+       }
+      }
+     }
+    ]
+   },
+   "import": {
+    "title": "Local mode starts with getting music on board.",
+    "body": "Playing without a phone means the music must already be on the headphones. It can come from QQ Music, phone files or a computer, each with different limits, so all three are offered side by side and the target folder is chosen during import. Importing from QQ Music needs the headphones to get online by themselves; it has the most conditions and the most ways to fail, and it is what the next section reworks.",
+    "blocks": [
+     {
+      "items": {
+       "sk-import": {
+        "caption": "Three ways to import."
+       }
+      }
+     }
+    ]
+   },
+   "wifi": {
+    "title": "Reworked: getting the headphones online.",
+    "body": "The first version followed the usual IoT pattern: type the network name and password, a separate set of screens for the hotspot, and a bare “Connection failed” whenever something went wrong. Conditions such as 5GHz or public Wi-Fi or a low battery only surfaced after a failed attempt, and the failure screens didn’t say why. The final version moves those checks up front and gives every failure a next step.",
+    "blocks": [
+     {
+      "title": "Wi-Fi setup flow, before and after"
+     }
+    ],
+    "points": [
+     "Requirements first: network and battery limits are stated up front, and unmet ones stop the flow early.",
+     "Choose instead of type: only joinable networks are listed, saved ones fill their password, and the hotspot joins the same page.",
+     "Errors grouped by cause: one message per cause, each saying what to do."
+    ]
+   },
+   "courses": {
+    "title": "Official courses to start, custom ones for regulars.",
+    "body": "People without a plan can follow an official course; swimmers with their own routine can build warm-ups, main sets and repetitions. Either way the session is sent to the headphones, which guide the swim, so the phone stays out of the water.",
+    "blocks": [
+     {
+      "items": {
+       "sk-courses": {
+        "caption": "The course library and course editing."
+       }
+      }
+     }
+    ]
+   },
+   "tracks": {
+    "title": "Keep the source, shape the listening order.",
+    "body": "Imported songs come from different places, and folders keep that origin visible. During a workout what matters is what plays next, so playlists handle the order. Storage space and expired tracks are flagged up front, so nobody finds out at the poolside that a song won’t play.",
+    "blocks": [
+     {
+      "items": {
+       "sk-library": {
+        "caption": "All songs, folders and playlists."
+       }
+      }
+     }
+    ]
+   }
+  },
+  "web-style": {
+   "heroCaption": "The design style studio: styles on the left, the full preview in the middle, tuning on the right.",
+   "oneLiner": "An agent design tool: pick a style, watch a full sample page restyle live, and export the tuned result as CSS variables. People tune it in the interface; agents call the same tools through WebMCP.",
+   "credit": "Individual project",
+   "actions": [
+    {
+     "label": "Open the studio"
+    },
+    {
+     "label": "View on GitHub"
+    }
+   ],
+   "context": {
+    "title": "A style name only makes sense on a whole page.",
+    "body": "Designers and developers talk about style in words like glassmorphism, neumorphism or brutalism. But a word, or even a single button, can’t show what a style does to a whole product, or which parameters are doing the work. So instead of a style gallery, one page switches between styles, and each style is broken back down into a set of CSS variables.",
+    "blocks": [
+     {
+      "title": "Live: switch styles on the left, tune on the right"
+     }
+    ],
+    "points": [
+     "10 presets, from Liquid Glass and Editorial to Retro Pixel",
+     "One list of 29 variables covering colour, shape, shadow, type and effects",
+     "Export the CSS variables, or copy a link that reproduces the exact look"
+    ]
+   },
+   "canvas": {
+    "title": "Judge a style on a whole page.",
+    "body": "A style’s character only shows across a hierarchy: navigation, headline, data cards, form and components together reveal whether radius, shadow and weight agree. The sample page, Lumen, is a fictional product with a bento dashboard, a form and a set of components. It is laid out with container queries, so desktop, tablet and mobile widths switch inside the canvas instead of by resizing the browser. Each preset also lists the two or three properties that define it, and why.",
+    "blocks": [
+     {
+      "title": "Editorial: warm paper, ink typography and hairline rules"
+     }
+    ]
+   },
+   "studio": {
+    "title": "The studio stays out of the preview.",
+    "body": "The first version themed the whole interface with the current style, so switching to Brutalism or Retro made the tuning controls themselves hard to read. The redesign separates the two palettes: the studio uses its own neutral tokens (--ui-*, light and dark), and only the canvas follows the previewed style. The tuning panel is ordered per style too: signature controls first, such as Liquid Glass’s refraction blur or Retro’s neon glow, then the shared colour and shape controls.",
+    "points": [
+     "Studio and preview use separate tokens, so switching style never hurts legibility",
+     "Each style’s signature controls come first",
+     "Dragging a slider updates variables without rebuilding the panel"
+    ]
+   },
+   "library": {
+    "title": "Components that serve only the studio.",
+    "body": "The studio has to sit beside any style without competing with it, so every component is built on a small set of neutral tokens: zinc greys and one violet accent, chosen not to clash with any preset’s primary colour. Light and dark follow the system or can be set by hand. The components below are lifted from the studio with its original CSS; hover, pressed and focus states come from its own :hover / :active / :focus rules, and the switch at the top right flips light and dark.",
+    "blocks": [
+     {
+      "title": "Web Style Visualisation component library"
+     }
+    ]
+   },
+   "agents": {
+    "title": "Leave generation to agents.",
+    "body": "The previous version had an in-site AI chat where users entered their own API key to generate styles. Key storage, quota errors and model choice all became the site’s problem, while the agents people actually use couldn’t reach the page. The chat is gone; instead the site opens itself to outside agents. It registers 8 tools through WebMCP for in-browser agents, exposes window.WebStyleAPI for automation tools such as Playwright, accepts plain URL parameters, and ships an Agent Skill that works offline. All four paths share one variable list and one validator, so values written by an agent are checked like slider input, and invalid ones are reported back.",
+    "points": [
+     "WebMCP: list_styles · get_current_style · get_variable_definitions · apply_style · set_variables · reset_style · export_css · get_share_url",
+     "window.WebStyleAPI: applyStyle, applyVariables, exportCSS, with variables merged onto the current style",
+     "URL parameters: ?style= and ?variables=, kept in sync with every edit so the address bar is the share link",
+     "Agent Skill for Claude Code, Codex and Cursor, generating CSS even offline"
+    ]
+   },
+   "type": {
+    "title": "Chinese should look the part too.",
+    "body": "Most style references are designed in Latin type, and when Chinese falls back to a default font the style falls apart. Every font option now carries a Chinese fallback: system CJK fonts first for sans, Noto Serif SC first for serif, with Chinese-specific line height, tracking, minimum sizes and CJK–Latin spacing. Retro Pixel uses a 15 KB subset of Fusion Pixel 12px, sized in multiples of 12px so the pixels stay aligned.",
+    "blocks": [
+     {
+      "title": "Retro Pixel: switch to 中文 at the top right to see the Chinese pixel font"
+     }
+    ]
+   }
+  },
+  "sf-eats": {
+   "heroCaption": "SF Eats: the squirrel mascot beside the app’s home and AI diet-plan screens, linking community, group orders, AI diet plans and pre-ordered meals.",
+   "oneLiner": "A healthy food-delivery app for Hong Kong university students: group orders, AI diet plans and pre-ordered meals, delivered to campus buildings by SF Express unmanned vehicles.",
+   "credit": "Authors: Lu Junrong, Yu Xinyan, Tsang Hiu Ching, Qu Sichen, Li Xiang, Fan Shuyu",
+   "showcase": {
+    "sf-vehicle": {
+     "caption": "An SF Express unmanned delivery vehicle crossing the PolyU campus, branded with SF Eats."
+    },
+    "sf-still-home": {
+     "caption": "Concept video: opening the app’s home screen to pick a meal after class."
+    },
+    "sf-still-plan": {
+     "caption": "Concept video: a ten-day diet plan generated by the AI."
+    },
+    "sf-still-track": {
+     "caption": "Concept video: tracking the unmanned vehicle on the map."
+    },
+    "sf-still-share": {
+     "caption": "Concept video: a group order arrives and is shared out."
+    },
+    "sf-still-bowl": {
+     "caption": "Concept video: phone in one hand, the freshly collected salad bowl in the other."
+    }
+   },
+   "films": {
+    "title": "One day at PolyU.",
+    "body": "The concept video follows a student through a day: hearing about SF Eats between classes, downloading the app, ordering and collecting downstairs; on another day, generating an AI diet plan and joining friends in a group order.",
+    "blocks": [
+     {
+      "title": "SF Eats concept video"
+     }
+    ]
+   },
+   "identity": {
+    "title": "Fast, friendly, curious.",
+    "body": "The squirrel is quick, a natural forager and friendly: fast delivery, finding good food, and an approachable voice for students. A cast of animal characters forms the community, one per user, checking in and eating together.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-mascot": {
+        "caption": "Mascot rationale: speed and precision, foraging as food discovery, friendly and energetic."
+       }
+      }
+     },
+     {
+      "items": {
+       "sf-board-community": {
+        "caption": "The SF Eats community: eight animal characters and the community feed, “Your journey to better health isn’t a solo path anymore.”"
+       }
+      }
+     }
+    ]
+   },
+   "group": {
+    "title": "Better eating, together.",
+    "body": "Group orders let classmates and friends combine meals into one order, saving time and sharing delivery costs; weekly themed events, such as plant-based Green Monday, give a reason to try something new.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-group": {
+        "caption": "Group orders and weekly events: the group-order screen lists the friends who have joined and their meals."
+       }
+      }
+     }
+    ]
+   },
+   "planning": {
+    "title": "From a meal to a plan.",
+    "body": "Enter height, weight and a meal budget, and the AI builds a personalised diet plan, with matching meals ready to pre-order.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-plan": {
+        "caption": "AI diet plan: set a goal, body data and budget, then get daily meals with their nutrition ratios."
+       }
+      }
+     }
+    ]
+   },
+   "ordering": {
+    "title": "A connected ordering journey.",
+    "body": "AI recommendations, picking your own and pre-ordered meals all lead into one cart; after ordering, track the SF Express unmanned vehicle on the map and collect at your building.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-order": {
+        "caption": "The ordering flow: three entry points, then the cart, order and delivery-tracking screens."
+       }
+      }
+     }
+    ],
+    "steps": [
+     "Choose a meal",
+     "Confirm the order",
+     "Track delivery",
+     "Collect the meal"
+    ]
+   },
+   "habits": {
+    "title": "A small choice, repeated.",
+    "body": "Users on the AI diet plan build a streak each time they eat to plan; a leaderboard and an end-of-term health challenge make sticking with it a little more fun.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-streak": {
+        "caption": "Challenges and streaks: the end-of-term health challenge and the friends leaderboard."
+       }
+      }
+     }
+    ]
+   },
+   "research": {
+    "title": "Healthier choices need convenience.",
+    "body": "We observed queues in PolyU dining halls at peak hours, collected 111 online questionnaires and ran ten interviews. 83% of students would choose healthy delivery, yet there is only half an hour between afternoon and evening classes, canteen queues are long and delivery is slow and costly. The goals became: make ordering and pickup faster and more flexible, and make healthy choices easier to see.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-survey": {
+        "caption": "Survey results: 83% would choose healthy delivery, 95% know to eat healthily, 92% read nutrition information, 97% are willing to accept healthy food."
+       }
+      }
+     },
+     {
+      "items": {
+       "sf-board-stakeholders": {
+        "caption": "Stakeholders: students at the centre, food vendors and SF Express as the service layer, with nutritionists, developers, the university, parents and government around them."
+       }
+      }
+     },
+     {
+      "items": {
+       "sf-board-ideation": {
+        "caption": "From problems to solutions: no time for the canteen → pre-orders and direct delivery; easier access → delivery to buildings; healthier food → gamified incentives; less decision-making → AI recommendations; cheaper delivery → shared group orders."
+       }
+      }
+     }
+    ],
+    "points": [
+     "Reduce waiting between classes.",
+     "Make meals and nutrition information legible.",
+     "Share delivery costs through group orders."
+    ]
+   },
+   "service": {
+    "title": "From an order to a complete service.",
+    "body": "The blueprint aligns ordering, delivery and pickup on the front stage with recommendation, dispatch and order systems backstage; the user journey and the unmanned-vehicle scenario put the whole flow back on campus. These are design proposals, not a deployed service.",
+    "blocks": [
+     {
+      "items": {
+       "sf-board-blueprint": {
+        "caption": "Service blueprint: touchpoints, front stage, technology and backstage support before, during and after the service."
+       }
+      }
+     },
+     {
+      "items": {
+       "sf-board-journey": {
+        "caption": "User journey: from discovering and browsing to ordering, pickup, building habits and redeeming rewards."
+       }
+      }
+     },
+     {
+      "items": {
+       "sf-board-scenario": {
+        "caption": "Unmanned delivery scenario: order at 17:30 after class, the vehicle leaves Tsim Sha Tsui at 17:43, and at 18:03 the meal is collected downstairs and shared with friends."
+       }
+      }
+     }
+    ]
+   }
+  },
+  "bambu-lab": {
+   "heroCaption": "Mini program concept: the home and AR tour screens.",
+   "oneLiner": "A redesigned customer experience for Bambu Lab’s first flagship store: a new route through the store and a mini program with AR guidance, an AI assistant and bookings, so first-time visitors can start printing.",
+   "credit": "Authors: Lu Junrong, Tsang Hiu Ching, Liu Yinghong, Zhang Kaiying, Zhu Zhengming",
+   "films": {
+    "title": "A walk through the store.",
+    "body": "The demo follows the new route through the store, from entering and seeing the sandbox and model wall to signing up for a workshop and booking a free print, each step matched to a feature in the mini program.",
+    "blocks": [
+     {
+      "title": "Mini program demonstration"
+     }
+    ]
+   },
+   "digital": {
+    "title": "The store, in your hands.",
+    "body": "The redesigned Bambu Lab mini program carries on from the visit: AR guidance explains the exhibits, the store links interest to purchase, and workshop and printing bookings offer a next step.",
+    "blocks": [
+     {
+      "items": {
+       "bb-board-features": {
+        "caption": "Four main features: AR guided tour, product store, workshop booking and 3D printing service booking."
+       }
+      }
+     }
+    ]
+   },
+   "assistant": {
+    "title": "An approachable guide.",
+    "body": "Little Bambu is a character-based AI assistant that answers questions about printers, filament and printing, so newcomers can keep exploring through conversation.",
+    "blocks": [
+     {
+      "items": {
+       "bb-board-chatbot": {
+        "caption": "Little Bambu AI chatbot: three conversation screens."
+       }
+      }
+     }
+    ]
+   },
+   "journey": {
+    "title": "One discovery leads to another.",
+    "body": "The original store had no clear route, and visitors didn’t know what to do after the displays. The new route runs through the sandbox, model wall, photo wall, Bambu Market, filament wall, printer area and workshop, from seeing to trying to learning.",
+    "blocks": [
+     {
+      "items": {
+       "bb-board-floor-after": {
+        "caption": "The redesigned floorplan and new customer route, with seven numbered stops."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-floor-before": {
+        "caption": "The floorplan before: no clear route between the areas."
+       }
+      }
+     }
+    ]
+   },
+   "co-design": {
+    "title": "Reimagine the space, together.",
+    "body": "We invited six interviewees and one stakeholder to a co-design workshop in three parts: writing pain points on sticky notes, sharing inspiring cases, then rearranging the store and its route on a model.",
+    "blocks": [
+     {
+      "items": {
+       "bb-board-codesign": {
+        "caption": "The workshop’s three parts: from pain points to opportunities, inspirational case sharing, and co-creation, with photos from the session."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-insights": {
+        "caption": "Workshop insights: a confusing layout, too much technical display, no information hierarchy, too little hands-on engagement, and a wish for a maker community."
+       }
+      }
+     }
+    ],
+    "steps": [
+     "Find the friction",
+     "Share inspiration",
+     "Co-create the journey"
+    ]
+   },
+   "research": {
+    "title": "Understand what follows curiosity.",
+    "body": "Bambu Lab’s first flagship store opened at MixC Shenzhen Bay on 30 September 2025, about 244 m². We observed the store and ran 18 interviews before and after visits: the displays attract attention, but visitors see finished objects rather than what the printers can do, and with no guidance they don’t know how to start printing.",
+    "blocks": [
+     {
+      "items": {
+       "bb-board-goals": {
+        "caption": "Project goals: turn curiosity into capability, create a cohesive journey, generate leads and sales, and promote the brand and its ecosystem."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-stakeholders": {
+        "caption": "Stakeholder map in core, primary and secondary rings."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-painpoints": {
+        "caption": "Five observed pain points: an incomplete experience, displays disconnected from printing, ineffective guidance, no digital–physical interaction, and unclear zones."
+       }
+      }
+     }
+    ],
+    "points": [
+     "Turn curiosity into capability.",
+     "Create a connected visitor journey.",
+     "Connect learning, trying and buying."
+    ]
+   },
+   "service": {
+    "title": "Connect the experience and its support.",
+    "body": "The new journey runs from online discovery through entering, observing, joining a workshop, asking about products, trying a print and following up afterwards; two blueprint panels list the touchpoints, front stage, backstage and expected feelings at each stage.",
+    "blocks": [
+     {
+      "items": {
+       "bb-board-blueprint-1": {
+        "caption": "Redesigned journey, part one: explore online, enter, observe, discover."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-blueprint-2": {
+        "caption": "Redesigned journey, part two: join a workshop, product inquiry, printing trial, exit and follow-up."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-process": {
+        "caption": "How the digital solution was made: discover, define, ideate, prototype, refine."
+       }
+      }
+     },
+     {
+      "items": {
+       "bb-board-outcomes": {
+        "caption": "Expected outcomes: AR makes the technology accessible, workshops build a community, an all-in-one experience earns loyalty, and educating users drives consumables sales."
+       }
+      }
+     }
+    ]
+   }
+  },
+  "pawpals": {
+   "heroCaption": "At the graduation show, station modules form one installation; yarn balls and paw prints lead visitors between the stations.",
+   "oneLiner": "A TNR-based stray cat care system: tracking collars, campus stations and a shared platform that keep care going.",
+   "credit": "Authors: Lu Junrong, Zhang Lutong",
+   "showcase": {
+    "pp-station-cluster": {
+     "caption": "A cluster of stations in the hall: cat towers, hexagonal tops and yarn balls."
+    },
+    "pp-real-collar": {
+     "caption": "A ginger cat wearing the flexible tracking collar."
+    },
+    "pp-cat-collar": {
+     "caption": "A low-poly cat sculpture wearing the flexible collar, with two tracking boards at its feet."
+    },
+    "pp-pcbs": {
+     "caption": "Two versions of the tracking board, with GNSS antennas and TF card slots."
+    },
+    "pp-table-graphics": {
+     "caption": "Hexagonal table tops printed with the station cats and their stories."
+    },
+    "pp-logo-panel": {
+     "caption": "The PawPals mark on a station side panel."
+    },
+    "pp-app-mock": {
+     "caption": "The PawPals app: campus map, station details and tasks."
+    },
+    "pp-collar-close": {
+     "caption": "Close-up of the flexible collar: the circuit is built into the FPC and fastened with Velcro."
+    }
+   },
+   "exhibition": {
+    "title": "The whole system, in one room.",
+    "body": "At the graduation show the station modules formed a walk-in installation: a low-poly cat sculpture wore the flexible collar, hexagonal tops showed the station cats, a screen played the demo, and yarn balls and paw prints led visitors around.",
+    "blocks": [
+     {
+      "items": {
+       "pp-ex-wide": {
+        "caption": "The full installation: hexagonal platforms between two cat towers, with yarn balls and paw prints around."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-ex-side": {
+        "caption": "The installation from the side, with the screen and cat sculpture in the middle."
+       },
+       "pp-ex-cat": {
+        "caption": "Beside the cat sculpture, a screen plays the demo."
+       },
+       "pp-ex-table": {
+        "caption": "Cat profiles on the hexagonal tops: names, personalities and QR codes."
+       },
+       "pp-ex-stamps": {
+        "caption": "Cat stickers and ink pads for visitors to stamp and take home."
+       },
+       "pp-ex-lid": {
+        "caption": "Lifting a station lid to reveal the bed inside."
+       },
+       "pp-ex-paws": {
+        "caption": "Felt paw prints on a platform."
+       }
+      }
+     }
+    ]
+   },
+   "films": {
+    "title": "See it at work.",
+    "body": "The demo walks through the full loop: collaring a cat, recording its route, inferring where a station should go, then deploying and caring for it. The making-of shows the stations being built in the workshop.",
+    "blocks": [
+     {
+      "title": "PawPals demo"
+     },
+     {
+      "title": "Building the stations"
+     }
+    ]
+   },
+   "context": {
+    "title": "Stray cats need more than a meal.",
+    "body": "China had about 53 million stray cats in 2021, threatened by scarce food, bad weather, abuse and neglect. Student-led TNR (trap, neuter, return) keeps numbers down, but it lacks a discovery step: nobody knows where new strays will turn up.",
+    "blocks": [
+     {
+      "items": {
+       "pp-board-origin": {
+        "caption": "Why stray cats: their population traits, territorial habits and the four dangers they face."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-intervention": {
+        "caption": "The current intervention process, using the Youliangquan group as an example: find, feed, treat and TNR, funded by merchandise and events. On the right: why TNR works and how to add a discovery step."
+       }
+      }
+     }
+    ]
+   },
+   "system": {
+    "title": "A constellation of cats, people and devices.",
+    "body": "A constellation metaphor maps the stakeholders: staff, volunteers, vets and welfare groups orbit the cats, while the wearables and stations form sub-constellations. The service blueprint links preparation, station deployment, cat management and daily care into one flow.",
+    "blocks": [
+     {
+      "items": {
+       "pp-board-stakeholders": {
+        "caption": "Stakeholder map: the PawPals constellation, the wearable and station sub-constellations, and how they map to MTHD, OOO and ANT."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-blueprint": {
+        "caption": "Service blueprint: five lanes (cat behaviour, staff, back office, technology and support) across four phases."
+       }
+      }
+     }
+    ]
+   },
+   "platform": {
+    "title": "A way in for everyone.",
+    "body": "People who want news of the cats, want to pet them, will adopt a station or are just passing by each get their own journey. The platform is organised around a campus map, stations, tasks, levels and a community, with ongoing rewards, daily rewards and penalties to keep people involved.",
+    "blocks": [
+     {
+      "items": {
+       "pp-ui-desktop": {
+        "caption": "Web: an isometric campus map marking stations with and without cats, with tasks and the live camera for an adopted station on the right."
+       },
+       "pp-ui-phones": {
+        "caption": "Mobile: map, progress centre, community and station tasks."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-journey": {
+        "caption": "User journeys: four kinds of user from opening the app to sharing; station adopters earn rewards for completed tasks."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-ia": {
+        "caption": "Information architecture and incentives: rewards for streaks and daily tasks, and penalties for unfinished ones."
+       }
+      }
+     }
+    ]
+   },
+   "wearable": {
+    "title": "Tracking, in a collar.",
+    "body": "The tracker pairs an ESP32-C3 with a multi-mode GNSS module and sleeps between timed wake-ups to save power. It parses NMEA data to a TF card and plots the route on a map. The form moved from a backpack PCB to a flexible FPC collar: tested on four stray cats, the flexible version went on faster and met less resistance.",
+    "blocks": [
+     {
+      "text": "Hardware"
+     },
+     {
+      "items": {
+       "pp-hw-devboard": {
+        "caption": "First build: an ESP32 dev board with a GNSS antenna, checking position readings."
+       },
+       "pp-hw-pcb": {
+        "caption": "Custom PCB: controller, GNSS module and TF card on one board."
+       },
+       "pp-hw-battery": {
+        "caption": "Another tracking board connected to a lithium battery."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-gps": {
+        "caption": "Technical tests: GPS test code, the prototype, NMEA parsing and the route plotted on a campus map."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-hardware": {
+        "caption": "Hardware and algorithm: ESP32-C3, ATGM336H GNSS, battery management and TF storage; on the right, the wake, locate, write and sleep cycle."
+       }
+      }
+     },
+     {
+      "text": "Fitting tests"
+     },
+     {
+      "items": {
+       "pp-test-grey": {
+        "caption": "The backpack prototype on a grey cat."
+       },
+       "pp-test-backpack": {
+        "caption": "Fastening the backpack prototype on a ginger cat at a table."
+       },
+       "pp-test-walk": {
+        "caption": "A ginger cat walking in the flexible collar."
+       },
+       "pp-test-fpc": {
+        "caption": "The FPC collar: circuitry on a flexible board, with Velcro at the end."
+       },
+       "pp-test-logo": {
+        "caption": "The outside of the collar carries the PawPals mark and a short note."
+       },
+       "pp-test-calico": {
+        "caption": "A calico cat wearing the flexible collar."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-board-research": {
+        "caption": "User tests: the backpack version made cats resist, get tangled or slip to the chest; the flexible collar showed no clear problems on all four cats."
+       }
+      }
+     }
+    ]
+   },
+   "station": {
+    "title": "A steady place to come back to.",
+    "body": "Stray cats move around food sources and prefer quiet, hidden corners. Each station centres on a cat tower with a bed and food, and can grow with shelves and hideaways. An infrared sensor and camera log comings and goings, and ESP-NOW links send the status to the platform.",
+    "blocks": [
+     {
+      "items": {
+       "pp-board-behaviour": {
+        "caption": "Behaviour and function: the needs behind foraging, hunting, resting, patrolling and socialising, and the core and extension modules."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-station-field": {
+        "caption": "Testing a station on the riverside lawn and checking its status on a phone."
+       },
+       "pp-station-espnow": {
+        "caption": "The ESP-NOW box on a station; its lights show the link status."
+       },
+       "pp-station-sensor": {
+        "caption": "The infrared sensor and screen inside a station."
+       }
+      }
+     },
+     {
+      "items": {
+       "pp-render-cluster": {
+        "caption": "Render: a full station of towers, hexagonal platforms and a screen."
+       },
+       "pp-render-tower": {
+        "caption": "Render: triangle markers and a bed on the cat tower."
+       },
+       "pp-render-hex": {
+        "caption": "Render: hiding space and yarn balls under the hexagonal platforms."
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ "drafts": {
+  "mirs-bay": {
+   "subtitle": "Nature, carried with you.",
+   "type": "Ecotourism · Service system · Team project",
+   "intro": "A non-invasive, multisensory service concept for Mirs Bay and the Shenzhen–Hong Kong geoparks. Images, sounds and digital creations turn personal encounters into a growing shared archive.",
+   "brief": "How can a short visit become an ongoing relationship with nature?",
+   "approach": "Connect discovery, on-site recording, digital creation, community sharing and incentives through a service blueprint.",
+   "output": "Experience storyboards, mobile concepts, stakeholder flows and a service blueprint.",
+   "study": {
+    "context": {
+     "title": "A relationship with place.",
+     "body": "Set around the geoparks on both sides of Mirs Bay, the concept centres on recording and sharing. Experiences continue through sound, imagery and stories while leaving the landscape intact.",
+     "points": [
+      "From visitor to co-creator.",
+      "From an encounter to a shareable story.",
+      "From a visit to ongoing participation."
+     ]
+    },
+    "journey": {
+     "title": "One connected journey.",
+     "body": "Discovery, on-site exploration, digital creation and sharing form a connected journey. Storyboards place each touchpoint within a concrete action.",
+     "groups": [
+      {
+       "items": {
+        "geo-story-1": {
+         "caption": "Discover the activity"
+        },
+        "geo-story-2": {
+         "caption": "Book a trip"
+        },
+        "geo-story-3": {
+         "caption": "Arrive at the geopark"
+        },
+        "geo-story-4": {
+         "caption": "Photograph rocks"
+        },
+        "geo-story-5": {
+         "caption": "Create a personal sample"
+        },
+        "geo-story-6": {
+         "caption": "Record ambient sounds"
+        },
+        "geo-story-7": {
+         "caption": "Generate a sound album"
+        },
+        "geo-story-8": {
+         "caption": "Share the creation"
+        },
+        "geo-story-9": {
+         "caption": "Earn participation coins"
+        },
+        "geo-story-10": {
+         "caption": "Showcase offline"
+        },
+        "geo-story-11": {
+         "caption": "Redeem rewards"
+        },
+        "geo-story-12": {
+         "caption": "Explore again"
+        }
+       }
+      },
+      {
+       "items": {
+        "geo-journey": {
+         "caption": "Cross-touchpoint user journey"
+        }
+       }
+      }
+     ]
+    },
+    "experience": {
+     "title": "Compose an encounter.",
+     "body": "Photographs of rocks, ambient recordings and digital editing become personal records of a visit. These visuals represent the proposed service and interface concepts.",
+     "groups": [
+      {
+       "items": {
+        "geo-onboarding": {
+         "caption": "Online and offline entry points"
+        }
+       }
+      },
+      {
+       "items": {
+        "geo-create-1": {
+         "caption": "Digital creation concept {i}"
+        }
+       }
+      }
+     ]
+    },
+    "community": {
+     "title": "Personal records. Shared archive.",
+     "body": "Share sound albums and visual records to offer new perspectives. Contribution records and Geo-Coins are proposed as incentives for ongoing participation.",
+     "groups": [
+      {
+       "items": {
+        "geo-share-1": {
+         "caption": "Sharing and community interface {i}"
+        }
+       }
+      },
+      {
+       "items": {
+        "geo-rewards": {
+         "caption": "Participation incentives and rewards"
+        }
+       }
+      }
+     ]
+    },
+    "system": {
+     "title": "The system behind the experience.",
+     "body": "Map visitors, researchers, park operators and local businesses together to show flows of data, services and incentives. The blueprint connects visible experiences with supporting operations.",
+     "groups": [
+      {
+       "items": {
+        "geo-stakeholders": {
+         "caption": "Stakeholders and value flows"
+        }
+       }
+      },
+      {
+       "items": {
+        "geo-loop": {
+         "caption": "Dynamic incentive feedback loop"
+        }
+       }
+      },
+      {
+       "items": {
+        "geo-blueprint_svg": {
+         "caption": "Service blueprint"
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  "va-feedback": {
+   "subtitle": "Feedback that finds its way.",
+   "type": "Campus service · Information flows · Team project",
+   "intro": "A campus catering feedback concept that considers both students and service operators. It explores accessible reporting, visible progress and assisted triage and follow-up.",
+   "brief": "Students struggle to find the right channel, while staff struggle to route and follow up issues.",
+   "approach": "User and catering manager interviews inform parallel journeys, assisted triage, follow-up and human escalation.",
+   "output": "Research insights, a feedback service journey and an agent workflow concept.",
+   "study": {
+    "research": {
+     "title": "First, find a way in.",
+     "body": "The team interviewed six catering users and a catering service manager. Students struggle to find official channels and see progress; operators face limited resources and unclear ownership.",
+     "groups": [
+      {
+       "items": {
+        "va-observation-1": {
+         "caption": "Campus catering issue documentation"
+        },
+        "va-observation-2": {
+         "caption": "On-site observation"
+        }
+       }
+      },
+      {
+       "items": {
+        "va-interviews": {
+         "caption": "User research documentation"
+        }
+       }
+      }
+     ],
+     "points": [
+      "Unclear entry points discourage reporting.",
+      "Invisible progress weakens trust.",
+      "Routing and follow-up burden the operator."
+     ]
+    },
+    "journey": {
+     "title": "See both sides of the journey.",
+     "body": "Users find a channel, report an issue and await a reply. Staff receive, route, investigate and respond. Mapping both journeys reveals where information stalls.",
+     "groups": [
+      {
+       "items": {
+        "va-current_svg": {
+         "caption": "Existing user and operator journeys"
+        }
+       }
+      }
+     ]
+    },
+    "system": {
+     "title": "Route issues to the right people.",
+     "body": "The concept explores agent-assisted categorisation, duplicate checks, response drafting and status follow-up. Complex cases escalate to a human owner.",
+     "points": [
+      "Routine issues: assist the reply and route to the outlet.",
+      "Complex issues: escalate with context to a human owner.",
+      "Awaiting replies: follow up with the outlet and update status."
+     ],
+     "steps": [
+      "Receive an issue",
+      "Triage and route",
+      "Follow up or escalate",
+      "Update the status"
+     ]
+    },
+    "service": {
+     "title": "Make progress visible.",
+     "body": "An on-site entry point connects to a feedback form and visible status updates. Operators receive routed issues and periodic analysis. This is a proposed service workflow.",
+     "groups": [
+      {
+       "items": {
+        "va-journey_svg": {
+         "caption": "Redesigned feedback service journey"
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  "ebike-parking": {
+   "subtitle": "Better choices, in the moment.",
+   "type": "Urban mobility · Design research · Team project",
+   "intro": "Research into e-bike parking and retrieval around Guangzhou metro stations. Observations, interviews and journey analysis shift the focus from regular commuters to occasional parkers unfamiliar with the site.",
+   "brief": "Temporary parking can block access and make retrieval difficult. How can guidance support better decisions at the moment of parking?",
+   "approach": "Document different station contexts, compare three parking behaviours and trace conflicts and knock-on effects through the day.",
+   "output": "Field research, behaviour and journey maps, a reframed problem and directions for co-design and validation.",
+   "study": {
+    "field": {
+     "title": "Start where parking happens.",
+     "body": "Fieldwork around Guangzhou metro stations documents density, blocked paths and retrieval routes. Interviews with riders and management connect spatial conditions to everyday behaviour.",
+     "groups": [
+      {
+       "items": {
+        "bike-12-2": {
+         "caption": "Station observation {n}"
+        }
+       }
+      }
+     ]
+    },
+    "research": {
+     "title": "One place, different rhythms.",
+     "body": "Regular parkers value predictable spaces and easy retrieval. Short-stay users prioritise immediate tasks. Occasional parkers rely more on visual cues and the behaviour of others.",
+     "groups": [
+      {
+       "items": {
+        "bike-17-4": {
+         "caption": "Short-stay rider"
+        },
+        "bike-17-5": {
+         "caption": "Parent travelling with children"
+        },
+        "bike-17-6": {
+         "caption": "Occasional parker"
+        }
+       }
+      }
+     ],
+     "points": [
+      "Ambiguous information encourages imitation.",
+      "Time pressure prioritises convenience.",
+      "A parking space must also allow retrieval."
+     ]
+    },
+    "journey": {
+     "title": "One stop changes the next journey.",
+     "body": "Map activities and conflicts from the morning rush to evening retrieval. A brief stop in a passage can trigger further parking and make others spend more time and effort getting out.",
+     "groups": [
+      {
+       "items": {
+        "bike-mapping": {
+         "caption": "Behaviour and event mapping"
+        }
+       }
+      },
+      {
+       "items": {
+        "bike-19-3": {
+         "caption": "Parking and retrieval routes {n}"
+        }
+       }
+      }
+     ]
+    },
+    "question": {
+     "title": "Reframe who needs support.",
+     "body": "The focus shifts from frequent users to occasional parkers unfamiliar with the site. The question becomes how to help someone find a better place at the moment of deciding.",
+     "points": [
+      "Immediate cues: see where to park.",
+      "Perceivable benefits: confidence and easier retrieval.",
+      "Environmental guidance: make the space legible."
+     ]
+    },
+    "planning": {
+     "title": "From research to validation.",
+     "body": "The material documents research, problem framing and the next-stage plan. Proposed next steps are co-design and contextual tests of cues, environmental guidance and behaviour change.",
+     "steps": [
+      "Co-design with stakeholders",
+      "Develop service concepts",
+      "Test and refine in context"
+     ]
+    }
+   }
+  }
+ }
+}

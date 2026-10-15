@@ -2,6 +2,8 @@ import React,{useEffect,useRef,useState} from 'react';
 import CaseMedia from './CaseMedia';
 import {elementPath} from '../caseStudies';
 import {blockMedia} from './blockMedia.js';
+import {copy} from '../data';
+import {format} from '../i18n';
 export {blockMedia};
 // Native content blocks for rebuilt case studies. Text stays HTML; images open in the shared lightbox.
 const t=(v,lang)=>v?.[lang]??v;
@@ -17,12 +19,12 @@ function Quotes({block,lang}){
 function Persona({block,lang}){
  return <div className="fb-persona">
   <div className="fb-persona-id"><span>{t(block.label,lang)}</span><h3>{t(block.name,lang)}</h3><dl>{block.facts.map((f,i)=><div key={i}><dt>{t(f[0],lang)}</dt><dd>{t(f[1],lang)}</dd></div>)}</dl></div>
-  {[['pains',lang==='zh'?'痛点':'Pain points'],['needs',lang==='zh'?'需求':'Needs']].map(([k,label])=><div key={k} className={`fb-persona-list is-${k}`}><h4>{label}</h4><ul>{block[k].map((x,i)=><li key={i}>{t(x,lang)}</li>)}</ul></div>)}
+  {['pains','needs'].map(k=><div key={k} className={`fb-persona-list is-${k}`}><h4>{copy[k][lang]}</h4><ul>{block[k].map((x,i)=><li key={i}>{t(x,lang)}</li>)}</ul></div>)}
  </div>;
 }
 
 function Stages({block,lang,onOpen}){
- const head=lang==='zh'?['空间需求','工具需求','需要工坊','最适合']:['Space','Tools','Workshop','Best place'];
+ const head=copy.workflowHead[lang];
  return <><ol className="fb-stages">{block.items.map((s,i)=><li key={i} className={s.workshop?'needs-workshop':''}>
   <CaseMedia item={s.image} lang={lang} onOpen={onOpen}/>
   <div className="fb-stage-text"><span className="fb-stage-index">0{i+1}</span><h3>{t(s.name,lang)}</h3><p>{t(s.detail,lang)}</p>
@@ -31,10 +33,10 @@ function Stages({block,lang,onOpen}){
 }
 
 function Spaces({block,lang,onOpen}){
- const head=lang==='zh'?['空间','人流']:['Space','Traffic'];
+ const head=copy.spaceHead[lang];
  const list=<ul className="fb-space-list">{block.items.map((s,i)=><li key={i} className={s.suitable?'is-suitable':'is-unsuitable'}>
    <CaseMedia item={s.image} lang={lang} onOpen={onOpen}/>
-   <div><h3>{s.color&&<i className="fb-dot" style={{background:s.color}}/>}{t(s.name,lang)}<span>{s.suitable?(lang==='zh'?'适合部署':'Suitable'):(lang==='zh'?'不适合':'Not suitable')}</span></h3>
+   <div><h3>{s.color&&<i className="fb-dot" style={{background:s.color}}/>}{t(s.name,lang)}<span>{s.suitable?copy.suitable[lang]:copy.unsuitable[lang]}</span></h3>
     <dl><div><dt>{head[0]}</dt><dd>{t(s.space,lang)}</dd></div><div><dt>{head[1]}</dt><dd>{t(s.traffic,lang)}</dd></div></dl>
     <p>{t(s.note,lang)}</p>{s.works.length>0&&<ul className="fb-tags">{s.works.map((w,j)=><li key={j}>{t(w,lang)}</li>)}</ul>}</div>
   </li>)}</ul>;
@@ -54,7 +56,7 @@ function Blueprint({block,lang}){
  return <figure className="fb-blueprint">
   <div className="fb-blueprint-scroll" tabIndex={0} aria-label={t(block.caption,lang)}>
    <div className="fb-blueprint-grid" style={{'--cols':cols}}>
-    <div className="fb-bp-label fb-bp-phase-label">{lang==='zh'?'阶段':'Time'}</div>
+    <div className="fb-bp-label fb-bp-phase-label">{copy.phase[lang]}</div>
     {block.phases.map((p,i)=><div key={i} className="fb-bp-phase" style={{gridColumn:`span ${p.span}`}}>{t(p.label,lang)}</div>)}
     {block.lanes.map((lane,i)=><React.Fragment key={i}>
      {lane.line&&<div className="fb-bp-line" style={{gridColumn:`1 / span ${cols+1}`}}><span>{t(lane.line,lang)}</span></div>}
@@ -98,15 +100,15 @@ function Video({block,lang}){
   <div className="fb-video-frame"><video controls controlsList="nodownload noremoteplayback" disablePictureInPicture playsInline preload="none" poster={elementPath(block.poster)} aria-label={t(block.title,lang)}><source src={block.src} type="video/mp4"/></video></div>
   <figcaption><span>{t(block.title,lang)}</span></figcaption>
  </figure>;
- const sources=[block.bilibili&&{key:'bilibili',label:'哔哩哔哩',src:`https://player.bilibili.com/player.html?bvid=${block.bilibili}&autoplay=1&high_quality=1`,href:`https://www.bilibili.com/video/${block.bilibili}`},
+ const sources=[block.bilibili&&{key:'bilibili',label:copy.bilibili[lang],src:`https://player.bilibili.com/player.html?bvid=${block.bilibili}&autoplay=1&high_quality=1`,href:`https://www.bilibili.com/video/${block.bilibili}`},
   block.youtube&&{key:'youtube',label:'YouTube',src:`https://www.youtube-nocookie.com/embed/${block.youtube}?autoplay=1&rel=0`,href:`https://youtu.be/${block.youtube}`}].filter(Boolean);
  const preferred=lang==='zh'?'bilibili':'youtube';
  const [choice,setChoice]=useState(null),[playing,setPlaying]=useState(false);
  const current=sources.find(s=>s.key===(choice||preferred))||sources[0];
  return <figure className="fb-video">
   <div className="fb-video-frame">{playing?<iframe src={current.src} title={t(block.title,lang)} allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowFullScreen/>:
-   <button className="fb-video-poster" onClick={()=>setPlaying(true)}><img src={elementPath(block.poster)} alt="" loading="lazy"/><span className="fb-play"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>{lang==='zh'?`在${current.label}播放`:`Play on ${current.label}`}</span></button>}</div>
-  <figcaption><span>{t(block.title,lang)}</span>{sources.length>1&&<span className="fb-video-sources" role="group" aria-label={lang==='zh'?'视频来源':'Video source'}>{sources.map(s=><button key={s.key} aria-pressed={current.key===s.key} onClick={()=>{setChoice(s.key);}}>{s.label}</button>)}</span>}<a href={current.href} target="_blank" rel="noopener noreferrer">{lang==='zh'?'新窗口打开':'Open'} ↗</a></figcaption>
+   <button className="fb-video-poster" onClick={()=>setPlaying(true)}><img src={elementPath(block.poster)} alt="" loading="lazy"/><span className="fb-play"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>{format(copy.playOn[lang],{source:current.label})}</span></button>}</div>
+  <figcaption><span>{t(block.title,lang)}</span>{sources.length>1&&<span className="fb-video-sources" role="group" aria-label={copy.videoSource[lang]}>{sources.map(s=><button key={s.key} aria-pressed={current.key===s.key} onClick={()=>{setChoice(s.key);}}>{s.label}</button>)}</span>}<a href={current.href} target="_blank" rel="noopener noreferrer">{copy.openNew[lang]} ↗</a></figcaption>
  </figure>;
 }
 
@@ -124,7 +126,7 @@ function Embed({block,lang}){
   <div className="case-embed-frame" style={block.fixed?{width:block.width,height:block.height}:undefined}>
    <iframe ref={ref} src={src} title={t(block.title,lang)} loading="lazy" style={block.fixed?undefined:{height}}/>
   </div>
-  {block.caption&&<figcaption>{t(block.caption,lang)}{block.href&&<a href={block.href} target="_blank" rel="noopener noreferrer">{block.hrefLabel?t(block.hrefLabel,lang):(lang==='zh'?'新窗口打开':'Open')} ↗</a>}</figcaption>}
+  {block.caption&&<figcaption>{t(block.caption,lang)}{block.href&&<a href={block.href} target="_blank" rel="noopener noreferrer">{block.hrefLabel?t(block.hrefLabel,lang):copy.openNew[lang]} ↗</a>}</figcaption>}
  </figure>;
 }
 
