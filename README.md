@@ -19,7 +19,8 @@ Case pages use native bilingual text from the language packs, independently extr
 
 - `src/locales/zh.json`, `src/locales/en.json`: the language packs. Every piece of site copy lives here, keyed by where it appears (`ui.*` interface text, `categories.*`, `projects.<id>.*` summaries, `studies.<id>.<section>.*` case pages, `lab.*` side projects, `drafts.*` inactive drafts). Edit copy here; both files must have the same keys.
 - `src/i18n.js`: `t(key)` returns `{zh, en}` from the packs and throws on a missing key, so the build fails instead of shipping a gap. `{name}` placeholders are filled with `format()`.
-- `scripts/export-copy.mjs`: dumps the packs in page order (`node scripts/export-copy.mjs > copy.json`) for the review sheet in `design/copy/`.
+- Copy mode (`npm run dev` only, `scripts/copy-editor/`): press Alt+C or the 文案 button to outline every piece of language-pack text on the page. Click one to edit its Chinese and English in place; saving writes `src/locales` and reloads at the same scroll position. Mark text as reviewed (Alt+Enter) and step through the page with Alt+↑ / Alt+↓; review marks stay in the browser and clear when the text changes. Chinese text that is not in the packs is outlined in red.
+- `design/copy/文案对照.xlsx`: the copy review sheet. `npm run copy:export` rebuilds it from the packs; fill in 修改后中文 / 修改后英文 and run `npm run copy:import` to write those edits back (`python3 scripts/copy_sheet.py import --check` previews them). Import skips rows whose current text no longer matches the packs and rows that drop a `{placeholder}`, and only lists edits to the embedded demo pages. Needs Python with openpyxl.
 - `src/data.js`: active project order and summaries (text via `t()`).
 - `src/caseStudies.js`: the seven reflowed case studies.
 - `src/libraryStudies.js`: additional research and media for existing cases; supplemental case drafts are not registered.
