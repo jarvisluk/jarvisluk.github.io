@@ -1,15 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { projects, timeline, labItems, copy } from '../data';
 import Arrow from './Arrow';
 import { localize } from '../localize';
+import { format } from '../i18n';
 // Home hero: every project as a frame on a horizontal, draggable canvas, oldest first along one line.
 // Projects alternate above / below the line; the first project of each year marks the year on the line.
-// Side projects (`lab` entries) sit on the same line as small markers that expand on hover or focus.
+// Side projects (`lab` entries) sit on the same line, one small marker per month, expanding on hover or focus.
 // Layout is in canvas units (1 unit = --u px, smaller on phones).
 const W=232, STEP=196, START=40, END=230; // END includes the 100-unit margin after the line's "now" marker
 // Crop focus for covers whose subject sits off-centre at the frame's 1.6:1 ratio.
 const FOCUS={flexbench:'50% 30%',soundbricks:'50% 38%','sf-eats':'50% 8%','bambu-lab':'0 50%'};
-const STEMS=[28,46,20,40,32,48,24,44,36,26],MINI_STEMS=[22,34,16,28];
+const STEMS=[28,46,20,40,32,48,24,44,36,26],MINI_STEMS=[14,22,14,22];
 // Spacing: a main frame needs STEP before the next frame; a marker after a frame needs MINI_AFTER, and anything after a marker MINI_STEP.
 // Items on the same side stay at least W apart (MINI_AFTER + MINI_STEP >= W).
 const MINI_AFTER=130, MINI_STEP=120;
@@ -17,27 +18,26 @@ const steps=[];
 timeline.forEach((t,i)=>{
  const prev=steps[i-1];
  const x=!prev?START:prev.x+(prev.lab?MINI_STEP:t.lab?MINI_AFTER:STEP);
- steps.push({...t,key:t.id||t.lab,side:i%2?'down':'up',newYear:t.year!==timeline[i-1]?.year,x});
+ steps.push({...t,key:t.id||t.lab.join(),side:i%2?'down':'up',newYear:t.year!==timeline[i-1]?.year,lastOfYear:t.year!==timeline[i+1]?.year,x});
 });
 const mainIndex=Object.fromEntries(steps.filter(s=>!s.lab).map((s,i)=>[s.id,i]));
 const WIDTH=steps.at(-1).x+W+END;
 
-// A side project: a small chip on the line; hover or focus (tap on touch) opens its details and links.
-function MiniCard({item,side,stem,lang}) {
- const thumb=item.thumb&&(typeof item.thumb==='string'?item.thumb:item.thumb[lang]);
- const media=thumb?<img src={`/assets/lab/${thumb}.webp`} alt="" loading="lazy" className={item.pixel?'is-pixel':''}/>:<img src={`/assets/lab/icons/${item.icon}.svg`} alt="" className="is-icon"/>;
+// Side projects from one month: one marker with stacked thumbnails. Hover (mouse), a tap / click on the chip (toggles),
+// or keyboard focus inside lists each one with its links.
+const labThumb=(item,lang)=>item.thumb?<img src={`/assets/lab/${typeof item.thumb==='string'?item.thumb:item.thumb[lang]}.webp`} alt="" loading="lazy" className={item.pixel?'is-pixel':''}/>:<img src={`/assets/lab/icons/${item.icon}.svg`} alt="" className="is-icon"/>;
+function LabCluster({ids,side,stem,lang}) {
+ const items=ids.map(id=>labItems.find(l=>l.id===id));
+ const [open,setOpen]=useState(false);
  const ext={target:'_blank',rel:'noopener noreferrer',draggable:'false'};
- return <div className={`tl-card tl-mini is-${side}`} style={{'--stem':stem}} tabIndex={0} aria-label={`${item.name} — ${copy.sideProject[lang]}`}>
-  <span className="tl-mini-chip"><span className="tl-mini-thumb">{media}</span><span className="tl-mini-name">{item.short}</span></span>
-  <span className="tl-mini-detail"><span className="tl-mini-inner">
-   {thumb&&<span className="tl-mini-media">{media}</span>}
-   <span className="tl-mini-text">
-    <small>{item.series[lang]} · {item.date.slice(0,7).replace('-','.')}</small>
-    <strong>{item.name}</strong>
-    <span>{item.text[lang]}</span>
-    <span className="tl-mini-links"><a href={item.repo} {...ext}>{copy.repo[lang]}<Arrow diagonal/></a>{item.demo&&<a href={item.demo} {...ext}>{copy.demo[lang]}<Arrow diagonal/></a>}</span>
-   </span>
-  </span></span>
+ const month=items[0].date.slice(0,7).replace('-','.');
+ return <div className={`tl-card tl-mini is-${side}${open?' is-open':''}`} style={{'--stem':stem}}>
+  <button type="button" className="tl-mini-chip" aria-expanded={open} aria-label={`${month} · ${format(copy.sideProjects[lang],{n:items.length})}`} onClick={()=>setOpen(o=>!o)}><span className="tl-mini-stack">{items.map(item=><span key={item.id} className="tl-mini-thumb">{labThumb(item,lang)}</span>)}</span><span className="tl-mini-name">{format(copy.sideProjects[lang],{n:items.length})}</span></button>
+  <span className="tl-mini-detail"><span className="tl-mini-inner"><ul>{items.map(item=><li key={item.id}>
+   <span className="tl-mini-thumb">{labThumb(item,lang)}</span>
+   <span className="tl-mini-text"><a href={item.repo} {...ext}><strong>{item.name}</strong><Arrow diagonal/></a><span>{item.text[lang]}</span></span>
+   {item.demo&&<a className="tl-mini-demo" href={item.demo} {...ext}>{copy.demo[lang]}</a>}
+  </li>)}</ul></span></span>
  </div>;
 }
 export default function Timeline({lang}) {
@@ -59,10 +59,11 @@ export default function Timeline({lang}) {
    <div className="tl-track" style={{'--w':WIDTH}}>
     <span className="tl-line" aria-hidden="true"/>
     <ol style={{'--cw':W}}>{steps.map((s,i)=>{
-     const year=s.newYear&&<span className={`tl-year is-${s.side==='up'?'down':'up'}`}>{s.year}</span>;
+     // The year marks the first project of each year; phones list newest first, so there it marks the last one.
+     const year=<>{s.newYear&&<span className={`tl-year is-first is-${s.side==='up'?'down':'up'}`}>{s.year}</span>}{s.lastOfYear&&<span className="tl-year is-last">{s.year}</span>}</>;
      if(s.lab)return <li key={s.key} className="tl-step is-mini" style={{'--x':s.x}}>
       <span className="tl-dot" aria-hidden="true"/>{year}
-      <MiniCard item={labItems.find(l=>l.id===s.lab)} side={s.side} stem={MINI_STEMS[i%MINI_STEMS.length]} lang={lang}/>
+      <LabCluster ids={s.lab} side={s.side} stem={MINI_STEMS[i%MINI_STEMS.length]} lang={lang}/>
      </li>;
      const p=projects.find(q=>q.id===s.id),n=mainIndex[s.id];
      return <li key={s.key} className="tl-step" style={{'--x':s.x}}>

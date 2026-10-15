@@ -37,6 +37,6 @@ export default {
   ]),
   sec('identity',t('studies.gocus.identity.title'),t('studies.gocus.identity.body'),[
    {type:'embed',src:'/embeds/gocus/icon/index.html',height:1500,title:t('studies.gocus.identity.blocks.0.title')},
-  ]),
+  ],{navLabel:t('studies.gocus.identity.navLabel')}),
  ],
 };

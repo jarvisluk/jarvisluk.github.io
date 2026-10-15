@@ -1,14 +1,14 @@
 import { t, locales } from './i18n.js';
 const bi = (zh, en) => ({ zh, en });
 // Home timeline, oldest first, with the (approximate) year each project was made.
-// `lab` entries are side projects (labProjects below), ordered by repo creation date; they expand on hover.
+// `lab` entries group the side projects (labProjects below) started in the same month, by repo creation date; they expand on hover.
 export const timeline = [
  { id: 'matrix', year: 2023 }, { id: 'flexbench', year: 2024 }, { id: 'soundbricks', year: 2024 },
  { id: 'pawpals', year: 2025 }, { id: 'sf-eats', year: 2025 }, { id: 'just-a-2nd', year: 2025 },
  { id: 'gocus', year: 2025 }, { id: 'bambu-lab', year: 2025 },
- { lab: 'damage-sensor-tape', year: 2026 }, { lab: 'do-not-tamper', year: 2026 },
- { lab: 'splatoon-squid-codex-pet', year: 2026 }, { lab: 'codex-order-reset', year: 2026 }, { lab: 'remilia-codex-pet', year: 2026 },
- { lab: 'zzz-proton-fix', year: 2026 }, { lab: 'easyeda-pcb-design', year: 2026 }, { lab: 'dsh-projectless-session', year: 2026 }, { lab: 'dsh-session-index', year: 2026 },
+ { lab: ['damage-sensor-tape', 'do-not-tamper'], year: 2026 },
+ { lab: ['splatoon-squid-codex-pet', 'codex-order-reset', 'remilia-codex-pet'], year: 2026 },
+ { lab: ['zzz-proton-fix', 'easyeda-pcb-design', 'dsh-projectless-session', 'dsh-session-index'], year: 2026 },
  { id: 'web-style', year: 2026 }, { id: 'shokz', year: 2026 },
 ];
 export const categories = [

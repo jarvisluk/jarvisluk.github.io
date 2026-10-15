@@ -315,6 +315,9 @@ document.querySelectorAll('[data-var]').forEach(e=>{e.textContent=resolve(e.data
 `);
 
 await browser.close();
-fs.writeFileSync(path.join(DIR, 'library.html'), library);
-fs.writeFileSync(path.join(DIR, 'guidelines.html'), guidelines);
+// Captured React markup may contain absolute image URLs from the local preview server.
+// Both exported pages live beside the panel, so keep those asset references relative.
+const portable = html => html.replaceAll(new URL('.', URL_).href, './');
+fs.writeFileSync(path.join(DIR, 'library.html'), portable(library));
+fs.writeFileSync(path.join(DIR, 'guidelines.html'), portable(guidelines));
 console.log('wrote library.html', library.length, 'guidelines.html', guidelines.length);

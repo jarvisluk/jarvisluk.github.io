@@ -2,7 +2,7 @@ import React from 'react';
 import {elementPath} from '../caseStudies';
 import {copy} from '../data';
 import {format} from '../i18n';
-import dimensions from '../assetDimensions.json';
+import dimensions from '../assetDimensions.json' with {type:'json'};
 export default function CaseMedia({item,lang,onOpen,eager=false}) {
  const size=dimensions[item.id]||{width:1000,height:700};
  return <figure className={`case-media media-${item.kind}`}>

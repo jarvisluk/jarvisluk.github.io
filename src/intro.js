@@ -64,9 +64,45 @@ export function playIntro(){
  });
 }
 
+// Each project pops up: year and dot, then the frame (from the line's side on desktop, from the left on phones).
+function revealStep(step,add,vertical){
+ step.querySelectorAll('.tl-year').forEach(year=>add(year,[{opacity:0},{opacity:1}],{duration:T.fade}));
+ add(step.querySelector('.tl-dot'),[{transform:'scale(0)'},{transform:'scale(2.2)',background:'#d7ef69'},{transform:'none'}],{duration:500});
+ step.querySelectorAll('.tl-card').forEach(card=>{
+  const dir=vertical?'translateX(-16px)':card.classList.contains('is-up')?'translateY(24px)':'translateY(-24px)';
+  add(card,[{opacity:0,transform:dir},{opacity:1,transform:'none'}],{duration:T.card,delay:60});
+  add(card.querySelector('img'),[{transform:'scale(1.3)'},{transform:'none'}],{duration:T.card*1.6,delay:60});
+ });
+}
+// Phones (newest first): the vertical line draws down from "now" through the first screen, popping up each project it passes;
+// the projects below the fold are shown when it finishes. A touch or scroll shows everything at once.
+async function timelineVertical(line,add){
+ const steps=[...document.querySelectorAll('.tl-step')],top=line.getBoundingClientRect().top,fold=innerHeight-top;
+ const at=steps.map(step=>step.querySelector('.tl-dot').getBoundingClientRect().top-top);
+ const length=Math.min(line.offsetHeight,fold),duration=Math.min(T.runMax,Math.max(T.runMin*.6,length*T.runPerPx));
+ let skipped=false;const skip=()=>{skipped=true;},events=['pointerdown','wheel','touchstart','scroll'];
+ events.forEach(t=>addEventListener(t,skip,{passive:true}));
+ const shown=new Set();
+ await new Promise(done=>{
+  let t0=null;
+  const tick=now=>{
+   t0??=now;
+   const p=skipped?1:easeAt(Math.min(1,(now-t0)/duration)),d=p*length;
+   line.style.transform=`scaleY(${p<1?d/line.offsetHeight:1})`;
+   steps.forEach((step,i)=>{if(!shown.has(step)&&(at[i]<=d||p===1)){shown.add(step);revealStep(step,add,true);}});
+   if(p<1)requestAnimationFrame(tick);else done();
+  };
+  requestAnimationFrame(tick);
+ });
+ events.forEach(t=>removeEventListener(t,skip));
+ add(document.querySelector('.tl-end'),[{opacity:0},{opacity:1}],{duration:T.fade});
+ add(document.querySelector('.view-switch'),[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:T.fade});
+}
+
 // A square drops onto the start of the line and runs to its end, drawing it; the canvas pans to keep the square
 // near its middle. Touching the canvas mid-run hands control to the visitor: everything left is revealed at once.
 async function timeline(line,add){
+ if(matchMedia('(max-width:700px)').matches)return timelineVertical(line,add);
  const canvas=line.closest('.tl-canvas'),size=9;
  canvas.scrollLeft=0;
  const c=canvas.getBoundingClientRect(),r=line.getBoundingClientRect();
@@ -79,16 +115,7 @@ async function timeline(line,add){
  document.body.append(runner);
  await runner.animate([{transform:'scale(0) rotate(-90deg)'},{transform:'none'}],{duration:T.pop,easing:'cubic-bezier(.3,1.6,.5,1)'}).finished;
  const steps=[...document.querySelectorAll('.tl-step')].map(step=>{const d=step.querySelector('.tl-dot').getBoundingClientRect();return {step,at:d.left+d.width/2-r.left-size/2,shown:false};});
- const reveal=s=>{
-  s.shown=true;
-  add(s.step.querySelector('.tl-year'),[{opacity:0},{opacity:1}],{duration:T.fade});
-  add(s.step.querySelector('.tl-dot'),[{transform:'scale(0)'},{transform:'scale(2.2)',background:'#d7ef69'},{transform:'none'}],{duration:500});
-  s.step.querySelectorAll('.tl-card').forEach(card=>{
-   const dir=card.classList.contains('is-up')?'translateY(24px)':'translateY(-24px)';
-   add(card,[{opacity:0,transform:dir},{opacity:1,transform:'none'}],{duration:T.card,delay:60});
-   add(card.querySelector('img'),[{transform:'scale(1.3)'},{transform:'none'}],{duration:T.card*1.6,delay:60});
-  });
- };
+ const reveal=s=>{s.shown=true;revealStep(s.step,add,false);};
  const duration=Math.min(T.runMax,Math.max(T.runMin,length*T.runPerPx));
  let skipped=false;
  const skip=()=>{skipped=true;},events=['pointerdown','wheel','touchstart'];
@@ -110,5 +137,6 @@ async function timeline(line,add){
  events.forEach(t=>canvas.removeEventListener(t,skip));
  add(document.querySelector('.tl-end'),[{opacity:0},{opacity:1}],{duration:1});
  add(document.querySelector('.tl-hud'),[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:T.fade});
+ add(document.querySelector('.view-switch'),[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:T.fade});
  runner.remove();
 }

@@ -26,17 +26,25 @@ function LabCard({group,lang}) {
   </div>)}</div>
  </article>;
 }
-export default function Home({lang}) {
+// Bottom-right switch between the two home views: the full-screen timeline canvas and the project list.
+function ViewSwitch({lang,view}) {
+ const views=[['canvas','/',copy.canvasView,<svg key="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h14"/><rect x="2.5" y="2.5" width="5" height="3.5"/><rect x="8.5" y="10" width="5" height="3.5"/></svg>],
+  ['list','/#work',copy.listView,<svg key="i" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2" width="5.5" height="5"/><rect x="9" y="2" width="5.5" height="5"/><rect x="1.5" y="9" width="5.5" height="5"/><rect x="9" y="9" width="5.5" height="5"/></svg>]];
+ return <nav className="view-switch" aria-label={copy.switchView[lang]}>{views.map(([id,href,label,icon])=><a key={id} href={localize(lang,href)} className={view===id?'selected':''} aria-current={view===id?'page':undefined}>{icon}<span>{label[lang]}</span></a>)}</nav>;
+}
+export default function Home({lang,view='canvas'}) {
  const [filter,setFilter]=useState('all');
  const filtered=projects.filter(p=>filter==='all'||p.categories.includes(filter));
  return <>
-  <main id="main">
+  {view==='canvas'?<main id="main" className="home-canvas">
    <section className={`hero timeline-hero wrap ${lang==='zh'?'hero-zh':''}`} aria-label={copy.heroLabel[lang]}>
     <div className="hero-copy">
      <h1>{copy.heroLines[lang].map((t,i)=>{const Line=i===1?'em':'span';return <Line key={i}><span className="line-in">{t}</span></Line>;})}</h1>
     </div>
     <Timeline lang={lang}/>
    </section>
+  </main>:<>
+  <main id="main" className="home-list">
    <section id="work" className="work wrap">
     <div className="section-top"><h2>{copy.selected[lang]} <em>{copy.works[lang]}</em><sup>{String(projects.length).padStart(2,'0')}</sup></h2><div className="filters" aria-label={copy.filter[lang]}>{categories.map(c=><button key={c.id} onClick={()=>setFilter(c.id)} className={filter===c.id?'selected':''} aria-pressed={filter===c.id}>{c.label[lang]}</button>)}</div></div>
     <div className="project-grid" key={filter}>{filtered.map(p=><ProjectCard key={p.id} project={p} index={projects.indexOf(p)} lang={lang}/>)}</div>
@@ -49,6 +57,8 @@ export default function Home({lang}) {
     <div className="lab-grid">{labProjects.map(g=><LabCard key={g.id} group={g} lang={lang}/>)}</div>
    </section>
   </main>
-  <footer className="footer"><div className="wrap"><div className="footer-main"><p>{copy.closer[lang]}</p></div><div className="footer-bottom"><span>{copy.name[lang]}</span><span className="footer-links"><a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub<Arrow diagonal/></a><a href={localize(lang,'/')}>{copy.top[lang]}<Arrow direction="up"/></a></span></div></div></footer>
+  <footer className="footer"><div className="wrap"><div className="footer-main"><p>{copy.closer[lang]}</p></div><div className="footer-bottom"><span>{copy.name[lang]}</span><span className="footer-links"><a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub<Arrow diagonal/></a><a href={localize(lang,'/#work')}>{copy.top[lang]}<Arrow direction="up"/></a></span></div></div></footer>
+  </>}
+  <ViewSwitch lang={lang} view={view}/>
  </>;
 }

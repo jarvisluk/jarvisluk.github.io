@@ -68,7 +68,7 @@ export default function ProjectDetail({project,lang}) {
    {study.showcase?<div className="case-showcase">{study.showcase.map(item=><CaseMedia key={item.id} item={item} lang={lang} onOpen={openMedia}/>)}</div>:
    (study.heroEmbed?null:brief)}
   </section>
-  <div className="case-rail"><div className="wrap"><span className="case-rail-title">{project.name}</span><nav aria-label={copy.chapters[lang]}>{study.sections.map((s,i)=><button key={s.id} onClick={()=>scrollTo(s.id)} aria-current={active===s.id?'location':undefined}><span>{String(i+1).padStart(2,'0')}</span>{copy.sectionNav[lang][s.id]||s.id}</button>)}</nav></div></div>
+  <div className="case-rail"><div className="wrap"><span className="case-rail-title">{project.name}</span><nav aria-label={copy.chapters[lang]}>{study.sections.map((s,i)=><button key={s.id} onClick={()=>scrollTo(s.id)} aria-current={active===s.id?'location':undefined}><span>{String(i+1).padStart(2,'0')}</span>{s.navLabel?.[lang]||copy.sectionNav[lang][s.id]||s.id}</button>)}</nav></div></div>
   {study.sections.map((s,i)=><Section key={s.id} section={s} index={i} lang={lang} onOpen={openMedia}/>)}
   <section className="next-project"><a className="wrap" href={localize(lang,`/project/${next.id}/`)}><span>{copy.next[lang]}</span><div><h2>{next.name}</h2><Arrow diagonal/></div><p>{next.subtitle[lang]}</p></a></section>
   <div className="detail-bottom wrap"><a href={localize(lang,'/#work')}>{copy.back[lang]}<Arrow/></a><span>{copy.name[lang]}</span></div>

@@ -30,7 +30,9 @@
   "labAll": "All repositories",
   "demo": "Live demo",
   "repo": "Repo",
-  "sideProject": "Side project",
+  "canvasView": "Canvas",
+  "listView": "List",
+  "sideProjects": "{n} side projects",
   "contributions": "in the last year",
   "contributionUnit": "contributions",
   "less": "Less",
@@ -47,6 +49,7 @@
    "a little more",
    "possibility."
   ],
+  "switchView": "Switch view",
   "filter": "Filter projects",
   "showing": "Showing {n} projects",
   "contributionDay": "{n} contributions on {date}",
@@ -98,7 +101,6 @@
    "try": "Try it",
    "library": "Components",
    "guidelines": "Guidelines",
-   "identity": "Identity",
    "workspace": "Workspace",
    "actions": "Actions",
    "research": "Research",
@@ -108,6 +110,7 @@
    "testing": "Testing",
    "outcome": "Outcome",
    "context": "Context",
+   "identity": "Identity",
    "community": "Community",
    "planning": "Planning",
    "ordering": "Journey",
@@ -1548,7 +1551,8 @@
      {
       "title": "Gocus icon breakdown"
      }
-    ]
+    ],
+    "navLabel": "Icon"
    }
   },
   "shokz": {

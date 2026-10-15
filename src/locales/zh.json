@@ -30,7 +30,9 @@
   "labAll": "查看全部仓库",
   "demo": "在线试用",
   "repo": "仓库",
-  "sideProject": "小尝试",
+  "canvasView": "画布",
+  "listView": "列表",
+  "sideProjects": "{n} 个小尝试",
   "contributions": "过去一年",
   "contributionUnit": "次贡献",
   "less": "少",
@@ -47,6 +49,7 @@
    "探索多一点",
    "可能。"
   ],
+  "switchView": "切换视图",
   "filter": "筛选项目",
   "showing": "正在展示 {n} 个项目",
   "contributionDay": "{date} · {n} 次贡献",
@@ -98,7 +101,6 @@
    "try": "试用",
    "library": "组件库",
    "guidelines": "设计规范",
-   "identity": "品牌",
    "workspace": "回到编辑器",
    "actions": "操作",
    "research": "研究",
@@ -108,6 +110,7 @@
    "testing": "测试",
    "outcome": "呈现",
    "context": "情境",
+   "identity": "品牌",
    "community": "社区",
    "planning": "计划",
    "ordering": "流程",
@@ -1548,7 +1551,8 @@
      {
       "title": "Gocus 图标拆解"
      }
-    ]
+    ],
+    "navLabel": "图标"
    }
   },
   "shokz": {

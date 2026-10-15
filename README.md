@@ -1,6 +1,8 @@
 # Jarvis Luk / 陆俊荣 portfolio
 
-A bilingual React + Vite portfolio. The active site presents the seven projects in the supplied portfolio: SoundBricks, PawPals, SF Eats, Bambu Lab, FlexBench, Matrix and Just A 2nd. Personal identity remains a small signature; philosophy and project work lead the experience.
+A bilingual React + Vite portfolio. The active site presents ten projects: SoundBricks, PawPals, SF Eats, FlexBench, Bambu Lab, Matrix, Just A 2nd, Gocus, Web Style Visualisation and OpenSwim Pro 2 UX Design. Personal identity remains a small signature; philosophy and project work lead the experience.
+
+The home page has a timeline canvas and a project list. The desktop canvas scrolls horizontally; on phones, it becomes a vertical timeline with the newest projects first. In-app links to `#work` and `#lab` open the list. With the load intro enabled, reloading home opens the canvas; reduced-motion visitors keep the requested hash and skip the intro.
 
 ## Run
 
@@ -22,7 +24,7 @@ Case pages use native bilingual text from the language packs, independently extr
 - Copy mode (`npm run dev` only, `scripts/copy-editor/`): press Alt+C or the 文案 button to outline every piece of language-pack text on the page. Click one to edit its Chinese and English in place; saving writes `src/locales` and reloads at the same scroll position. Mark text as reviewed (Alt+Enter) and step through the page with Alt+↑ / Alt+↓; review marks stay in the browser and clear when the text changes. Chinese text that is not in the packs is outlined in red.
 - `design/copy/文案对照.xlsx`: the copy review sheet. `npm run copy:export` rebuilds it from the packs; fill in 修改后中文 / 修改后英文 and run `npm run copy:import` to write those edits back (`python3 scripts/copy_sheet.py import --check` previews them). Import skips rows whose current text no longer matches the packs and rows that drop a `{placeholder}`, and only lists edits to the embedded demo pages. Needs Python with openpyxl.
 - `src/data.js`: active project order and summaries (text via `t()`).
-- `src/caseStudies.js`: the seven reflowed case studies.
+- `src/caseStudies.js`: registry for the ten reflowed case studies in `src/studies/`.
 - `src/libraryStudies.js`: additional research and media for existing cases; supplemental case drafts are not registered.
 - `src/libraryProjects.js`: inactive project drafts, retained for later work.
 - `public/assets/elements`: published independent media.
@@ -37,6 +39,6 @@ Source artwork retains its original language. Website copy is reflowed and trans
 
 ## Scope and known source limitations
 
-The user requested prioritising the original seven projects. Mirs Bay, VA Catering and Guangzhou e-bike parking are therefore retained as drafts and omitted from navigation and routes.
+The site includes the original seven portfolio projects plus Gocus, Web Style Visualisation and OpenSwim Pro 2 UX Design. Mirs Bay, VA Catering and Guangzhou e-bike parking remain drafts and are omitted from navigation and routes.
 
 The supplied `VA final.pdf` has corrupt middle data: pages 10–19 lack their referenced page objects. Both the desktop and library copies have the same SHA-256. PyMuPDF, Poppler and forced xref reconstruction could not recover them. The original file remains unchanged; replacement export or original design assets are required when this deferred case is resumed.

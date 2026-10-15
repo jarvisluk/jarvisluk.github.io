@@ -22,7 +22,9 @@ document.addEventListener('keydown',e=>{
 const legacy=location.hash.match(/^#\/project\/([^/]+)/);
 if(legacy)history.replaceState(null,'',`/project/${legacy[1]}/`);
 const root=document.getElementById('root');
-const app=<App initialPath={location.pathname} initialHash={location.hash}/>;
 // Hydrate only when the served HTML was prerendered for this route (hosts may fall back to another page).
-if(root.dataset.route&&normalizePath(root.dataset.route)===normalizePath(location.pathname))hydrateRoot(root,app);else createRoot(root).render(app);
+const prerendered=root.dataset.route&&normalizePath(root.dataset.route)===normalizePath(location.pathname);
+// URL hashes are unavailable to the prerenderer. Match its first render, then App syncs the browser route.
+const app=<App initialPath={location.pathname} initialHash={prerendered?'':location.hash}/>;
+if(prerendered)hydrateRoot(root,app);else createRoot(root).render(app);
 playIntro();
