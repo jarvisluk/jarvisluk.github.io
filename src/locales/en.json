@@ -81,7 +81,6 @@
    "canvas": "Canvas",
    "studio": "Studio",
    "agents": "Agents",
-   "type": "Chinese type",
    "homepage": "Home",
    "training": "Training",
    "player": "Player",
@@ -450,7 +449,7 @@
     "body": "The film starts with circuit and code testing, moves through modelling, slicing, 3D printing, laser-cut acrylic and soldering, then demonstrates building and sound on the base board, and ends with children playing in a classroom.",
     "blocks": [
      {
-      "title": "The Made of SoundBricks"
+      "title": "The making of SoundBricks"
      }
     ]
    },
@@ -715,7 +714,7 @@
     "body": "The first half builds the prototype in the exhibition hall: cutting boards and aluminium profiles, assembling the frame, making drawers and tool boxes. The second half demonstrates each function: the pegboard and power strip, drawer storage, tool boxes and the extendable worktop.",
     "blocks": [
      {
-      "title": "The Made of FlexBench"
+      "title": "The making of FlexBench"
      },
      {
       "items": {
@@ -1349,7 +1348,7 @@
    }
   },
   "just-a-2nd": {
-   "heroCaption": "Just A 2nd in the portfolio: the home, listening exercise and mistakes screens.",
+   "heroCaption": "Just A 2nd: the home, listening exercise and mistakes screens.",
    "oneLiner": "A pocket-sized ear trainer: spend a few seconds a day hearing two notes and naming the interval, instead of dull music-theory drills. Available on the App Store.",
    "credit": "Individual project",
    "showcase": {
@@ -1617,7 +1616,7 @@
    },
    "wifi": {
     "title": "Reworked: getting the headphones online.",
-    "body": "The first version followed the usual IoT pattern: type the network name and password, a separate set of screens for the hotspot, and a bare “Connection failed” whenever something went wrong. Conditions such as 5GHz or public Wi-Fi or a low battery only surfaced after a failed attempt, and the failure screens didn’t say why. The final version moves those checks up front and gives every failure a next step.",
+    "body": "The first version followed the usual IoT pattern. The trouble was that many conditions only surfaced after a connection had already failed. How could those checks move up front, cut the waiting, and use the hardware’s own traits to improve the pairing flow in the app?",
     "blocks": [
      {
       "title": "Wi-Fi setup flow, before and after"
@@ -1702,7 +1701,7 @@
    },
    "library": {
     "title": "Components that serve only the studio.",
-    "body": "The studio has to sit beside any style without competing with it, so every component is built on a small set of neutral tokens: zinc greys and one violet accent, chosen not to clash with any preset’s primary colour. Light and dark follow the system or can be set by hand. The components below are lifted from the studio with its original CSS; hover, pressed and focus states come from its own :hover / :active / :focus rules, and the switch at the top right flips light and dark.",
+    "body": "The studio has to sit beside any style without competing with it, so every component is built on a small set of neutral tokens: zinc greys and one violet accent, chosen not to clash with any preset’s primary colour. Light and dark follow the system or can be set by hand.",
     "blocks": [
      {
       "title": "Web Style Visualisation component library"
@@ -1711,20 +1710,31 @@
    },
    "agents": {
     "title": "Leave generation to agents.",
-    "body": "The previous version had an in-site AI chat where users entered their own API key to generate styles. Key storage, quota errors and model choice all became the site’s problem, while the agents people actually use couldn’t reach the page. The chat is gone; instead the site opens itself to outside agents. It registers 8 tools through WebMCP for in-browser agents, exposes window.WebStyleAPI for automation tools such as Playwright, accepts plain URL parameters, and ships an Agent Skill that works offline. All four paths share one variable list and one validator, so values written by an agent are checked like slider input, and invalid ones are reported back.",
-    "points": [
-     "WebMCP: list_styles · get_current_style · get_variable_definitions · apply_style · set_variables · reset_style · export_css · get_share_url",
-     "window.WebStyleAPI: applyStyle, applyVariables, exportCSS, with variables merged onto the current style",
-     "URL parameters: ?style= and ?variables=, kept in sync with every edit so the address bar is the share link",
-     "Agent Skill for Claude Code, Codex and Cursor, generating CSS even offline"
-    ]
-   },
-   "type": {
-    "title": "Chinese should look the part too.",
-    "body": "Most style references are designed in Latin type, and when Chinese falls back to a default font the style falls apart. Every font option now carries a Chinese fallback: system CJK fonts first for sans, Noto Serif SC first for serif, with Chinese-specific line height, tracking, minimum sizes and CJK–Latin spacing. Retro Pixel uses a 15 KB subset of Fusion Pixel 12px, sized in multiples of 12px so the pixels stay aligned.",
+    "body": "The site registers 8 tools through WebMCP for in-browser agents, exposes window.WebStyleAPI for automation tools such as Playwright, accepts plain URL parameters, and ships an Agent Skill that works offline.",
     "blocks": [
      {
-      "title": "Retro Pixel: switch to 中文 at the top right to see the Chinese pixel font"
+      "items": [
+       {
+        "name": "WebMCP",
+        "who": "In-browser agents",
+        "note": "8 registered tools, called directly"
+       },
+       {
+        "name": "WebStyleAPI",
+        "who": "Playwright and other automation",
+        "note": "Variables merge onto the current style"
+       },
+       {
+        "name": "URL parameters",
+        "who": "Anyone",
+        "note": "The address bar tracks every edit, so it is the share link"
+       },
+       {
+        "name": "Agent Skill",
+        "who": "Claude Code · Codex · Cursor",
+        "note": "Generates CSS even offline"
+       }
+      ]
      }
     ]
    }

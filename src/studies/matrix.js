@@ -22,6 +22,10 @@ export default {
   sec('films',t('studies.matrix.films.title'),t('studies.matrix.films.body'),[
    {type:'video',title:t('studies.matrix.films.blocks.0.title'),youtube:'t3h_mF45gQY',bilibili:'BV1iyVYzBE4a',poster:'mx-still-blue'},
   ]),
+  sec('question',t('studies.matrix.question.title'),t('studies.matrix.question.body'),[
+   board('mx-board-origin',t('studies.matrix.question.blocks.0.items.mx-board-origin.caption')),
+   board('mx-board-emergence',t('studies.matrix.question.blocks.1.items.mx-board-emergence.caption')),
+  ]),
   sec('experience',t('studies.matrix.experience.title'),t('studies.matrix.experience.body'),[
    board('mx-board-final',t('studies.matrix.experience.blocks.0.items.mx-board-final.caption')),
   ]),
@@ -31,9 +35,5 @@ export default {
   sec('control',t('studies.matrix.control.title'),t('studies.matrix.control.body'),[
    board('mx-board-control',t('studies.matrix.control.blocks.0.items.mx-board-control.caption')),
   ],{steps:[t('studies.matrix.control.steps.0'),t('studies.matrix.control.steps.1'),t('studies.matrix.control.steps.2'),t('studies.matrix.control.steps.3')]}),
-  sec('question',t('studies.matrix.question.title'),t('studies.matrix.question.body'),[
-   board('mx-board-origin',t('studies.matrix.question.blocks.0.items.mx-board-origin.caption')),
-   board('mx-board-emergence',t('studies.matrix.question.blocks.1.items.mx-board-emergence.caption')),
-  ]),
  ],
 };

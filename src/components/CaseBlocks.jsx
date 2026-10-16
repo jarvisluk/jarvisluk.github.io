@@ -130,7 +130,18 @@ function Embed({block,lang}){
  </figure>;
 }
 
-const renderers={problems:Problems,quotes:Quotes,persona:Persona,stages:Stages,spaces:Spaces,actors:Actors,blueprint:Blueprint,tools:Tools,modules:Modules,story:Story,video:Video,embed:Embed};
+// Parallel entry points, one column each: who uses it, the real names it exposes, and what it is for.
+function Gateways({block,lang}){
+ return <figure className="fb-gateways">
+  <ol className="fb-gw-entries">{block.items.map((g,i)=><li key={i}>
+   <span>0{i+1}</span><h3>{t(g.name,lang)}</h3><p className="fb-gw-who">{t(g.who,lang)}</p>
+   <ul className="fb-gw-names">{g.chips.map(c=><li key={c}><code>{c}</code></li>)}</ul>
+   <p className="fb-gw-note">{t(g.note,lang)}</p>
+  </li>)}</ol>
+ </figure>;
+}
+
+const renderers={gateways:Gateways,problems:Problems,quotes:Quotes,persona:Persona,stages:Stages,spaces:Spaces,actors:Actors,blueprint:Blueprint,tools:Tools,modules:Modules,story:Story,video:Video,embed:Embed};
 export default function CaseBlock({block,lang,onOpen}){
  if(block.type==='media')return <div className={`media-group layout-${block.layout} ${block.items.length===1?'single-item':''}`}>{block.items.map((item,j)=><CaseMedia key={`${item.id}-${j}`} item={item} lang={lang} onOpen={onOpen}/>)}</div>;
  if(block.type==='heading')return <h3 className="fb-subheading">{t(block.text,lang)}</h3>;

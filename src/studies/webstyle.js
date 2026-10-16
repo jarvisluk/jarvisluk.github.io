@@ -29,9 +29,15 @@ export default {
   sec('library',t('studies.web-style.library.title'),t('studies.web-style.library.body'),[
    {type:'embed',src:'/embeds/webstyle/library.html',height:1700,title:t('studies.web-style.library.blocks.0.title')},
   ]),
-  sec('agents',t('studies.web-style.agents.title'),t('studies.web-style.agents.body'),[],{points:[t('studies.web-style.agents.points.0'),t('studies.web-style.agents.points.1'),t('studies.web-style.agents.points.2'),t('studies.web-style.agents.points.3')]}),
-  sec('type',t('studies.web-style.type.title'),t('studies.web-style.type.body'),[
-   live('retro',860,t('studies.web-style.type.blocks.0.title')),
+  sec('agents',t('studies.web-style.agents.title'),t('studies.web-style.agents.body'),[
+   {type:'gateways',
+    // Chips are the real tool, method and parameter names, so they stay untranslated.
+    items:[
+     {chips:['list_styles','get_current_style','get_variable_definitions','apply_style','set_variables','reset_style','export_css','get_share_url']},
+     {chips:['applyStyle()','applyVariables()','exportCSS()']},
+     {chips:['?style=','?variables=']},
+     {chips:['SKILL.md']},
+    ].map((x,i)=>({...x,name:t(`studies.web-style.agents.blocks.0.items.${i}.name`),who:t(`studies.web-style.agents.blocks.0.items.${i}.who`),note:t(`studies.web-style.agents.blocks.0.items.${i}.note`)}))},
   ]),
  ],
 };

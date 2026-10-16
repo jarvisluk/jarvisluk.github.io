@@ -13,7 +13,7 @@
  .sizer{position:relative}
  .canvas{position:absolute;left:0;top:0;transform-origin:0 0}
  .canvas svg{position:absolute;inset:0;overflow:visible;pointer-events:none;z-index:2}
- .scr,.card{position:absolute;overflow:hidden;cursor:zoom-in;background:#fff}
+ .scr,.card{position:absolute;overflow:hidden;background:#fff}
  .scr{border-radius:16px;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 12px 28px rgba(20,30,40,.10)}
  .card{border-radius:12px;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 8px 20px rgba(20,30,40,.10)}
  .scr img,.card img{display:block;width:100%}
@@ -34,9 +34,6 @@
  @media(max-width:640px){.compare{grid-template-columns:1fr}.compare>div{padding-right:0}.compare .th{display:none}.compare .stage-name{padding-bottom:4px;border-bottom:0}.compare .pain{border-bottom:0;padding-top:0}.compare .pain:before,.compare .fix:before{content:attr(data-label);display:block;font-size:12px;font-weight:600;margin-bottom:4px}.compare .pain:before{color:#59616a}.compare .fix:before{color:var(--accent)}}
  .num{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11.5px;font-weight:600;line-height:1}
  .badge{position:absolute;z-index:4;transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(255,255,255,.9)}
- .zoom{position:absolute;z-index:10;left:50%;transform:translateX(-50%);background:rgba(20,24,28,.88);padding:18px;border-radius:16px;cursor:zoom-out;display:none}
- .zoom img{display:block;max-width:min(380px,80vw);border-radius:12px}
- .zoom.on{display:block}
  .hint{font-size:11.5px;color:var(--muted);margin:8px 2px 0}
 </style>
 </head>
@@ -44,7 +41,6 @@
 <div class="scroller"><div class="sizer"><div class="canvas" id="canvas"></div></div></div>
 <div class="compare" id="compare"></div>
 <p class="hint" data-zh="点击任意界面可放大查看" data-en="Select any screen to enlarge it."></p>
-<div class="zoom" id="zoom"><img alt=""></div>
 
 <script>
 const lang=new URLSearchParams(location.search).get('lang')==='en'?'en':'zh';
@@ -59,20 +55,20 @@ const img=n=>`img/${n}.webp`;
 const stages=[
  {x:330,title:T('准备','Before you start'),
   before:['v1-entry'],after:['v2-check'],badge:[176,234],
-  nb:[T('5GHz、企业 Wi-Fi 等限制只写在页面底部的小字里','Limits such as 5GHz and enterprise Wi-Fi sit in small print at the bottom')],
-  na:[T('开始前先列出 2.4GHz、不连公共 Wi-Fi、电量高于 30%','Requirements first: 2.4GHz, no public Wi-Fi, battery above 30%'),T('电量不足直接拦下，不让用户白等','Low battery stops the flow here instead of failing later')]},
+  nb:[T('网络和设备的限制条件不够醒目','Network and device requirements are easy to miss')],
+  na:[T('开始前讲清要求，不满足的提前拦下','Requirements come first; unmet ones stop the flow early')]},
  {x:650,title:T('选择网络','Pick a network'),
   before:['v1-empty'],after:['v2-list'],badge:[176,96],
-  nb:[T('名称和密码全靠手动输入，输错只能等连接失败','Name and password typed by hand; a typo only shows up as a failure'),T('热点是另一套页面，来回切换会清空已输入的内容','The hotspot is a separate set of screens; switching clears what was typed')],
-  na:[T('从耳机连得上的网络里选，已保存的自动填密码','Pick from networks the headphones can join; saved ones fill their password'),T('热点收进同一页，作为备选','The hotspot moves onto the same page as a fallback')]},
+  nb:[T('全靠手动输入，热点另走一套流程','Everything is typed by hand; the hotspot has its own flow')],
+  na:[T('用选择代替输入，热点并入同一流程','Choosing replaces typing; the hotspot joins the same flow')]},
  {x:970,title:T('连接中','Connecting'),
   before:['v1-connecting'],after:['v2-connecting'],badge:[176,172],
-  nb:[T('只有加载动画；耳机的音频和多点连接被暂停，却没有说明','Only a spinner; the headphones’ audio and multipoint pause without explanation')],
-  na:[T('说明暂停音频和多点连接的原因','Explains why audio and multipoint pause'),T('提示至少停留 2 秒，保证读得完','Stays at least 2 s so it can be read')]},
+  nb:[T('只有等待动画，状态变化没有说明','Only a spinner; state changes go unexplained')],
+  na:[T('说明正在发生什么，以及为什么','Explains what is happening and why')]},
  {title:T('失败时','When it fails'),
   table:true,
-  nb:[T('不同原因都显示同一句“连接失败”','Every cause shows the same “Connection failed”'),T('只有“知道了”，没有下一步','Only an OK button, no next step')],
-  na:[T('按原因归类，说明哪里出了问题、怎么解决','Grouped by cause: what went wrong and how to fix it'),T('热点问题可以直接跳到系统设置','Hotspot issues link straight to Settings')]},
+  nb:[T('不同原因都显示同一条报错，也没有下一步','Every cause shows the same error, with no next step')],
+  na:[T('按原因给出提示和解决办法','Each cause gets its own message and a fix')]},
 ];
 
 const c=document.getElementById('canvas');
@@ -92,7 +88,6 @@ const arrow=(x1,x2,y,k)=>{
 function picture(name,kind,x,y,w,row){
  const box=el('div',`${kind} ${row}`,{left:px(x),top:px(y),width:px(w)});
  const i=document.createElement('img');i.src=img(name);i.alt='';i.loading='lazy';box.appendChild(i);
- box.addEventListener('click',()=>zoom(name,box));
 }
 
 el('div','row before',{top:px(ROWS.before)}).textContent=lang==='zh'?'优化前':'Before';
@@ -123,15 +118,6 @@ stages.forEach((s,i)=>{
  list('pain',s.nb);list('fix',s.na);
 });
 
-const zoomBox=document.getElementById('zoom'),zoomImg=zoomBox.querySelector('img');
-function zoom(name,box){
- zoomImg.src=img(name);
- const r=box.getBoundingClientRect();
- zoomBox.style.top=px(Math.max(8,window.scrollY+r.top-60));
- zoomBox.classList.add('on');
-}
-zoomBox.addEventListener('click',()=>zoomBox.classList.remove('on'));
-addEventListener('keydown',e=>{if(e.key==='Escape')zoomBox.classList.remove('on');});
 document.querySelectorAll('[data-zh]').forEach(e=>e.textContent=e.dataset[lang]);
 
 // Fit the canvas to the frame; below 0.62 keep that scale and scroll sideways.
